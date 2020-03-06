@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} volunteer experience</h5>
+        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} Project</h5>
         <button type="button" class="close" (click)="onClose()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -12,27 +12,17 @@
         <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-controls">
             <div class="form-group">
-              <label for="organization" class="required">Organization</label>
-              <input class="form-control" type="text" id="organization" placeholder="Ex: IEEE"
-                formControlName="organization"
-                [ngClass]="{'is-valid': organization.valid,'is-invalid': organization.invalid && organization.touched}" />
+              <label for="project" class="required">Project name</label>
+              <input class="form-control" type="text" id="project" formControlName="name"
+                [ngClass]="{'is-valid': name.valid,'is-invalid': name.invalid && name.touched}" />
             </div>
-
-            <div class="form-group">
-              <label for="role" class="required">Role</label>
-              <input class="form-control" type="text" name="" id="role" placeholder="Ex: Graphic designer"
-                formControlName="role"
-                [ngClass]="{'is-valid': role.valid,'is-invalid': role.invalid && role.touched}" />
-            </div>
-
-
 
             <div class="form-group">
               <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" name="currentlyWorking" id="currently-volunteering"
-                  formControlName="currentlyVolunteering">
-                <label class="custom-control-label" for="currently-volunteering">I am currently volunteering in this
-                  role</label>
+                <input type="checkbox" class="custom-control-input" name="currentlyWorking" id="currently-working"
+                  formControlName="currentlyWorking">
+                <label class="custom-control-label" for="currently-working">I am currently working in this
+                  project</label>
               </div>
 
               <div class="row">
@@ -60,8 +50,8 @@
 
                 <div class="col-sm-6">
                   <label for="end-date" class="required">End Date</label>
-                  <h4 id="PresentWorkDate" *ngIf="currentlyVolunteering.value">Present</h4>
-                  <div class="row" id="EndWorkDate" formGroupName="endDate" *ngIf="!currentlyVolunteering.value">
+                  <h4 id="PresentWorkDate" *ngIf="currentlyWorking.value">Present</h4>
+                  <div class="row" id="EndWorkDate" formGroupName="endDate" *ngIf="!currentlyWorking.value">
                     <div class="col-sm-6">
                       <select class="form-control" id="end-date" formControlName="month"
                         [ngClass]="{'is-valid': endDateMonth.valid,'is-invalid': endDateMonth.invalid && endDateMonth.touched}">
@@ -82,13 +72,28 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label for="associated-with">Associated with</label>
+              <select class="form-control" id="associated-with" formControlName="associatedWith">
+                <option value="null">-</option>
+                <option *ngFor="let education of educations" [value]="education">{{education}}</option>
+              </select>
+            </div>
+
+            <div class="form-group ">
+              <label for="project-url">Project URL</label>
+              <input class="form-control" type="text" name="" id="grade" formControlName="projectUrl"
+                [class.is-invalid]="projectUrl.invalid">
+              <div class="invalid-feedback">
+                Please enter a valid URL.
+              </div>
+            </div>
 
             <div class="form-group">
               <label for="description">Description</label>
               <textarea class="form-control" id="description" cols="30" rows="5"
                 formControlName="description"></textarea>
             </div>
-
 
           </div>
         </form>

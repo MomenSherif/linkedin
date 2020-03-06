@@ -30,7 +30,7 @@ export class EducationFormModalComponent implements OnInit {
   ngOnInit(): void {
     // Add years till current year
     let currentYear = new Date().getFullYear() + 7;
-    const startYear = 1980;
+    const startYear = 1900;
     while (currentYear >= startYear) {
       this.years.push(currentYear--);
     }

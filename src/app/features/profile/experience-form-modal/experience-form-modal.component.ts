@@ -54,7 +54,7 @@ export class ExperienceFormModalComponent implements OnInit {
 
     // Add years till current year
     let currentYear = new Date().getFullYear();
-    const startYear = 1980;
+    const startYear = 1900;
     while (currentYear >= startYear) {
       this.years.push(currentYear--);
     }

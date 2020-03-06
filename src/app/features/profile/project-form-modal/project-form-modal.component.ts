@@ -2,21 +2,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-volunteer-form-modal',
-  templateUrl: './volunteer-form-modal.component.html',
-  styleUrls: ['./volunteer-form-modal.component.scss']
+  selector: 'app-project-form-modal',
+  templateUrl: './project-form-modal.component.html',
+  styleUrls: ['./project-form-modal.component.scss']
 })
-export class VolunteerFormModalComponent implements OnInit {
+export class ProjectFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
   inEditMode = false;
 
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years: number[] = [];
 
+
+  educations = ['Education 1', 'Education 2', 'Education 3'];
+
   form = this.fb.group({
-    organization: [null, Validators.required],
-    role: [null, Validators.required],
-    currentlyVolunteering: [true],
+    name: [null, Validators.required],
+    currentlyWorking: [true],
     startDate: this.fb.group({
       month: [null, Validators.required],
       year: [null, Validators.required]
@@ -25,6 +27,8 @@ export class VolunteerFormModalComponent implements OnInit {
       month: [null],
       year: [null]
     }),
+    associatedWith: [null],
+    projectUrl: [null, Validators.pattern('(^http[s]?:\/{2})|(^www)|(^\/{1,2})')],
     description: [null]
   });
 
@@ -34,7 +38,7 @@ export class VolunteerFormModalComponent implements OnInit {
 
   ngOnInit(): void {
     // Add & remove end date validation depend on CurrentlyWokring State
-    this.form.get('currentlyVolunteering').valueChanges
+    this.form.get('currentlyWorking').valueChanges
       .subscribe(currentlyWorking => {
         if (currentlyWorking) {
           this.endDateMonth.clearValidators();
@@ -60,7 +64,6 @@ export class VolunteerFormModalComponent implements OnInit {
 
   onClose() {
     this.modalClosing.emit();
-    console.log(this.years);
   }
 
   onSubmit() {
@@ -70,12 +73,12 @@ export class VolunteerFormModalComponent implements OnInit {
 
 
   // Properties getter for Validation styles
-  get currentlyVolunteering(): FormControl {
-    return this.form.get('currentlyVolunteering') as FormControl;
+  get currentlyWorking(): FormControl {
+    return this.form.get('currentlyWorking') as FormControl;
   }
 
-  get organization(): FormControl {
-    return this.form.get('organization') as FormControl;
+  get name(): FormControl {
+    return this.form.get('name') as FormControl;
   }
 
   get role(): FormControl {
@@ -96,6 +99,10 @@ export class VolunteerFormModalComponent implements OnInit {
 
   get endDateYear(): FormControl {
     return this.form.get('endDate.year') as FormControl;
+  }
+
+  get projectUrl(): FormControl {
+    return this.form.get('projectUrl') as FormControl;
   }
 
 }
