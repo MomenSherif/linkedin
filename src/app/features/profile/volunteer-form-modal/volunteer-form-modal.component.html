@@ -1,0 +1,101 @@
+<div class="modal">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} volunteer experience</h5>
+        <button type="button" class="close" (click)="onClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-controls">
+            <div class="form-group">
+              <label for="organization" class="required">Organization</label>
+              <input class="form-control" type="text" id="organization" placeholder="Ex: IEEE"
+                formControlName="organization"
+                [ngClass]="{'is-valid': organization.valid,'is-invalid': organization.invalid && organization.touched}" />
+            </div>
+
+            <div class="form-group">
+              <label for="role" class="required">Role</label>
+              <input class="form-control" type="text" name="" id="role" placeholder="Ex: Graphic designer"
+                formControlName="role"
+                [ngClass]="{'is-valid': role.valid,'is-invalid': role.invalid && role.touched}" />
+            </div>
+
+
+
+            <div class="form-group">
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" name="currentlyWorking" id="currently-volunteering"
+                  formControlName="currentlyVolunteering">
+                <label class="custom-control-label" for="currently-volunteering">I am currently volunteering in this
+                  role</label>
+              </div>
+
+              <div class="row">
+
+                <div class="col-sm-6">
+                  <label for="start-date" class="required">Start Date</label>
+                  <div class="row" formGroupName="startDate">
+                    <div class="col-sm-6">
+                      <select class="form-control" id="start-date" formControlName="month"
+                        [ngClass]="{'is-valid': startDateMonth.valid,'is-invalid': startDateMonth.invalid && startDateMonth.touched}">
+                        <option value="null" disabled>Month</option>
+                        <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <select class="form-control" formControlName="year"
+                        [ngClass]="{'is-valid': startDateYear.valid,'is-invalid': startDateYear.invalid && startDateYear.touched}">
+                        <option value="null" disabled>Year</option>
+                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="end-date" class="required">End Date</label>
+                  <h4 id="PresentWorkDate" *ngIf="currentlyVolunteering.value">Present</h4>
+                  <div class="row" id="EndWorkDate" formGroupName="endDate" *ngIf="!currentlyVolunteering.value">
+                    <div class="col-sm-6">
+                      <select class="form-control" id="end-date" formControlName="month"
+                        [ngClass]="{'is-valid': endDateMonth.valid,'is-invalid': endDateMonth.invalid && endDateMonth.touched}">
+                        <option value="null" disabled>Month</option>
+                        <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6">
+                      <select class="form-control" formControlName="year"
+                        [ngClass]="{'is-valid': endDateYear.valid,'is-invalid': endDateYear.invalid && endDateYear.touched}">
+                        <option value="null" disabled>Year</option>
+                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" cols="30" rows="6"
+                formControlName="description"></textarea>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" form="form">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
