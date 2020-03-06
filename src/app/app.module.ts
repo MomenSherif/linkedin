@@ -7,6 +7,7 @@ import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
+import { DropdownComponent } from './shared/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    CopyrightComponent
+    CopyrightComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
