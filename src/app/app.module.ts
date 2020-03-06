@@ -1,3 +1,4 @@
+import { ProfileModule } from "./features/profile/profile.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -17,7 +18,12 @@ import { CopyrightComponent } from "./core/copyright/copyright.component";
     FooterComponent,
     CopyrightComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ProfileModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
