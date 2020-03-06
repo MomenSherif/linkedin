@@ -102,7 +102,13 @@ p {
     }
   }
 }
-
+@media only screen and (max-width: 500px) {
+  .signup {
+    &__main {
+      width: 28rem;
+    }
+  }
+}
 @media only screen and (min-width: 992px) {
   .signup-form-input-container {
     label {
@@ -136,6 +142,7 @@ p {
       color: rgba(0, 0, 0, 0.6);
     }
   }
+
   ::-webkit-input-placeholder {
     color: transparent;
   }
