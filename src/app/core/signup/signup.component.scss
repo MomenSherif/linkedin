@@ -1,0 +1,275 @@
+p {
+  margin: 0;
+}
+.signup-page {
+  background: linear-gradient(45deg, #0073b1, #0c8996);
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+
+  a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  label {
+    display: none;
+  }
+}
+
+.signup {
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 31rem;
+  }
+
+  &__logo {
+    line-height: 5.4rem;
+    font-size: 2.1rem;
+    padding-left: 32%;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+  }
+
+  &__caption {
+    line-height: 2.4rem;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 6%;
+  }
+
+  &__aggr {
+    font-size: 0.8rem;
+    line-height: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  &__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.signup-form-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .signup {
+    &__form {
+      max-width: 40rem;
+    }
+    &__logo {
+      font-size: 2.6rem;
+      padding-left: 38%;
+    }
+
+    &__caption {
+      font-size: 2.3rem;
+      line-height: 1.7rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .signup {
+    &__form {
+      max-width: 40rem;
+    }
+    &__logo {
+      font-size: 2.6rem;
+      padding-left: 34.5%;
+    }
+
+    &__caption {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+    &__aggr {
+      color: white;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .signup-form-input-container {
+    label {
+      align-self: start;
+      //   margin-left: 6%;
+    }
+  }
+  .signup {
+    &__form {
+      max-width: 35rem;
+    }
+    &__logo {
+      font-size: 2rem;
+      padding-left: 37%;
+    }
+
+    &__caption {
+      font-size: 2rem;
+      line-height: 1.7rem;
+    }
+
+    &__main {
+      max-width: 74%;
+      background-color: #edf0f3;
+      color: rgba(0, 0, 0, 0.9);
+      //height: 62rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    &__aggr {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  ::-webkit-input-placeholder {
+    color: transparent;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: transparent;
+  }
+
+  .signup-form-input-container {
+    margin-top: 2rem;
+  }
+
+  .signup-page {
+    a {
+      color: rgba(0, 0, 0, 0.6);
+    }
+    label {
+      display: initial;
+    }
+  }
+}
+.signup-form-input {
+  width: 80%;
+  padding: 1rem;
+  border: none;
+  border-bottom: solid 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 992px) {
+  .signup-form-input {
+    border: solid 0.05rem black;
+    border-radius: 0.15rem;
+    max-width: 80%;
+    margin: 2% 7%;
+    padding: 0.5rem 1rem;
+  }
+}
+.signup-upload {
+  input[type="file"] {
+    display: none;
+  }
+
+  label[for="UploadPhoto"] {
+    display: inline-block;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    font-size: 2.5rem;
+    line-height: 4.7rem;
+    color: #00a0dc;
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  label[for="UploadPhoto"] {
+    align-self: center !important;
+    margin: 0 !important;
+  }
+}
+
+.signup-btn {
+  padding: 0.8rem;
+  width: 90%;
+  border-style: none;
+  border-radius: 0.1 rem;
+  color: white;
+  margin: 1rem 0;
+  &--sky {
+    background-color: #00a0dc;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #006097;
+    }
+  }
+
+  &--dark-blue {
+    background-color: #425597;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #3f5190;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .signup-btn {
+    max-width: 95%;
+  }
+}
+
+.footer-end {
+  background-color: whitesmoke;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  &__li {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__list {
+    list-style: none;
+    margin-bottom: 0;
+    height: auto;
+    min-height: 50px;
+  }
+  &__items {
+    // padding-top: 1.7%;
+    padding-top: 0.8rem;
+  }
+  &__dropdown-item {
+    color: #0073b0;
+    font-size: calc(0.6rem + 0.5vw);
+    &:hover {
+      color: white;
+      background-color: #0073b0;
+    }
+  }
+  &__text {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.6);
+    &:hover {
+      color: #665ed0;
+    }
+  }
+  &__brand {
+    display: flex;
+  }
+  &__logo {
+    width: 4rem;
+  }
+}
