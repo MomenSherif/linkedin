@@ -1,0 +1,22 @@
+.modal {
+  display: block;
+  background-color: rgba(#000, 0.6);
+
+  &-body {
+    overflow-y: auto;
+  }
+}
+
+.close:focus {
+  outline: none;
+}
+
+.required {
+  position: relative;
+
+  &::after {
+    content: "*";
+    color: rgb(0, 115, 177);
+    margin-left: 3px;
+  }
+}
