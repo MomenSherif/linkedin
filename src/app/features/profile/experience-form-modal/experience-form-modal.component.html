@@ -2,68 +2,125 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} Experience</h5>
+        <h5 class="modal-title" id="FullModalLabel">
+          {{ inEditMode ? "Edit" : "Add" }} Experience
+        </h5>
         <button type="button" class="close" (click)="onClose()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-
         <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-controls">
             <div class="form-group">
               <label for="title" class="required">Title</label>
-              <input class="form-control" type="text" id="title" placeholder="Ex: Frontend Developer"
+              <input
+                class="form-control"
+                type="text"
+                id="title"
+                placeholder="Ex: Frontend Developer"
                 formControlName="title"
-                [ngClass]="{'is-valid': title.valid,'is-invalid': title.invalid && title.touched}" />
+                [ngClass]="{
+                  'is-valid': title.valid,
+                  'is-invalid': title.invalid && title.touched
+                }"
+              />
             </div>
 
             <div class="form-group">
               <label for="employment-type">Employment type</label>
-              <select class="form-control" id="employment-type" formControlName="employmentType">
+              <select
+                class="form-control"
+                id="employment-type"
+                formControlName="employmentType"
+              >
                 <option value="null">-</option>
-                <option *ngFor="let type of employmentTypes" [value]="type">{{type}}</option>
+                <option *ngFor="let type of employmentTypes" [value]="type">{{
+                  type
+                }}</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="company" class="required">Company</label>
-              <input class="form-control" type="text" name="" id="company" placeholder="Ex: Microsoft"
+              <input
+                class="form-control"
+                type="text"
+                name=""
+                id="company"
+                placeholder="Ex: Microsoft"
                 formControlName="company"
-                [ngClass]="{'is-valid': company.valid,'is-invalid': company.invalid && company.touched}">
+                [ngClass]="{
+                  'is-valid': company.valid,
+                  'is-invalid': company.invalid && company.touched
+                }"
+              />
             </div>
 
             <div class="form-group">
               <label for="location">Location</label>
-              <input class="form-control" type="text" name="" id="location" placeholder="Ex: Cairo, Egypt"
-                formControlName="location">
+              <input
+                class="form-control"
+                type="text"
+                name=""
+                id="location"
+                placeholder="Ex: Cairo, Egypt"
+                formControlName="location"
+              />
             </div>
 
             <div class="form-group">
               <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" name="currentlyWorking" id="currently-working"
-                  formControlName="currentlyWorking">
-                <label class="custom-control-label" for="currently-working">I am currently working in this role</label>
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  name="currentlyWorking"
+                  id="currently-working"
+                  formControlName="currentlyWorking"
+                />
+                <label class="custom-control-label" for="currently-working"
+                  >I am currently working in this role</label
+                >
               </div>
 
               <div class="row">
-
                 <div class="col-sm-6">
                   <label for="start-date" class="required">Start Date</label>
                   <div class="row" formGroupName="startDate">
                     <div class="col-sm-6">
-                      <select class="form-control" id="start-date" formControlName="month"
-                        [ngClass]="{'is-valid': startDateMonth.valid,'is-invalid': startDateMonth.invalid && startDateMonth.touched}">
+                      <select
+                        class="form-control"
+                        id="start-date"
+                        formControlName="month"
+                        [ngClass]="{
+                          'is-valid': startDateMonth.valid,
+                          'is-invalid':
+                            startDateMonth.invalid && startDateMonth.touched
+                        }"
+                      >
                         <option value="null" disabled>Month</option>
-                        <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
+                        <option
+                          *ngFor="let month of months; let i = index"
+                          [value]="i + 1"
+                          >{{ month }}</option
+                        >
                       </select>
                     </div>
 
                     <div class="col-sm-6">
-                      <select class="form-control" formControlName="year"
-                        [ngClass]="{'is-valid': startDateYear.valid,'is-invalid': startDateYear.invalid && startDateYear.touched}">
+                      <select
+                        class="form-control"
+                        formControlName="year"
+                        [ngClass]="{
+                          'is-valid': startDateYear.valid,
+                          'is-invalid':
+                            startDateYear.invalid && startDateYear.touched
+                        }"
+                      >
                         <option value="null" disabled>Year</option>
-                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                        <option *ngFor="let year of years" [value]="year">{{
+                          year
+                        }}</option>
                       </select>
                     </div>
                   </div>
@@ -71,40 +128,77 @@
 
                 <div class="col-sm-6">
                   <label for="end-date" class="required">End Date</label>
-                  <h4 id="PresentWorkDate" *ngIf="currentlyWorking.value">Present</h4>
-                  <div class="row" id="EndWorkDate" formGroupName="endDate" *ngIf="!currentlyWorking.value">
+                  <h4 id="PresentWorkDate" *ngIf="currentlyWorking.value">
+                    Present
+                  </h4>
+                  <div
+                    class="row"
+                    id="EndWorkDate"
+                    formGroupName="endDate"
+                    *ngIf="!currentlyWorking.value"
+                  >
                     <div class="col-sm-6">
-                      <select class="form-control" id="end-date" formControlName="month"
-                        [ngClass]="{'is-valid': endDateMonth.valid,'is-invalid': endDateMonth.invalid && endDateMonth.touched}">
+                      <select
+                        class="form-control"
+                        id="end-date"
+                        formControlName="month"
+                        [ngClass]="{
+                          'is-valid': endDateMonth.valid,
+                          'is-invalid':
+                            endDateMonth.invalid && endDateMonth.touched
+                        }"
+                      >
                         <option value="null" disabled>Month</option>
-                        <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
+                        <option
+                          *ngFor="let month of months; let i = index"
+                          [value]="i + 1"
+                          >{{ month }}</option
+                        >
                       </select>
                     </div>
                     <div class="col-sm-6">
-                      <select class="form-control" formControlName="year"
-                        [ngClass]="{'is-valid': endDateYear.valid,'is-invalid': endDateYear.invalid && endDateYear.touched}">
+                      <select
+                        class="form-control"
+                        formControlName="year"
+                        [ngClass]="{
+                          'is-valid': endDateYear.valid,
+                          'is-invalid':
+                            endDateYear.invalid && endDateYear.touched
+                        }"
+                      >
                         <option value="null" disabled>Year</option>
-                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                        <option *ngFor="let year of years" [value]="year">{{
+                          year
+                        }}</option>
                       </select>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" id="description" cols="30" rows="6"
-                formControlName="description"></textarea>
+              <textarea
+                class="form-control"
+                id="description"
+                cols="30"
+                rows="6"
+                formControlName="description"
+              ></textarea>
             </div>
-
-
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" form="form">Save</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          form="form"
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>

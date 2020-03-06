@@ -2,81 +2,136 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} Education</h5>
+        <h5 class="modal-title" id="FullModalLabel">
+          {{ inEditMode ? "Edit" : "Add" }} Education
+        </h5>
         <button type="button" class="close" (click)="onClose()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-
         <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-controls">
             <div class="form-group">
               <label for="school" class="required">School</label>
-              <input class="form-control" type="text" id="school" placeholder="Ex: Cairo University"
+              <input
+                class="form-control"
+                type="text"
+                id="school"
+                placeholder="Ex: Cairo University"
                 formControlName="school"
-                [ngClass]="{'is-valid': school.valid,'is-invalid': school.invalid && school.touched}" />
+                [ngClass]="{
+                  'is-valid': school.valid,
+                  'is-invalid': school.invalid && school.touched
+                }"
+              />
             </div>
 
             <div class="form-group">
               <label for="degree">Degree</label>
-              <input class="form-control" type="text" name="" id="degree" placeholder="Ex: Microsoft"
-                formControlName="degree" />
+              <input
+                class="form-control"
+                type="text"
+                name=""
+                id="degree"
+                placeholder="Ex: Microsoft"
+                formControlName="degree"
+              />
             </div>
 
             <div class="form-group">
               <label for="field-of-Study">Field of study</label>
-              <input class="form-control" type="text" name="" id="field-of-Study" placeholder="Ex: Computer Science"
-                formControlName="fieldOfStudy">
+              <input
+                class="form-control"
+                type="text"
+                name=""
+                id="field-of-Study"
+                placeholder="Ex: Computer Science"
+                formControlName="fieldOfStudy"
+              />
             </div>
 
             <div class="form-group">
               <label for="grade">Grade</label>
-              <input class="form-control" type="text" name="" id="grade" formControlName="grade">
+              <input
+                class="form-control"
+                type="text"
+                name=""
+                id="grade"
+                formControlName="grade"
+              />
             </div>
 
             <div class="form-group">
               <div class="row">
-
                 <div class="col-sm-6">
                   <label for="start-date" class="required">Start year</label>
                   <div class="row">
                     <div class="col-sm-12">
-                      <select class="form-control" formControlName="startYear"
-                        [ngClass]="{'is-valid': startYear.valid,'is-invalid': startYear.invalid && startYear.touched}">
+                      <select
+                        class="form-control"
+                        formControlName="startYear"
+                        [ngClass]="{
+                          'is-valid': startYear.valid,
+                          'is-invalid': startYear.invalid && startYear.touched
+                        }"
+                      >
                         <option value="null" disabled>Year</option>
-                        <option *ngFor="let year of years | slice: 7" [value]="year">{{year}}</option>
+                        <option
+                          *ngFor="let year of years | slice: 7"
+                          [value]="year"
+                          >{{ year }}</option
+                        >
                       </select>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-sm-6">
-                  <label for="end-date" class="required">End Year (or expected)</label>
+                  <label for="end-date" class="required"
+                    >End Year (or expected)</label
+                  >
                   <div class="col-sm-12">
-                    <select class="form-control" formControlName="endYear"
-                      [ngClass]="{'is-valid': endYear.valid,'is-invalid': endYear.invalid && endYear.touched}">
+                    <select
+                      class="form-control"
+                      formControlName="endYear"
+                      [ngClass]="{
+                        'is-valid': endYear.valid,
+                        'is-invalid': endYear.invalid && endYear.touched
+                      }"
+                    >
                       <option value="null" disabled>Year</option>
-                      <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                      <option *ngFor="let year of years" [value]="year">{{
+                        year
+                      }}</option>
                     </select>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" id="description" cols="30" rows="6"
-                formControlName="description"></textarea>
+              <textarea
+                class="form-control"
+                id="description"
+                cols="30"
+                rows="6"
+                formControlName="description"
+              ></textarea>
             </div>
-
-
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" form="form">Save</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          form="form"
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>

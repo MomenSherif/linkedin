@@ -23,7 +23,7 @@ export class AboutFormModalComponent implements OnInit {
 
   onClose() {
     this.modalClosing.emit();
-    console.log(this.form.value)
+    console.log(this.form.value);
   }
 
   onSubmit() {

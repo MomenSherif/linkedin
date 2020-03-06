@@ -2,26 +2,38 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="FullModalLabel">{{inEditMode ? 'Edit' : 'Add'}} About</h5>
+        <h5 class="modal-title" id="FullModalLabel">
+          {{ inEditMode ? "Edit" : "Add" }} About
+        </h5>
         <button type="button" class="close" (click)="onClose()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-
         <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-controls">
-
             <div class="form-group">
               <label for="about">Summary</label>
-              <textarea class="form-control" id="about" cols="30" rows="6" formControlName="about"></textarea>
+              <textarea
+                class="form-control"
+                id="about"
+                cols="30"
+                rows="6"
+                formControlName="about"
+              ></textarea>
             </div>
-
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" form="form">Save</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          form="form"
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>
