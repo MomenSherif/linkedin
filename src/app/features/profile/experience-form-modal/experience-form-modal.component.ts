@@ -39,15 +39,17 @@ export class ExperienceFormModalComponent implements OnInit {
     this.form.get('currentlyWorking').valueChanges
       .subscribe(currentlyWorking => {
         if (currentlyWorking) {
-          this.form.get('endDate.month').clearValidators();
-          this.form.get('endDate.year').clearValidators();
+          this.endDateMonth.clearValidators();
+          this.endDateYear.clearValidators();
+          this.endDateMonth.setValue(null);
+          this.endDateYear.setValue(null);
         } else {
-          this.form.get('endDate.month').setValidators([Validators.required]);
-          this.form.get('endDate.year').setValidators([Validators.required]);
+          this.endDateMonth.setValidators([Validators.required]);
+          this.endDateYear.setValidators([Validators.required]);
         }
 
-        this.form.get('endDate.month').updateValueAndValidity();
-        this.form.get('endDate.year').updateValueAndValidity();
+        this.endDateMonth.updateValueAndValidity();
+        this.endDateYear.updateValueAndValidity();
       });
 
     // Add years till current year
