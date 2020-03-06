@@ -13,6 +13,7 @@ export class ExperienceFormModalComponent implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years: number[] = [];
 
+  employmentTypes = ['Full-time', 'part-time', 'Self-employed', 'Freelance', 'Contract', 'Internship', 'Apprenticeship']
   form = this.fb.group({
     title: [null, Validators.required],
     employmentType: [null],

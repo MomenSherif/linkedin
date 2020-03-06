@@ -60,7 +60,6 @@ export class VolunteerFormModalComponent implements OnInit {
 
   onClose() {
     this.modalClosing.emit();
-    console.log(this.years);
   }
 
   onSubmit() {

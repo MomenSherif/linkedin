@@ -7,11 +7,12 @@ import { ExperienceFormModalComponent } from './experience-form-modal/experience
 import { EducationFormModalComponent } from './education-form-modal/education-form-modal.component';
 import { VolunteerFormModalComponent } from './volunteer-form-modal/volunteer-form-modal.component';
 import { ProjectFormModalComponent } from './project-form-modal/project-form-modal.component';
+import { AboutFormModalComponent } from './about-form-modal/about-form-modal.component';
 
 
 
 @NgModule({
-  declarations: [ExperienceFormModalComponent, EducationFormModalComponent, VolunteerFormModalComponent, ProjectFormModalComponent],
+  declarations: [ExperienceFormModalComponent, EducationFormModalComponent, VolunteerFormModalComponent, ProjectFormModalComponent, AboutFormModalComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,6 +22,7 @@ import { ProjectFormModalComponent } from './project-form-modal/project-form-mod
     EducationFormModalComponent,
     VolunteerFormModalComponent,
     ProjectFormModalComponent,
+    AboutFormModalComponent,
   ]
 })
 export class ProfileModule { }

@@ -22,13 +22,7 @@
               <label for="employment-type">Employment type</label>
               <select class="form-control" id="employment-type" formControlName="employmentType">
                 <option value="null">-</option>
-                <option value="0">Full-time</option>
-                <option value="1">Part-time</option>
-                <option value="2">Self-employed</option>
-                <option value="3">Freelance</option>
-                <option value="4">Contract</option>
-                <option value="5">Internship</option>
-                <option value="6">Apprenticeship</option>
+                <option *ngFor="let type of employmentTypes" [value]="type">{{type}}</option>
               </select>
             </div>
 
