@@ -11,6 +11,8 @@ import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
 
+import { HomeModule } from './core/home/home.module';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
