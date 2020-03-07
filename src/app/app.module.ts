@@ -12,6 +12,7 @@ import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
+import { NavMainComponent } from './core/nav-main/nav-main.component';
 
 
 
@@ -23,6 +24,7 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
+    NavMainComponent
   ],
   imports: [
     BrowserModule,
