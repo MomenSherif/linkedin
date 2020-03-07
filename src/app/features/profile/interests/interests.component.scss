@@ -1,0 +1,122 @@
+$primary-text-color: rgba(0, 0, 0, 0.8);
+$secondary-text-color: rgba(0, 0, 0, 0.5);
+
+.interests {
+  background-color: white;
+  padding: 3rem 3rem 0rem 3rem;
+  border: 1px solid rgba($color: #000000, $alpha: 0.2);
+  border-radius: 0.2rem;
+  color: $primary-text-color;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+
+  &__header {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: $primary-text-color;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+  }
+  &__container {
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    color: $primary-text-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:hover {
+      text-decoration: none;
+      color: $primary-text-color;
+    }
+    // following link in bootstrap modal
+    &--modal {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: hsla(0, 0%, 81.2%, 0.25);
+        color: rgba(0, 0, 0, 0.75);
+        text-decoration: none;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  &__follower-count {
+    font-size: 1rem;
+    margin-left: 1rem;
+    color: $secondary-text-color;
+  }
+
+  &__see-all {
+    text-decoration: none;
+    min-height: 4rem;
+    justify-content: center;
+    // horizontal line
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &-btn {
+      font-size: 1.2rem;
+      color: #006097;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: rgba($color: #0073b1, $alpha: 0.2);
+      text-decoration: none;
+    }
+  }
+}
+
+// override font-size default properties of bootstrap modal
+#interests-modal {
+  font-size: 1.1rem;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0px;
+  width: 100%;
+  height: 800px;
+  &__title {
+    font-size: 1.2rem;
+  }
+  .close {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.interests-modal {
+  &__content {
+    padding: 1rem 0rem;
+  }
+  &__title {
+    margin-left: 0.5rem;
+  }
+  &__container {
+    padding: 1.5rem 1rem;
+    min-height: 8rem;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

@@ -1,1 +1,334 @@
-<p>signup works!</p>
+<div class="signup-page">
+  <form class="signup__form" [formGroup]="signUpForm">
+    <div class="Signup__Header">
+      <div class="signup__logo">Linked<i class="fab fa-linkedin"></i></div>
+      <div class="signup__caption">
+        Make the most of your professional life
+      </div>
+    </div>
+
+    <div class="signup__main">
+      <div class="signup-form-input-container">
+        <label for="Email">Email</label>
+        <input
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('email').touched && signUpForm.get('email').invalid
+          }"
+          formControlName="email"
+          class="form-control is-invalid"
+          id="Email"
+          type="text"
+          placeholder="Email"
+        />
+        <p
+          *ngIf="
+            signUpForm.get('email').touched &&
+            signUpForm.get('email').hasError('required')
+          "
+          class="error-message"
+        >
+          Please enter an email
+        </p>
+        <p
+          *ngIf="
+            signUpForm.get('email').touched &&
+            signUpForm.get('email').hasError('pattern')
+          "
+          class="error-message"
+        >
+          Please enter a valid email
+        </p>
+      </div>
+      <div class="signup-form-input-container">
+        <label for="password">Password (6 or more characters)</label>
+        <input
+          formControlName="password"
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('password').touched &&
+              signUpForm.get('password').invalid
+          }"
+          class="form-control"
+          id="password"
+          type="password"
+          placeholder="Password"
+        />
+        <p
+          *ngIf="
+            signUpForm.get('password').touched &&
+            signUpForm.get('password').hasError('required')
+          "
+          class="error-message"
+        >
+          Please enter a password
+        </p>
+        <p
+          *ngIf="
+            signUpForm.get('password').touched &&
+            signUpForm.get('password').hasError('minlength')
+          "
+          class="error-message"
+        >
+          Please enter a valid password
+        </p>
+      </div>
+      <div class="signup-form-input-container">
+        <label for="Fname">First Name</label>
+        <input
+          formControlName="firstName"
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('firstName').touched &&
+              signUpForm.get('firstName').invalid
+          }"
+          class="form-control"
+          id="Fname"
+          type="text"
+          placeholder="First name"
+        />
+        <p
+          *ngIf="
+            signUpForm.get('firstName').touched &&
+            signUpForm.get('firstName').hasError('required')
+          "
+          class="error-message"
+        >
+          Please enter a first name
+        </p>
+        <p
+          *ngIf="
+            signUpForm.get('firstName').touched &&
+            signUpForm.get('firstName').hasError('minlength')
+          "
+          class="error-message"
+        >
+          Please enter a valid first name min characters
+          {{ signUpForm.get("firstName").getError("minlength").requiredLength }}
+        </p>
+      </div>
+      <div class="signup-form-input-container">
+        <label for="Lname">Last Name</label>
+        <input
+          formControlName="lastName"
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('lastName').touched &&
+              signUpForm.get('lastName').invalid
+          }"
+          class="form-control"
+          id="Lname"
+          type="text"
+          placeholder="Last Name"
+        />
+        <p
+          *ngIf="
+            signUpForm.get('lastName').touched &&
+            signUpForm.get('lastName').hasError('required')
+          "
+          class="error-message"
+        >
+          Please enter a last name
+        </p>
+        <p
+          *ngIf="
+            signUpForm.get('lastName').touched &&
+            signUpForm.get('lastName').hasError('minlength')
+          "
+          class="error-message"
+        >
+          Please enter a valid last name min characters
+          {{ signUpForm.get("lastName").getError("minlength").requiredLength }}
+        </p>
+      </div>
+      <div class="signup-form-input-container">
+        <label for="cars">Country:</label>
+        <select
+          formControlName="country"
+          class="form-control"
+          id="Countries"
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('country').touched &&
+              signUpForm.get('country').invalid
+          }"
+        >
+          <option value="Egypt">Egypt</option>
+          <option value="usa">USA</option>
+          <option value="germany">Germany</option>
+        </select>
+        <p
+          *ngIf="
+            signUpForm.get('country').touched &&
+            signUpForm.get('country').hasError('required')
+          "
+          class="error-message"
+        >
+          Please choose a country
+        </p>
+      </div>
+      <div class="signup-form-input-container">
+        <label for="PostalCode">Postal code</label>
+        <input
+          formControlName="postalCode"
+          [ngClass]="{
+            'is-invalid':
+              signUpForm.get('postalCode').touched &&
+              signUpForm.get('postalCode').invalid
+          }"
+          class="form-control"
+          id="PostalCode"
+          type="text"
+          placeholder="Postal code"
+        />
+        <p
+          *ngIf="
+            signUpForm.get('postalCode').touched &&
+            signUpForm.get('postalCode').hasError('required')
+          "
+          class="error-message"
+        >
+          Please enter a postal code
+        </p>
+      </div>
+      <div class="signup-form-input-container signup-upload">
+        <label for="UploadPhoto"><i class="fas fa-camera"></i></label>
+        <input
+          class="signup-form-input"
+          id="UploadPhoto"
+          type="file"
+          accept="image/*"
+        />
+      </div>
+
+      <div class="signup__aggr">
+        By clicking Agree & Join, you agree to the LinkedIn
+        <a href="">User Agreement, Privacy Policy</a> , and
+        <a href="">Cookie Policy</a> .
+      </div>
+      <div class="signup__btns">
+        <button
+          class="signup-btn signup-btn--sky"
+          (click)="onSubmit()"
+          [disabled]="signUpForm.touched && signUpForm.invalid"
+        >
+          Agree & Join
+        </button>
+        <button class="signup-btn signup-btn--dark-blue">
+          <i class="fab fa-facebook-f"></i> Continue With Facebook
+        </button>
+      </div>
+      <div style="text-align: center;">
+        Already on LinkedIn? <a href="">Sign in</a>
+      </div>
+    </div>
+  </form>
+
+  <footer class="footer-end">
+    <div class="container">
+      <ul class="footer-end__list row">
+        <li class="footer-end__li col-auto">
+          <img
+            class="footer-end__logo"
+            src="../../../assets/imgs/linkedin-black-logo.png"
+          />
+          <span class="footer-end__text">© 2020</span>
+        </li>
+        <div class="col row footer-end__items">
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              About
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              User Agreement
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Privacy policy
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Cookie Policy
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Copyright Policy
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Brand Policy
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Guest Controls
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <button type="button" class="footer-end__text btn btn-link">
+              Community Guidelines
+            </button>
+          </li>
+          <li class="footer-end__li col-auto">
+            <div class="dropdown">
+              <button
+                class="footer-end__text btn btn-link"
+                type="button"
+                id="dropdownMenu2"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Languages
+                <span> <i class="fas fa-chevron-down"></i></span>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button
+                  class="footer-end__dropdown-item dropdown-item"
+                  type="button"
+                  class="btn"
+                >
+                  English
+                </button>
+                <button
+                  class="footer-end__dropdown-item dropdown-item"
+                  type="button"
+                  class="btn"
+                >
+                  Greek
+                </button>
+                <button
+                  class="footer-end__dropdown-item dropdown-item"
+                  type="button"
+                  class="btn"
+                >
+                  French
+                </button>
+                <button
+                  class="footer-end__dropdown-item dropdown-item"
+                  type="button"
+                  class="btn"
+                >
+                  Japanese
+                </button>
+                <button
+                  class="footer-end__dropdown-item dropdown-item"
+                  type="button"
+                  class="btn"
+                >
+                  Russian
+                </button>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </footer>
+</div>
