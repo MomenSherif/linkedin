@@ -1,6 +1,5 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-// news feed
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
