@@ -1,0 +1,150 @@
+<section class="p-3" id="Accomplishments">
+  <div class="container section accomplishments u-border">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Accomplishments</h2>
+        <div
+          href=""
+          class="btn btn--inline float-md-right btn--plus mr-4"
+          data-toggle="tooltip"
+          data-placement="bottom"
+        >
+          <i class="fas fa-plus accomplishment__icons"></i>
+        </div>
+
+        <div class="accomplishment" [ngClass]="{ 'edit-accomp': editAccom[0] }">
+          <div class="accomplishment__section accomplishment__section1">
+            <p class="accomplishment__number">1</p>
+          </div>
+          <div class="accomplishment__section accomplishment__section2 mr-3">
+            <h4 class="accomplishment__type">
+              Project
+            </h4>
+            <p
+              class="accomplishment__description"
+              [ngClass]="{ 'bold-txt': editAccom[0] }"
+            >
+              Test Description
+            </p>
+          </div>
+
+          <div
+            class="accomplishment__section accomplishment__section3 float-md-right"
+          >
+            <a
+              *ngIf="notEditAccom[0]"
+              (click)="currentEditing = 0; onEditAccom()"
+              class="btn btn--arrow  btn--active accomplishment__icons"
+              id="btn-1"
+              ><i class="fas fa-chevron-down"></i
+            ></a>
+            <a
+              *ngIf="editAccom[0]"
+              (click)="cancelEditAccom()"
+              class="btn btn--arrow btn--active accomplishment__icons"
+              id="btn-2"
+            >
+              <i class="fas fa-chevron-up"></i
+            ></a>
+            <a
+              href="#"
+              *ngIf="editAccom[0]"
+              class="btn btn--edit btn--inline float-md-right"
+              data-toggle="modal"
+              data-target=".edit-skills"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </div>
+        </div>
+        <div class="accomplishment" [ngClass]="{ 'edit-accomp': editAccom[1] }">
+          <div class="accomplishment__section accomplishment__section1">
+            <p class="accomplishment__number">1</p>
+          </div>
+          <div class="accomplishment__section accomplishment__section2 mr-3">
+            <h4 class="accomplishment__type">
+              Project
+            </h4>
+            <p
+              class="accomplishment__description"
+              [ngClass]="{ 'bold-txt': editAccom[1] }"
+            >
+              Test Description
+            </p>
+          </div>
+
+          <div
+            class="accomplishment__section accomplishment__section3 float-md-right"
+          >
+            <a
+              *ngIf="notEditAccom[1]"
+              (click)="currentEditing = 1; onEditAccom()"
+              class="btn btn--arrow  btn--active accomplishment__icons"
+              id="btn-1"
+              ><i class="fas fa-chevron-down"></i
+            ></a>
+            <a
+              *ngIf="editAccom[1]"
+              (click)="cancelEditAccom()"
+              class="btn btn--arrow btn--active accomplishment__icons"
+              id="btn-2"
+            >
+              <i class="fas fa-chevron-up"></i
+            ></a>
+            <a
+              href="#"
+              *ngIf="editAccom[1]"
+              class="btn btn--edit btn--inline float-md-right"
+              data-toggle="modal"
+              data-target=".edit-skills"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </div>
+        </div>
+        <div class="accomplishment" [ngClass]="{ 'edit-accomp': editAccom[2] }">
+          <div class="accomplishment__section accomplishment__section1">
+            <p class="accomplishment__number">1</p>
+          </div>
+          <div class="accomplishment__section accomplishment__section2 mr-3">
+            <h4 class="accomplishment__type">
+              Project
+            </h4>
+            <p
+              class="accomplishment__description"
+              [ngClass]="{ 'bold-txt': editAccom[2] }"
+            >
+              Test Description
+            </p>
+          </div>
+
+          <div
+            class="accomplishment__section accomplishment__section3 float-md-right"
+          >
+            <a
+              *ngIf="notEditAccom[2]"
+              (click)="currentEditing = 2; onEditAccom()"
+              class="btn btn--arrow  btn--active accomplishment__icons"
+              id="btn-1"
+              ><i class="fas fa-chevron-down"></i
+            ></a>
+            <a
+              *ngIf="editAccom[2]"
+              (click)="cancelEditAccom()"
+              class="btn btn--arrow btn--active accomplishment__icons"
+              id="btn-2"
+            >
+              <i class="fas fa-chevron-up"></i
+            ></a>
+            <a
+              href="#"
+              *ngIf="editAccom[2]"
+              class="btn btn--edit btn--inline float-md-right"
+              data-toggle="modal"
+              data-target=".edit-skills"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
