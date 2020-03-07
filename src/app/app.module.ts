@@ -16,6 +16,8 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
 
 
 
+import { NewsFeedModule } from './features/news-feed/news-feed.module';
+import { SearchResultsModule } from './features/search-results/search-results.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
     FooterComponent,
     CopyrightComponent,
     NavMainComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,9 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
     ReactiveFormsModule,
     FormsModule,
     ProfileModule,
-    HomeModule
+    HomeModule,
+    NewsFeedModule,
+    SearchResultsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
