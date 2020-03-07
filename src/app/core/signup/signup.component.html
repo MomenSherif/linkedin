@@ -26,7 +26,7 @@
             signUpForm.get('email').touched &&
             signUpForm.get('email').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter an email
         </p>
@@ -35,7 +35,7 @@
             signUpForm.get('email').touched &&
             signUpForm.get('email').hasError('pattern')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a valid email
         </p>
@@ -59,7 +59,7 @@
             signUpForm.get('password').touched &&
             signUpForm.get('password').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a password
         </p>
@@ -68,7 +68,7 @@
             signUpForm.get('password').touched &&
             signUpForm.get('password').hasError('minlength')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a valid password
         </p>
@@ -92,7 +92,7 @@
             signUpForm.get('firstName').touched &&
             signUpForm.get('firstName').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a first name
         </p>
@@ -101,7 +101,7 @@
             signUpForm.get('firstName').touched &&
             signUpForm.get('firstName').hasError('minlength')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a valid first name min characters
           {{ signUpForm.get("firstName").getError("minlength").requiredLength }}
@@ -126,7 +126,7 @@
             signUpForm.get('lastName').touched &&
             signUpForm.get('lastName').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a last name
         </p>
@@ -135,7 +135,7 @@
             signUpForm.get('lastName').touched &&
             signUpForm.get('lastName').hasError('minlength')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a valid last name min characters
           {{ signUpForm.get("lastName").getError("minlength").requiredLength }}
@@ -154,15 +154,15 @@
           }"
         >
           <option value="Egypt">Egypt</option>
-          <option value="usa">usa</option>
-          <option value="germany">germany</option>
+          <option value="usa">USA</option>
+          <option value="germany">Germany</option>
         </select>
         <p
           *ngIf="
             signUpForm.get('country').touched &&
             signUpForm.get('country').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please choose a country
         </p>
@@ -186,7 +186,7 @@
             signUpForm.get('postalCode').touched &&
             signUpForm.get('postalCode').hasError('required')
           "
-          class="text-danger"
+          class="error-message"
         >
           Please enter a postal code
         </p>

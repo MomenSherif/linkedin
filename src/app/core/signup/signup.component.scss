@@ -67,6 +67,9 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
+  .error-message {
+    color: white;
+  }
   .signup {
     &__form {
       max-width: 40rem;
@@ -103,6 +106,9 @@ p {
   }
 }
 @media only screen and (max-width: 500px) {
+  .error-message {
+    color: white;
+  }
   .signup {
     &__main {
       width: 28rem;
@@ -110,6 +116,9 @@ p {
   }
 }
 @media only screen and (min-width: 992px) {
+  .error-message {
+    color: red;
+  }
   .signup-form-input-container {
     label {
       align-self: start;
