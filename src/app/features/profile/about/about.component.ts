@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  editAbout = false;
+  display = 'none';
 
   constructor() { }
 
+
   ngOnInit(): void {
   }
+  onEditAbout() {
+    this.editAbout = true;
+    this.display = 'block';
 
+  }
+  onCloseEditAbout() {
+    this.editAbout = false;
+    this.display = 'none';
+
+  }
 }

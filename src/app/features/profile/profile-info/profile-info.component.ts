@@ -6,19 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-info.component.scss']
 })
 export class ProfileInfoComponent implements OnInit {
-isopenedintro = true;
+  isopenedintro = true;
 
+  contactinfo = false;
+  display = 'none';
+  constructor() {}
 
-contactinfo = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   toggleClass() {
     this.isopenedintro = !this.isopenedintro;
   }
 
-
-
+  onOpenContactModal() {
+    this.contactinfo = !this.contactinfo;
+    this.display = 'block';
+  }
+  onCloseContactModal() {
+    this.contactinfo = !this.contactinfo;
+    this.display = 'none';
+  }
 }
