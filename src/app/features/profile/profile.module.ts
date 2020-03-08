@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -45,7 +45,8 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-          SharedModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
     ExperienceFormModalComponent,
@@ -59,6 +60,7 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     ExperienceSectionComponent,
     AboutComponent,
     ProfileInfoComponent
+
   ]
 
 })
