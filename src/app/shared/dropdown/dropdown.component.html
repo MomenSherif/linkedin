@@ -1,0 +1,12 @@
+<div class="dropdown">
+    <a (click)="toggleShowClass()" class="btn dropdown-toggle" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngClass]="{'show': isopened}">
+      <ng-content select=".header"></ng-content>
+      
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2" [ngClass]="{'show': isopened}" >
+     <ng-content select=".body"></ng-content>
+     
+    </div>
+  </div>
+
+ 
