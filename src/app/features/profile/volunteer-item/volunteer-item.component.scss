@@ -1,0 +1,35 @@
+.h3 {
+  font-size: 17.5px;
+}
+
+.experience-item-container:hover {
+  .icon-container {
+    opacity: 1;
+  }
+}
+
+.icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  top: 10px;
+  right: 20px;
+  opacity: 0;
+
+  &:hover {
+    background-color: #E5F5FC;
+    
+  }
+
+  .edit-icon {
+    color: #0073B1
+  }
+}
+
+.opacity-1 {
+  opacity: 1;
+}

@@ -63,7 +63,7 @@ export class ExperienceFormModalComponent implements OnInit {
 
   onClose() {
     this.modalClosing.emit();
-    console.log(this.years);
+    // console.log(this.years);
   }
 
   onSubmit() {

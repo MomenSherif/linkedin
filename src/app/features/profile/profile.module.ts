@@ -13,9 +13,12 @@ import { AboutFormModalComponent } from './about-form-modal/about-form-modal.com
 import { AccomplishmentsComponent } from './accomplishments/accomplishments.component';
 import { InterestsComponent } from './interests/interests.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ExperienceSectionComponent } from './experience-section/experience-section.component';
+import { ExperienceItemComponent } from './experience-item/experience-item.component';
+import { EducationItemComponent } from './education-item/education-item.component';
+import { VolunteerItemComponent } from './volunteer-item/volunteer-item.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
-
 
 
 
@@ -32,6 +35,10 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     InterestsComponent,
     SkillsComponent,
     AccomplishmentsComponent,
+    ExperienceSectionComponent,
+    ExperienceItemComponent,
+    EducationItemComponent,
+    VolunteerItemComponent
     ProfileInfoComponent,
     AboutComponent
   ],
@@ -50,6 +57,7 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     InterestsComponent,
     SkillsComponent,
     AccomplishmentsComponent,
+    ExperienceSectionComponent,
     AboutComponent,
     ProfileInfoComponent
 
