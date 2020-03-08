@@ -27,11 +27,6 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
     NavMainComponent
   ],
   imports: [
-  BrowserModule,
-    AppRoutingModule,
-    ProfileModule,
-  ],
-  imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
