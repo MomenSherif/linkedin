@@ -11,6 +11,10 @@ import { AboutFormModalComponent } from './about-form-modal/about-form-modal.com
 import { AccomplishmentsComponent } from './accomplishments/accomplishments.component';
 import { InterestsComponent } from './interests/interests.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ExperienceSectionComponent } from './experience-section/experience-section.component';
+import { ExperienceItemComponent } from './experience-item/experience-item.component';
+import { EducationItemComponent } from './education-item/education-item.component';
+import { VolunteerItemComponent } from './volunteer-item/volunteer-item.component';
 
 
 
@@ -26,7 +30,11 @@ import { SkillsComponent } from './skills/skills.component';
     AccomplishmentsComponent,
     InterestsComponent,
     SkillsComponent,
-    AccomplishmentsComponent
+    AccomplishmentsComponent,
+    ExperienceSectionComponent,
+    ExperienceItemComponent,
+    EducationItemComponent,
+    VolunteerItemComponent
   ],
   imports: [
     CommonModule,
@@ -40,8 +48,8 @@ import { SkillsComponent } from './skills/skills.component';
     AboutFormModalComponent,
     InterestsComponent,
     SkillsComponent,
-    AccomplishmentsComponent
-
+    AccomplishmentsComponent,
+    ExperienceSectionComponent
   ]
 
 })
