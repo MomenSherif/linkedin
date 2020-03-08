@@ -1,0 +1,77 @@
+$secondary-font-color: #c8c8c8;
+.section {
+  background-color: #ffffff;
+}
+.u-border {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+}
+.accomplishment {
+  padding: 0.6rem;
+  border-bottom: 1px solid $secondary-font-color;
+  &:last-child {
+    border-bottom: none;
+  }
+  &__icons {
+    color: #0073b1;
+  }
+  &__type {
+    font-size: 1.3rem;
+    color: #2d7eaa !important;
+    font-weight: 550;
+  }
+  &__description {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  &__section {
+    display: inline-block !important;
+    padding: 1rem;
+  }
+  &__section1 {
+    p {
+      font-size: 1.6rem;
+      color: #2d7eaa;
+      font-weight: 600;
+    }
+  }
+  &__active {
+    background-color: #e5f5fc;
+    height: auto;
+  }
+}
+
+.btn {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  &--edit,
+  &--plus {
+    &:hover {
+      background-color: #e5f5fc;
+    }
+
+    color: #2d7eaa !important;
+    transition: all ease-in-out 0.2ms;
+    display: none;
+  }
+}
+
+.btn--inline {
+  margin-top: 1.5rem;
+}
+.btn--inline,
+h2 {
+  display: inline-block !important;
+  margin-top: 1.5rem;
+}
+
+.edit-accomp {
+  background-color: aliceblue;
+}
+
+.bold-txt {
+  font-weight: 600;
+}

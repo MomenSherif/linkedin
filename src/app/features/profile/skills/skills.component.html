@@ -1,0 +1,183 @@
+<section id="Skills">
+  <div class="container section skills u-border">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Skills &Endorsements</h2>
+        <a
+          (click)="onEditSkill()"
+          href="#"
+          class="btn btn--edit btn--inline float-md-right"
+          data-toggle="modal"
+          data-target=".edit-skills"
+          ><i class="fas fa-edit"></i
+        ></a>
+        <a
+          (click)="onAddSkill()"
+          href="#"
+          class="btn btn--add btn--inline float-md-right"
+          data-toggle="modal"
+          data-target="#SkillsModal"
+          >Add a New Skill</a
+        >
+        <div class="skill">
+          <div class="skill__title">
+            <h4 class="skill__name">Teamwork.</h4>
+            <span class="skill__no-of-endorsments">1</span>
+          </div>
+          <div class="skill__description">
+            <p class="skill__endorsed-person">Sara Ali</p>
+            <p class="skill__endorsment-description">
+              has given an endorsement for this skill
+            </p>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill__title">
+            <h4 class="skill__name">Teamwork.</h4>
+            <span class="skill__no-of-endorsments">1</span>
+          </div>
+          <div class="skill__description">
+            <p class="skill__endorsed-person">Sara Ali</p>
+            <p class="skill__endorsment-description">
+              has given an endorsement for this skill
+            </p>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill__title">
+            <h4 class="skill__name">Teamwork.</h4>
+            <span class="skill__no-of-endorsments">1</span>
+          </div>
+          <div class="skill__description">
+            <p class="skill__endorsed-person">Sara Ali</p>
+            <p class="skill__endorsment-description">
+              has given an endorsement for this skill
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <a class="btn btn--show btn--active" id="btn-1"
+        >Show more <i class="fas fa-chevron-down"></i
+      ></a>
+      <a class="btn btn--show" id="btn-2"
+        >Show less <i class="fas fa-chevron-up"></i
+      ></a>
+    </div>
+  </div>
+
+  <!-- Add Skills -->
+
+  <div
+    *ngIf="addSkill"
+    id="SkillsModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="SkillsModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content row">
+        <div class="modal-header">
+          <h5 class="modal-title" id="SkillsModalLabel">
+            Add Skills
+          </h5>
+          <button
+            (click)="onCloseAddSkill()"
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="form-controls">
+              <div class="taged-textbox form-group">
+                <input
+                  class="taged-textbox__textbox form-control"
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Skill (ex: Data Analysis)"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Skills -->
+  <div
+    *ngIf="editSkills"
+    class="edit-skills"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myLargeModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-titl">Reorder Skills & Endorsements (12)</h2>
+
+          <button
+            (click)="onCloseEditSkill()"
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="skill-title">Top Skills</h3>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="skill-edit">
+                <span class="skill-edit__skill">HTML5</span>
+                <i
+                  class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
+                ></i>
+                <i
+                  class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
+                ></i>
+              </div>
+              <div class="skill-edit">
+                <span class="skill-edit__skill">HTML5</span>
+                <i
+                  class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
+                ></i>
+                <i
+                  class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
+                ></i>
+              </div>
+              <div class="skill-edit">
+                <span class="skill-edit__skill">HTML5</span>
+                <i
+                  class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
+                ></i>
+                <i
+                  class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,15 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './features/profile/profile.module';
+import { HomeModule } from './core/home/home.module';
+import { SharedModule } from './shared/shared.module';
+import { NewsFeedModule } from './features/news-feed/news-feed.module';
+import { SearchResultsModule } from './features/search-results/search-results.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
-import { SharedModule } from './shared/shared.module';
+import { NavMainComponent } from './core/nav-main/nav-main.component';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +24,22 @@ import { SharedModule } from './shared/shared.module';
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
+    NavMainComponent
   ],
   imports: [
   BrowserModule,
     AppRoutingModule,
     ProfileModule,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ProfileModule,
+    HomeModule,
+    NewsFeedModule,
+    SearchResultsModule,
     SharedModule,
   ],
   providers: [],
