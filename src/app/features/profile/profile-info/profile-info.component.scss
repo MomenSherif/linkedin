@@ -1,0 +1,75 @@
+
+
+body {
+    overflow-x: hidden; }
+  #ProfileSummary .profile-imgs {
+    position: relative;
+    height: 200px;
+    background-image: url('../../../../assets/img/Cover.PNG');
+    background-size: cover;
+  }
+  #ProfileSummary .profile-imgs .profile-img {
+    top: 50%;
+    padding: 0 2em;
+  }
+  #ProfileSummary .profile-imgs .profile-img img {
+    width: 150px;
+    height: 150px;
+  }
+  .u-border {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 0.2rem;
+  }
+  #ProfileSummary .edit-profile i {
+    color: #0073b1;
+  }
+  .edit-profile i  {
+      color: #0073b1;
+      font-size: 1rem;
+      border-radius: 50%; }
+      .edit-profile i:hover {
+        background-color: rgba(152, 216, 244, 0.25); }
+  
+  .btn-primary {
+    background-color: #0073b1;
+    border-radius: .3rem;
+  }
+  .btn-primary  a{
+      color: white;
+  }
+  #ProfileSummary .user-info h2 {
+      font-size: 1.5rem; }
+    
+    #ProfileSummary .user-info h4 {
+      font-size: 1.1rem; }
+      #ProfileSummary .info {
+          display: flex;
+          list-style: none; }
+  .btn-link{
+      color: #0073b1;
+  }
+  #ProfileSummary .sm-img {
+      width: 32px;
+      height: 32px; }
+      .img-fluid{
+          height: 30px;
+      }
+      .border-dark{
+        border-radius: 0.3rem;
+      }
+      .formBox{
+        min-width: 400px;
+      }
+      .fade.show{
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .fade{
+        opacity: 0;
+      }
+      .modal-header{
+       padding: 0.7rem; 
+      }
+      .modal-body{
+        padding: 0.7rem; 
+      }

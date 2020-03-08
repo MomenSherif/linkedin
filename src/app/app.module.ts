@@ -5,7 +5,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './features/profile/profile.module';
 import { HomeModule } from './core/home/home.module';
-
+import { SharedModule } from './shared/shared.module';
+import { NewsFeedModule } from './features/news-feed/news-feed.module';
+import { SearchResultsModule } from './features/search-results/search-results.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './core/signup/signup.component';
@@ -15,10 +17,6 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
 import { NavMainComponent } from './core/nav-main/nav-main.component';
 
 
-
-import { NewsFeedModule } from './features/news-feed/news-feed.module';
-import { SearchResultsModule } from './features/search-results/search-results.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +25,11 @@ import { SearchResultsModule } from './features/search-results/search-results.mo
     FooterComponent,
     CopyrightComponent,
     NavMainComponent
- 
+  ],
+  imports: [
+  BrowserModule,
+    AppRoutingModule,
+    ProfileModule,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +39,10 @@ import { SearchResultsModule } from './features/search-results/search-results.mo
     ProfileModule,
     HomeModule,
     NewsFeedModule,
-    SearchResultsModule
+    SearchResultsModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

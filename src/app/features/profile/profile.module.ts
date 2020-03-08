@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../../shared/shared.module';
+
 
 import { ExperienceFormModalComponent } from './experience-form-modal/experience-form-modal.component';
 import { EducationFormModalComponent } from './education-form-modal/education-form-modal.component';
@@ -11,6 +13,9 @@ import { AboutFormModalComponent } from './about-form-modal/about-form-modal.com
 import { AccomplishmentsComponent } from './accomplishments/accomplishments.component';
 import { InterestsComponent } from './interests/interests.component';
 import { SkillsComponent } from './skills/skills.component';
+import { AboutComponent } from './about/about.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
+          
 
 
 
@@ -26,11 +31,14 @@ import { SkillsComponent } from './skills/skills.component';
     AccomplishmentsComponent,
     InterestsComponent,
     SkillsComponent,
-    AccomplishmentsComponent
+    AccomplishmentsComponent,
+          ProfileInfoComponent,
+          AboutComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+          SharedModule
   ],
   exports: [
     ExperienceFormModalComponent,
@@ -40,7 +48,9 @@ import { SkillsComponent } from './skills/skills.component';
     AboutFormModalComponent,
     InterestsComponent,
     SkillsComponent,
-    AccomplishmentsComponent
+    AccomplishmentsComponent,
+          AboutComponent,
+          ProfileInfoComponent
 
   ]
 
