@@ -38,7 +38,7 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     ExperienceSectionComponent,
     ExperienceItemComponent,
     EducationItemComponent,
-    VolunteerItemComponent
+    VolunteerItemComponent,
     ProfileInfoComponent,
     AboutComponent
   ],
