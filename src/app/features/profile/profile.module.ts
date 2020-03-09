@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { SharedModule } from '../../shared/shared.module';
 
 
 import { ExperienceFormModalComponent } from './experience-form-modal/experience-form-modal.component';
@@ -15,6 +17,8 @@ import { ExperienceSectionComponent } from './experience-section/experience-sect
 import { ExperienceItemComponent } from './experience-item/experience-item.component';
 import { EducationItemComponent } from './education-item/education-item.component';
 import { VolunteerItemComponent } from './volunteer-item/volunteer-item.component';
+import { AboutComponent } from './about/about.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
 
 
 
@@ -34,11 +38,15 @@ import { VolunteerItemComponent } from './volunteer-item/volunteer-item.componen
     ExperienceSectionComponent,
     ExperienceItemComponent,
     EducationItemComponent,
-    VolunteerItemComponent
+    VolunteerItemComponent,
+    ProfileInfoComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
+    SharedModule
   ],
   exports: [
     ExperienceFormModalComponent,
@@ -49,7 +57,10 @@ import { VolunteerItemComponent } from './volunteer-item/volunteer-item.componen
     InterestsComponent,
     SkillsComponent,
     AccomplishmentsComponent,
-    ExperienceSectionComponent
+    ExperienceSectionComponent,
+    ExperienceSectionComponent,
+    AboutComponent,
+    ProfileInfoComponent,
   ]
 
 })

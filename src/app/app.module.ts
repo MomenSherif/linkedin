@@ -5,7 +5,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './features/profile/profile.module';
 import { HomeModule } from './core/home/home.module';
-
+import { SharedModule } from './shared/shared.module';
+import { NewsFeedModule } from './features/news-feed/news-feed.module';
+import { SearchResultsModule } from './features/search-results/search-results.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './core/signup/signup.component';
@@ -13,8 +15,6 @@ import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
 import { NavMainComponent } from './core/nav-main/nav-main.component';
-
-
 
 
 @NgModule({
@@ -32,9 +32,12 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
     ReactiveFormsModule,
     FormsModule,
     ProfileModule,
-    HomeModule
+    HomeModule,
+    NewsFeedModule,
+    SearchResultsModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

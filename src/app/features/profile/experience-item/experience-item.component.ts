@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-experience-item',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./experience-item.component.scss']
 })
 export class ExperienceItemComponent implements OnInit {
+  @Output() inEditMode = new EventEmitter<void>();
+
+  switchToEdit() {
+    this.inEditMode.emit();
+  }
 
   constructor() { }
 
