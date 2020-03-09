@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
 })
 export class VolunteerFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
-  inEditMode = false;
+  @Input() inEditMode: boolean;
 
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years: number[] = [];

@@ -38,7 +38,8 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     ExperienceSectionComponent,
     ExperienceItemComponent,
     EducationItemComponent,
-    VolunteerItemComponent
+    VolunteerItemComponent,
+    VolunteerItemComponent,
     ProfileInfoComponent,
     AboutComponent
   ],
@@ -58,9 +59,11 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     SkillsComponent,
     AccomplishmentsComponent,
     ExperienceSectionComponent,
+    ExperienceSectionComponent,
+    AboutComponent,
+    ProfileInfoComponent,
     AboutComponent,
     ProfileInfoComponent
-
   ]
 
 })

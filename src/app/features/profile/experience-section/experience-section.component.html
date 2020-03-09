@@ -4,13 +4,13 @@
     <h2 class="mb-2 h2">Experience</h2>
     <div
       class="icon-container add-container position-absolute"
-      (click)="toggleExperienceModal()"
+      (click)="inExperienceAdd()"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-experience-item></app-experience-item>
+    <app-experience-item (inEditMode)="inExperienceEdit()"></app-experience-item>
     <div class="u-border-bottom offset-1"></div>
-    <app-experience-item></app-experience-item>
+    <app-experience-item (inEditMode)="inExperienceEdit()"></app-experience-item>
     <div class="u-border-bottom u-border-bottom-final mt-3"></div>
   </div>
 
@@ -18,13 +18,13 @@
     <h2 class="mb-2 h2">Education</h2>
     <div
       class="icon-container add-container position-absolute"
-      (click)="toggleEducationModal()"
+      (click)="inEducationAdd()"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-education-item></app-education-item>
+    <app-education-item (inEditMode)="inEducationEdit()"></app-education-item>
     <div class="u-border-bottom offset-1"></div>
-    <app-education-item></app-education-item>
+    <app-education-item (inEditMode)="inEducationEdit()"></app-education-item>
     <div class="u-border-bottom u-border-bottom-final mt-3"></div>
   </div>
 
@@ -32,13 +32,13 @@
     <h2 class="mb-2 h2">Volunteer Experience</h2>
     <div
       class="icon-container add-container position-absolute"
-      (click)="toggleVolunteerModal()"
+      (click)="inVolunteerAdd()"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-volunteer-item></app-volunteer-item>
+    <app-volunteer-item (inEditMode)="inVolunteerEdit()"></app-volunteer-item>
     <div class="u-border-bottom offset-1"></div>
-    <app-volunteer-item></app-volunteer-item>
+    <app-volunteer-item (inEditMode)="inVolunteerEdit()"></app-volunteer-item>
   </div>
 </div>
 
@@ -47,15 +47,17 @@
 <app-experience-form-modal
   *ngIf="isExperienceModalOpen"
   (modalClosing)="toggleExperienceModal()"
+  [inEditMode]="inEditModeExperience"
 ></app-experience-form-modal>
 
 <app-education-form-modal
   *ngIf="isEducationModalOpen"
   (modalClosing)="toggleEducationModal()"
+  [inEditMode]="inEditModeEducation"
 ></app-education-form-modal>
-
 
 <app-volunteer-form-modal
   *ngIf="isVolunteerModalOpen"
   (modalClosing)="toggleVolunteerModal()"
+  [inEditMode]="inEditModeVolunteer"
 ></app-volunteer-form-modal>

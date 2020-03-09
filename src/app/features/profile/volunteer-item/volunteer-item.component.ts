@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-volunteer-item',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./volunteer-item.component.scss']
 })
 export class VolunteerItemComponent implements OnInit {
+  @Output() inEditMode = new EventEmitter<void>();
+
+  switchToEdit() {
+    this.inEditMode.emit();
+  }
 
   constructor() { }
 
