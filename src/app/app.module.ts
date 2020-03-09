@@ -14,7 +14,7 @@ import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
-import { NavMainComponent } from './core/nav-main/nav-main.component';
+import { NavMainComponent } from './shared/nav-main/nav-main.component';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { NavMainComponent } from './core/nav-main/nav-main.component';
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
-    NavMainComponent
+    // NavMainComponent
   ],
   imports: [
     BrowserModule,
