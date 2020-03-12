@@ -11,6 +11,10 @@ export class ExperienceSectionComponent implements OnInit {
   isEducationModalOpen = false;
   isVolunteerModalOpen = false;
 
+  inEditModeExperience = false;
+  inEditModeEducation = false;
+  inEditModeVolunteer = false;
+
   constructor() { }
 
   toggleExperienceModal() {
@@ -23,6 +27,36 @@ export class ExperienceSectionComponent implements OnInit {
 
   toggleVolunteerModal() {
     this.isVolunteerModalOpen = !this.isVolunteerModalOpen;
+  }
+
+  inExperienceEdit() {
+    this.inEditModeExperience = true;
+    this.toggleExperienceModal();
+  }
+
+  inExperienceAdd() {
+    this.inEditModeExperience = false;
+    this.toggleExperienceModal();
+  }
+
+  inEducationEdit() {
+    this.inEditModeEducation = true;
+    this.toggleEducationModal();
+  }
+
+  inEducationAdd() {
+    this.inEditModeEducation = false;
+    this.toggleEducationModal();
+  }
+
+  inVolunteerEdit() {
+    this.inEditModeVolunteer = true;
+    this.toggleVolunteerModal();
+  }
+
+  inVolunteerAdd() {
+    this.inEditModeVolunteer = false;
+    this.toggleVolunteerModal();
   }
 
   ngOnInit(): void {

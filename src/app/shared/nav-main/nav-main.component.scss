@@ -75,7 +75,7 @@
   }
 
   &-work {
-    border-left: 1px solid #C7D1D8;
+    // border-left: 1px solid #C7D1D8;
   }
 
 }
@@ -87,6 +87,7 @@
   transition: all 0.2s ease-in-out;
   width: 100px;
   color: #ACA88C;
+  padding-top: 3px;
 
   &-desc {
     font-size: 12px;
@@ -102,4 +103,11 @@
 
 .nav-item:hover {
   color: #fff;
+}
+
+.bl {
+  height: 48px;
+  width: 1px;
+  margin-top: -4px;
+  border-left: 1px solid #C7D1D8;
 }
