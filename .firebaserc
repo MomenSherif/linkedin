@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "linkedin-6f62e": {
+      "hosting": {
+        "linkedin": [
+          "linkedin-6f62e"
+        ]
+      }
+    }
+  }
+}
