@@ -20,8 +20,20 @@ export class FireLinkedinService {
         );
     });
   }
-  test(): Observable<any[]> {
+  test() {
+    let skills = [];
     // return (this.items = this.firestore.collection("lists").valueChanges());
-    return this.firestore.collection("lists").snapshotChanges();
+    this.firestore
+      .collection("users")
+      .get()
+      .subscribe(snapshot => {
+        snapshot.docs.forEach(doc => {
+          doc.data().skills.forEach(skill => {
+            skills.push(skill);
+          });
+        });
+      });
+    console.log(skills);
+    return skills;
   }
 }

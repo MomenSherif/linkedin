@@ -1,6 +1,6 @@
 <section id="Skills">
   <div class="container section skills u-border">
-    <div class="row">
+    <div class="row " [ngClass]="{ skillSec: showM }">
       <div class="col-md-12">
         <h2>Skills &Endorsements</h2>
         <a
@@ -19,39 +19,15 @@
           data-target="#SkillsModal"
           >Add a New Skill</a
         >
-        <div class="skill">
+        <div *ngFor="let skill of skills" class="skill">
           <div class="skill__title">
-            <h4 class="skill__name">Teamwork.</h4>
-            <span class="skill__no-of-endorsments">1</span>
+            <h4 class="skill__name">{{ skill.name }}</h4>
+            <span class="skill__no-of-endorsments"> &nbsp;.1</span>
           </div>
           <div class="skill__description">
-            <p class="skill__endorsed-person">Sara Ali</p>
+            <p class="skill__endorsed-person">Menna Elnoqally</p>
             <p class="skill__endorsment-description">
-              has given an endorsement for this skill
-            </p>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill__title">
-            <h4 class="skill__name">Teamwork.</h4>
-            <span class="skill__no-of-endorsments">1</span>
-          </div>
-          <div class="skill__description">
-            <p class="skill__endorsed-person">Sara Ali</p>
-            <p class="skill__endorsment-description">
-              has given an endorsement for this skill
-            </p>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill__title">
-            <h4 class="skill__name">Teamwork.</h4>
-            <span class="skill__no-of-endorsments">1</span>
-          </div>
-          <div class="skill__description">
-            <p class="skill__endorsed-person">Sara Ali</p>
-            <p class="skill__endorsment-description">
-              has given an endorsement for this skill
+              &nbsp; has given an endorsement for this skill
             </p>
           </div>
         </div>
@@ -59,10 +35,10 @@
     </div>
 
     <div class="row">
-      <a class="btn btn--show btn--active" id="btn-1"
+      <a *ngIf="showM" (click)="showMore()" class="btn btn--show btn--active"
         >Show more <i class="fas fa-chevron-down"></i
       ></a>
-      <a class="btn btn--show" id="btn-2"
+      <a *ngIf="showL" (click)="showLess()" class="btn btn--show btn--active"
         >Show less <i class="fas fa-chevron-up"></i
       ></a>
     </div>
@@ -99,18 +75,28 @@
             <div class="form-controls">
               <div class="taged-textbox form-group">
                 <input
+                  #skill
                   class="taged-textbox__textbox form-control"
                   type="text"
-                  name=""
-                  id=""
                   placeholder="Skill (ex: Data Analysis)"
+                  (input)="(0)"
                 />
+                <p *ngIf="skillAlreadeyExist">
+                  Seems that this skill already exists
+                </p>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Add</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onAddNewSkill(skill.value)"
+            [disabled]="skill.value === ''"
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>
@@ -128,7 +114,9 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-titl">Reorder Skills & Endorsements (12)</h2>
+          <h2 class="modal-titl">
+            Reorder Skills & Endorsements ({{ skills.length }})
+          </h2>
 
           <button
             (click)="onCloseEditSkill()"
@@ -142,32 +130,15 @@
         </div>
         <div class="modal-body">
           <h3 class="skill-title">Top Skills</h3>
-          <div class="row">
+          <div class="row skillEdit">
             <div class="col-md-12">
-              <div class="skill-edit">
-                <span class="skill-edit__skill">HTML5</span>
+              <div *ngFor="let skill of skills" class="skill-edit">
+                <span class="skill-edit__skill">{{ skill.name }}</span>
                 <i
                   class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
                 ></i>
                 <i
-                  class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
-                ></i>
-              </div>
-              <div class="skill-edit">
-                <span class="skill-edit__skill">HTML5</span>
-                <i
-                  class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
-                ></i>
-                <i
-                  class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
-                ></i>
-              </div>
-              <div class="skill-edit">
-                <span class="skill-edit__skill">HTML5</span>
-                <i
-                  class="fas fa-align-justify float-md-right mr-3 skill-edit__icon"
-                ></i>
-                <i
+                  (click)="onDeleteSkill(skill)"
                   class="fas fa-trash-alt float-md-right mr-3 skill-edit__icon"
                 ></i>
               </div>
