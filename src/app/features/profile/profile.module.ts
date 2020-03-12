@@ -19,6 +19,8 @@ import { EducationItemComponent } from './education-item/education-item.componen
 import { VolunteerItemComponent } from './volunteer-item/volunteer-item.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+// import { NavMainComponent } from 'src/app/shared/nav-main/nav-main.component';
 
 
 
@@ -41,13 +43,15 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     VolunteerItemComponent,
     VolunteerItemComponent,
     ProfileInfoComponent,
-    AboutComponent
+    AboutComponent,
+    ProfilePageComponent,
+    // NavMainComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     ExperienceFormModalComponent,
@@ -63,7 +67,9 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     AboutComponent,
     ProfileInfoComponent,
     AboutComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    ProfilePageComponent,
+    // NavMainComponent
   ]
 
 })
