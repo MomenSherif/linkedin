@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // this.fireLinked.testAdd();
     //this.items = this.fireLinked.test();
-    this.items = this.skillService.getSkills();
+    //this.items = this.skillService.getSkills();
     // this.fireLinked
     //   .test()
     //   .subscribe(res => (this.items = res[0].payload.doc.data()));

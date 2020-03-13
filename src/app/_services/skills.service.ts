@@ -14,19 +14,20 @@ import * as firebase from "firebase";
 export class SkillsService {
   constructor(private fireStoreService: AngularFirestore) {}
   userSkills: Skill[] = [];
-  userRef: string;
+  userRef: string = "4Fm78GOiEUHnNO8Hr7Yh";
   getSkills(): Skill[] {
     this.fireStoreService
       .collection("users")
+      .doc(this.userRef)
       .get()
       .subscribe(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.userRef = doc.id;
-          for (let i = 0; i < doc.data().skills.length; i++) {
-            this.userSkills[i] = { name: doc.data().skills[i] };
-          }
+        snapshot.get("skills").forEach(skill => {
+          this.userSkills.push({
+            name: skill
+          });
         });
       });
+
     return this.userSkills;
   }
   addSkill(skill: Skill): boolean {
@@ -55,11 +56,16 @@ export class SkillsService {
       return false;
     }
   }
-
-  deleteSkill(skill: Skill) {
+  addSkillToUi(skill: Skill) {
+    this.userSkills.push(skill);
+  }
+  deleteSkillFromUi(skill: Skill) {
     let index = this.userSkills.findIndex(sk => sk.name === skill.name);
     this.userSkills.splice(index, 1);
-    console.log(index);
+  }
+
+  deleteSkill(skill: Skill) {
+    console.log(skill);
     this.fireStoreService
       .collection("users")
       .doc(this.userRef)

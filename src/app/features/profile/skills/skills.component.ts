@@ -14,6 +14,7 @@ export class SkillsComponent implements OnInit {
   showM: boolean = true;
   showL: boolean = false;
   skills: Skill[];
+  skillName: Skill;
   constructor(private skillService: SkillsService) {}
 
   ngOnInit(): void {
@@ -29,6 +30,9 @@ export class SkillsComponent implements OnInit {
     this.editSkills = true;
   }
   onCloseEditSkill() {
+    if (this.skillName !== undefined) {
+      this.skillService.addSkillToUi(this.skillName);
+    }
     this.editSkills = false;
   }
   showMore() {
@@ -41,13 +45,18 @@ export class SkillsComponent implements OnInit {
   }
   onAddNewSkill(skillName: string) {
     this.skillAlreadeyExist = this.skillService.addSkill({ name: skillName });
-    console.log(this.skillAlreadeyExist);
     if (!this.skillAlreadeyExist) {
       this.addSkill = false;
     }
   }
   onDeleteSkill(skill: Skill) {
-    console.log(skill);
-    this.skillService.deleteSkill(skill);
+    this.skillName = skill;
+    this.skillService.deleteSkillFromUi(skill);
+  }
+  onDeleteSkillDb() {
+    if (this.skillName !== undefined) {
+      this.skillService.deleteSkill(this.skillName);
+    }
+    this.editSkills = false;
   }
 }
