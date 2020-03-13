@@ -119,4 +119,11 @@ $secondary-text-color: rgba(0, 0, 0, 0.5);
       background-color: rgba(0, 0, 0, 0.2);
     }
   }
+  &__body {
+    max-height: 385px;
+    overflow: auto;
+  }
+}
+.interest-col {
+  margin-bottom: 3rem;
 }
