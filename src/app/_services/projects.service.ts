@@ -19,7 +19,7 @@ export class ProjectsService {
     private authService: AuthService
   ) {}
   projects: Project[] = [];
-  userRef: string = "4Fm78GOiEUHnNO8Hr7Yh";
+  userRef = "4Fm78GOiEUHnNO8Hr7Yh";
   getProjects(): Observable<QuerySnapshot<Project>> {
     return this.authService.user.pipe(
       switchMap(user => {
