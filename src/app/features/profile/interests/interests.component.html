@@ -2,48 +2,52 @@
   <div class="container interests">
     <h2 class="interests__header">Interests</h2>
     <div class="row interests__container">
-      <div class="col-2 col-md-1 text-right">
-        <a href="#"
-          ><img
-            src="../../../../assets/imgs/logo-1.png"
-            class="interests__logo"
-            alt="bla"
-        /></a>
-      </div>
-      <div class="col-10 col-md-5">
-        <a href="#" class="interests__link">
-          <h3 class="text-truncate interests__description">
-            Company Name or Description
-          </h3>
-        </a>
-        <a href="#" class="interests__link">
-          <p class=" interests__follower-count">
-            company follower counter
-          </p>
-        </a>
-      </div>
-      <div class="col-2 col-md-1 text-right">
-        <a href="#"
-          ><img
-            src="../../../../assets/imgs/logo-1.png"
-            class="interests__logo"
-            alt="bla"
-        /></a>
-      </div>
-      <div class="col-10 col-md-5">
-        <a href="#" class="interests__link">
-          <h3 class="text-truncate interests__description">
-            Company Name or Description
-          </h3>
-        </a>
-        <a href="#" class="interests__link">
-          <p class=" interests__follower-count">
-            company follower counter
-          </p>
-        </a>
-      </div>
+      <ng-container *ngFor="let com of interestCompanies.slice(0, 3)">
+        <div class="col-2 col-md-1 text-right">
+          <a href="#"
+            ><img
+              [src]="'../../../../assets/imgs/' + com.img"
+              class="interests__logo"
+              alt="bla"
+          /></a>
+        </div>
+        <div class="col-10 col-md-5 interest-col">
+          <a href="#" class="interests__link">
+            <h3 class="text-truncate interests__description">
+              {{ com.name }}
+            </h3>
+          </a>
+          <a href="#" class="interests__link">
+            <p class=" interests__follower-count">
+              {{ com.followCounter }} &nbsp; followers
+            </p>
+          </a>
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let comp of interestCompanies.slice(3, 6)">
+        <div class="col-2 col-md-1 text-right">
+          <a href="#"
+            ><img
+              [src]="'../../../../assets/imgs/' + comp.img"
+              class="interests__logo"
+              alt="bla"
+          /></a>
+        </div>
+        <div class="col-10 col-md-5 interest-col">
+          <a href="#" class="interests__link">
+            <h3 class="text-truncate interests__description">
+              {{ comp.name }}
+            </h3>
+          </a>
+          <a href="#" class="interests__link">
+            <p class=" interests__follower-count">
+              {{ comp.followCounter }} &nbsp; followers
+            </p>
+          </a>
+        </div>
+      </ng-container>
     </div>
-    <div class="row interests__container">
+    <!-- <div class="row interests__container">
       <div class="col-2 col-md-1 text-right">
         <a href="#"
           ><img
@@ -84,8 +88,8 @@
           </p>
         </a>
       </div>
-    </div>
-    <div class="row interests__container ">
+    </div> -->
+    <!-- <div class="row interests__container ">
       <div class="col-2 col-md-1 text-right">
         <a href="#"
           ><img
@@ -126,7 +130,7 @@
           </p>
         </a>
       </div>
-    </div>
+    </div> -->
     <!--button to see a linkedin user companies -->
     <a
       href="#"
@@ -157,11 +161,14 @@
           </button>
         </div>
         <div class="interests-modal__body modal-body ">
-          <div class="row interests-modal__container">
+          <div
+            *ngFor="let company of interestCompanies"
+            class="row interests-modal__container"
+          >
             <div class="col-1">
               <a href="#"
                 ><img
-                  src="../../../../assets/imgs/logo-5.jpg"
+                  [src]="'../../../../assets/imgs/' + company.img"
                   class="interests__logo"
                   alt="bla"
               /></a>
@@ -169,68 +176,12 @@
             <div class="col-7">
               <a href="#" class="interests__link ">
                 <h3 class="text-truncate interests__description">
-                  Company Name or Description
+                  {{ company.name }}
                 </h3>
               </a>
               <a href="#" class="interests__link">
                 <p class=" interests__follower-count">
-                  company follower counter
-                </p>
-              </a>
-            </div>
-            <div class="col-4 text-center">
-              <a class="interests__link--modal" href="#">
-                <i class="fas fa-check "></i>
-                <span>Following</span>
-              </a>
-            </div>
-          </div>
-          <div class="row interests-modal__container">
-            <div class="col-1">
-              <a href="#"
-                ><img
-                  src="../../../../assets/imgs/logo-5.jpg"
-                  class="interests__logo"
-                  alt="bla"
-              /></a>
-            </div>
-            <div class="col-7">
-              <a href="#" class="interests__link ">
-                <h3 class="text-truncate interests__description">
-                  Company Name or Description
-                </h3>
-              </a>
-              <a href="#" class="interests__link">
-                <p class=" interests__follower-count">
-                  company follower counter
-                </p>
-              </a>
-            </div>
-            <div class="col-4 text-center">
-              <a class="interests__link--modal" href="#">
-                <i class="fas fa-check "></i>
-                <span>Following</span>
-              </a>
-            </div>
-          </div>
-          <div class="row interests-modal__container">
-            <div class="col-1">
-              <a href="#"
-                ><img
-                  src="../../../../assets/imgs/logo-5.jpg"
-                  class="interests__logo"
-                  alt="bla"
-              /></a>
-            </div>
-            <div class="col-7">
-              <a href="#" class="interests__link ">
-                <h3 class="text-truncate interests__description">
-                  Company Name or Description
-                </h3>
-              </a>
-              <a href="#" class="interests__link">
-                <p class=" interests__follower-count">
-                  company follower counter
+                  {{ company.followCounter }} &nbsp; followers
                 </p>
               </a>
             </div>
