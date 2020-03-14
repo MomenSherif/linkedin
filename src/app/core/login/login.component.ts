@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/_services/auth.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent implements OnInit, OnDestroy {
   signInForm: FormGroup;
-  constructor() { }
+
+  userSubscription: Subscription;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
@@ -23,9 +28,27 @@ export class LoginComponent implements OnInit {
       ]),
     });
 
-  }
-  onSubmit() {
-    console.log(this.signInForm.value);
+    // Listen to user state changes
+    this.authService.user.subscribe(user => {
+      if (user) {
+        // Redirect to news feed page
+        // this.router.navigate([`/news-feed`])
+        console.log(`Logged in as ${user.uid}`);
+      } else {
+        console.log('Logged out');
+      }
+    });
   }
 
+
+  onSubmit() {
+    const { email, password } = this.signInForm.value;
+    this.authService.login(email, password)
+      .then(() => this.signInForm.reset())
+      .catch(err => alert(err.message));
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
 }

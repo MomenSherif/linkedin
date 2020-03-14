@@ -1,5 +1,5 @@
 <div class="signup-page">
-  <form class="signup__form" [formGroup]="signUpForm">
+  <form class="signup__form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <div class="Signup__Header">
       <div class="signup__logo">Linked<i class="fab fa-linkedin"></i></div>
       <div class="signup__caption">
@@ -209,8 +209,7 @@
       <div class="signup__btns">
         <button
           class="signup-btn signup-btn--sky"
-          (click)="onSubmit()"
-          [disabled]="signUpForm.touched && signUpForm.invalid"
+          [disabled]="signUpForm.invalid"
         >
           Agree & Join
         </button>
