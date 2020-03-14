@@ -1,80 +1,88 @@
-.post{
-    //  width: 40rem;
-    // font-size: 1.6rem;
-  
-   
-      &-header{
-          background-color:transparent;
-          display: flex;
-          padding: 1.25rem;
-          border: none;
-          //margin-bottom: 1rem;
-          *{
-              margin: 0;
-              margin-right: 0.5rem;
-          }
-  
-          &-creator-info{
-              display: flex;
-              flex-direction: column;
-          }
-      }
-      &-footer{
-          background-color: transparent;
-          display: flex;
-          flex-direction: column;
-       
-          &-reactions{
-              background-color: white;  width: 13.5rem; left:0; bottom:6rem; position: absolute; height: 2.5rem;  border-radius: 15%/50%;visibility: hidden; box-shadow: 1px 1px black;
-         
-          }
-          &-action{
-              display: flex;
-          }
-          .post-footer-like:hover,.post-footer-reactions:hover{
-              .post-footer-reactions{
-                  visibility: visible;
-                  transition: 1s;
-                  *{
-                      animation: jump 0.2s linear;
-                  }
-              }
-          }
-          
-      }
-      &-status{
-          padding-left: 1.25rem;
-          padding-right:1.25rem;
-          padding-bottom: 0.5rem;
-      }
-      &-profile-img{
-          height: 50px;
-          width: 50px;
-          border-radius: 100%;
-      }
-  }
+.post {
+  //  width: 40rem;
+  // font-size: 1.6rem;
 
-#validationCustomUsername{
-    border: 0.5px solid grey ;
-    border-radius: 50px;
-    height: 40px;
-    font-size: 12px;
-    flex: 1;
-    padding: 15px;
+  &-header {
+    background-color: transparent;
+    display: flex;
+    padding: 1.25rem;
+    border: none;
+    //margin-bottom: 1rem;
+    * {
+      margin: 0;
+      margin-right: 0.5rem;
+    }
+
+    &-creator-info {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &-footer {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+
+    &-reactions {
+      background-color: white;
+      width: 13.5rem;
+      left: 0;
+      bottom: 6rem;
+      position: absolute;
+      height: 2.5rem;
+      border-radius: 15%/50%;
+      visibility: hidden;
+      box-shadow: 1px 1px black;
+    }
+    &-action {
+      display: flex;
+    }
+    .post-footer-like:hover,
+    .post-footer-reactions:hover {
+      .post-footer-reactions {
+        visibility: visible;
+        transition: 1s;
+        * {
+          animation: jump 0.2s linear;
+        }
+      }
+    }
+  }
+  &-status {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: 0.5rem;
+  }
+  &-profile-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+  }
 }
 
-  .posts >.post{
-      box-shadow: 3px 3px 5px 0px rgba(209,201,209,1);
-  }
-  .comment-image{
-      position: absolute;
-      right: 0;
-      color: grey;
-      font-size: 20px;
-      cursor: pointer;
-  }
-  
+#validationCustomUsername {
+  border: 0.5px solid grey;
+  border-radius: 50px;
+  height: 40px;
+  font-size: 12px;
+  flex: 1;
+  padding: 15px;
+}
 
+.posts > .post {
+  box-shadow: 3px 3px 5px 0px rgba(209, 201, 209, 1);
+}
+.comment-image {
+  position: absolute;
+  right: 0;
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
+}
 
-  
-  
+.icon {
+  position: absolute;
+  left: 520px;
+  top: 40px;
+  cursor: pointer;
+}

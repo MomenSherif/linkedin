@@ -1,33 +1,52 @@
 <div class="comment-sec pl-5 mt-4">
   <!--Comment-->
   <div class="row ">
-    
-    <!-- hshel ml-3 , mt-3 de fl a5er w h5li col-sm-6=> col-sm-12 --> 
-    <img class="comment-img" src="../../../../assets/linkedin.jpeg">
+    <!-- hshel ml-3 , mt-3 de fl a5er w h5li col-sm-6=> col-sm-12 -->
+    <img class="comment-img" src="../../../../assets/linkedin.jpeg" />
     <div class="col-lg-10 col-md-10 col-sm-10">
-     
       <div class="card comment">
         <div class="card-body">
           <div class=" comment--header ">
-            <a class="card-title comment--auther " href="#">Special title treatment </a>
+            <a class="card-title comment--auther " href="#"
+              >{{ user?.name }}
+            </a>
             <div class=" options-sec">
-              <p class="text-right font-weight-light comment--operation"> 13h <i class="fas fa-ellipsis-h option-click "></i> </p>
-              <div class="card comment-options  " style="width: 15rem; display: none;">
-                <div class="card-body pt-2 pb-1 " >
-                  <p class="card-text "> <i class="fas fa-link"></i> Copy Link to Comment</p>
-                  <p class="card-text"> <i class="far fa-flag"></i> Report</p>
-                  <p class="card-text"> <i class="fas fa-pen"></i> Edit</p>
-                  <p class="card-text" data-toggle="modal" data-target="#exampleModalScrollable" > <i class="fas fa-trash"></i> Delete</p>
+              <p class="text-right font-weight-light comment--operation">
+                13h
+                <i
+                  *ngIf="currentUser === postAuthorId"
+                  class="far fa-trash-alt option-click"
+                  (click)="deleteComment(postAuthorId, postId, comment.id)"
+                ></i>
+              </p>
+              <div
+                class="card comment-options  "
+                style="width: 15rem; display: none;"
+              >
+                <div class="card-body pt-2 pb-1 ">
+                  <p class="card-text ">
+                    <i class="fas fa-link"></i> Copy Link to Comment
+                  </p>
+                  <p class="card-text"><i class="far fa-flag"></i> Report</p>
+                  <p class="card-text"><i class="fas fa-pen"></i> Edit</p>
+                  <p
+                    class="card-text"
+                    data-toggle="modal"
+                    data-target="#exampleModalScrollable"
+                  >
+                    <i class="fas fa-trash"></i> Delete
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <p class="font-weight-light comment--auth-job">Light weight text.</p>
+          <p class="font-weight-light comment--auth-job">
+            {{ comment.caption }}
+          </p>
 
           <p class="card-text comment--text"></p>
         </div>
       </div>
-    
     </div>
   </div>
 
@@ -36,12 +55,19 @@
   <!-- React-->
 
   <div class="row ">
-
     <div class="col-sm-6 ">
       <div class="card comment-bar ">
         <div class="card-body pt-1 pl-5">
-          <i class="far fa-thumbs-up pr-2 comment-like"></i> 
-          <span class="line"><span  class="font-weight-light likes-no">.1 Like</span> </span> 
+          <i
+            class="far fa-thumbs-up pr-2 comment-like"
+            [ngStyle]="{
+              color: comment.userLikes.includes(currentUser) ? 'blue' : ''
+            }"
+            (click)="handleLikeComment()"
+          ></i>
+          <span class="line"
+            ><span class="font-weight-light likes-no">.1 Like</span>
+          </span>
           <i class="far fa-comment-alt pl-3"></i>
         </div>
       </div>
