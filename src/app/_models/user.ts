@@ -1,4 +1,5 @@
 import { Skill } from 'src/app/_models/skill';
+import { Education } from './education';
 
 export interface User {
   id?: string;
@@ -13,5 +14,10 @@ export interface User {
   company?: string;
   phoneNumber?: string;
   profileUrl?: string;
+  educations?: Education[];
+  address?: {city?: string, country?: string};
+  name?: string;
 
 }
+
+
