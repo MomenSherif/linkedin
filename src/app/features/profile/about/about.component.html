@@ -21,7 +21,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form id="form">
+                                <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
                                   <div class="form-controls">
                                     <div class="form-group">
                                       <label for="about">Summary</label>
@@ -40,6 +40,8 @@
                                 <button
                                   type="submit"
                                   class="btn btn-primary"
+                                  [disabled]="form.invalid"
+                                  form="form"
                                 >
                                   Save
                                 </button>
@@ -50,7 +52,7 @@
                     </header>
                     <div class="col-12 pt-3">
                       <p>
-                        Talented, Skilled, Passionate, and even Young Hardcore Developer
+                        {{user?.about }}
                       </p>
                     </div>
                   </div>
