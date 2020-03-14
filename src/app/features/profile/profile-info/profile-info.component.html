@@ -456,14 +456,14 @@
           <div class="col-sm-6 user-info">
             <div class="p-sm-3">
               <div>
-                <h2 class="d-inline-block">Nora</h2>
-                <h2 class="d-inline-block">Mohamed</h2>
+                <h2 class="d-inline-block">{{user.name}} </h2>
               </div>
               <div>
-                <h4>ITI Intake 40</h4>
+                <h4>{{user.company}}</h4>
               </div>
               <div class="d-flex align-items-baseline">
-                <h4>Egypt</h4>
+                <h4>{{user.address.country+' . '}}</h4>
+
                 <ul class="info p-0">
                   <!-- Button trigger modal -->
                   <li id="connection">
@@ -495,7 +495,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">
-                              Nora Mohamed
+                              {{user.name}}
                             </h5>
                             <button
                               type="button"
@@ -526,7 +526,7 @@
                                       href="#"
                                       style="padding: 0%;"
                                       class="btn btn-link"
-                                      >noura.mohamed@linkedin.com</a
+                                      >{{user.profileUrl}}</a
                                     >
                                   </div>
                                 </div>
@@ -542,7 +542,7 @@
                                       href="#"
                                       style="padding: 0%;"
                                       class="btn btn-link"
-                                      >noura.mohamed@gmail.com</a
+                                      >{{user.email}}</a
                                     >
                                   </div>
                                 </div>
@@ -563,8 +563,8 @@
                 <img class="sm-img" src="assets/img/itiLogo.png" />
               </div>
               <div>
-                <a href="#" class="btn btn-link">
-                  Information Technology Instutute ITI
+                <a *ngFor="let item of this.user.educations " href="#" class="btn btn-link">
+                  {{item.school}}
                 </a>
               </div>
             </div>

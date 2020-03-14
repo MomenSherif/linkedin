@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './features/profile/profile.module';
@@ -14,7 +18,6 @@ import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
 
-import { NavMainComponent } from './core/nav-main/nav-main.component';
 import { HomeComponent } from './core/home-page/home-page.component';
 
 
@@ -25,7 +28,6 @@ import { HomeComponent } from './core/home-page/home-page.component';
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
-    NavMainComponent,
     HomeComponent
   ],
   imports: [
@@ -37,8 +39,10 @@ import { HomeComponent } from './core/home-page/home-page.component';
     NewsFeedModule,
     SearchResultsModule,
     SharedModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
