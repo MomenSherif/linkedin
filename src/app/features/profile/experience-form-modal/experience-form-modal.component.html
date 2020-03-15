@@ -101,7 +101,7 @@
                         <option value="null" disabled>Month</option>
                         <option
                           *ngFor="let month of months; let i = index"
-                          [value]="i + 1"
+                          [value]="month"
                           >{{ month }}</option
                         >
                       </select>
@@ -151,7 +151,7 @@
                         <option value="null" disabled>Month</option>
                         <option
                           *ngFor="let month of months; let i = index"
-                          [value]="i + 1"
+                          [value]="month"
                           >{{ month }}</option
                         >
                       </select>
@@ -191,11 +191,15 @@
         </form>
       </div>
       <div class="modal-footer">
+        <button *ngIf="inEditMode" (click)="onDelete()" class="btn btn-danger">
+          Delete
+        </button>
         <button
           type="submit"
           class="btn btn-primary"
           [disabled]="form.invalid"
           form="form"
+          (click)="onSubmit()"
         >
           Save
         </button>
