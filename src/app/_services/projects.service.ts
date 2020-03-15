@@ -32,4 +32,54 @@ export class ProjectsService {
       .collection("projects")
       .add(project);
   }
+
+  deleteProject(project: Project) {
+    this.getProjects().subscribe(snapshot => {
+      snapshot.docs.forEach(doc => {
+        if (doc.data().name === project.name) {
+          this.fireStoreService
+            .collection("users")
+            .doc(this.userRef)
+            .collection("projects")
+            .doc(doc.id)
+            .delete()
+            .then(() => {
+              console.log("Deleted");
+            })
+            .catch(reason => {
+              console.error("Can't delete", reason);
+            });
+        }
+      });
+    });
+  }
+
+  updateProject(project: Project) {
+    this.getProjects().subscribe(snapshot => {
+      snapshot.docs.forEach(doc => {
+        if (doc.data().name === project.name) {
+          this.fireStoreService
+            .collection("users")
+            .doc(this.userRef)
+            .collection("projects")
+            .doc(doc.id)
+            .set({
+              associatedWith: project.associatedWith,
+              currentlyWorking: project.currentlyWorking,
+              description: project.description,
+              endDate: project.endDate,
+              name: project.name,
+              projectUrl: project.projectUrl,
+              startDate: project.startDate
+            })
+            .then(() => {
+              console.log("updated");
+            })
+            .catch(reason => {
+              console.error("Can't update", reason);
+            });
+        }
+      });
+    });
+  }
 }

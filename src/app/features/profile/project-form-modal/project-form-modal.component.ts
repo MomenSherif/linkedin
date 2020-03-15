@@ -1,6 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { Validators, FormBuilder, FormControl } from "@angular/forms";
-import { Project } from "src/app/_models/project";
+import { Project } from "./../../../_models/project";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from "@angular/forms";
 
 @Component({
   selector: "app-project-form-modal",
@@ -10,6 +15,8 @@ import { Project } from "src/app/_models/project";
 export class ProjectFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
   @Output() formSubmitted = new EventEmitter<Project>();
+  @Output() deletedProj = new EventEmitter<Project>();
+  @Input() project: Project;
   inEditMode = false;
 
   months = [
@@ -30,26 +37,53 @@ export class ProjectFormModalComponent implements OnInit {
 
   educations = ["Education 1", "Education 2", "Education 3"];
 
-  form = this.fb.group({
-    name: [null, Validators.required],
-    currentlyWorking: [true],
-    startDate: this.fb.group({
-      month: [null, Validators.required],
-      year: [null, Validators.required]
-    }),
-    endDate: this.fb.group({
-      month: [null],
-      year: [null]
-    }),
-    associatedWith: [null],
-    projectUrl: [null, Validators.pattern("(^http[s]?:/{2})|(^www)|(^/{1,2})")],
-    description: [null]
-  });
+  form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     // Add & remove end date validation depend on CurrentlyWokring State
+    if (this.project === null) {
+      this.inEditMode = false;
+      this.form = this.fb.group({
+        name: [null, Validators.required],
+        currentlyWorking: [true],
+        startDate: this.fb.group({
+          month: [null, Validators.required],
+          year: [null, Validators.required]
+        }),
+        endDate: this.fb.group({
+          month: [null],
+          year: [null]
+        }),
+        associatedWith: [null],
+        projectUrl: [
+          null,
+          Validators.pattern("(^http[s]?:/{2})|(^www)|(^/{1,2})")
+        ],
+        description: [null]
+      });
+    } else {
+      this.inEditMode = true;
+      this.form = this.fb.group({
+        name: [this.project.name, Validators.required],
+        currentlyWorking: [this.project.currentlyWorking],
+        startDate: this.fb.group({
+          month: [+this.project.startDate.month, Validators.required],
+          year: [+this.project.startDate.year, Validators.required]
+        }),
+        endDate: this.fb.group({
+          month: [+this.project.endDate?.month],
+          year: [+this.project.endDate?.year]
+        }),
+        associatedWith: [this.project.associatedWith],
+        projectUrl: [
+          this.project.projectUrl,
+          Validators.pattern("(^http[s]?:/{2})|(^www)|(^/{1,2})")
+        ],
+        description: [this.project.description]
+      });
+    }
     this.form
       .get("currentlyWorking")
       .valueChanges.subscribe(currentlyWorking => {
@@ -82,6 +116,11 @@ export class ProjectFormModalComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value);
     this.formSubmitted.emit(this.form.value);
+    this.onClose();
+  }
+
+  deleteProj() {
+    this.deletedProj.emit(this.project);
     this.onClose();
   }
 
