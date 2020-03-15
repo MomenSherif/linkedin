@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../../_models/user';
 
 @Component({
   selector: 'app-profile-info',
@@ -10,9 +11,11 @@ export class ProfileInfoComponent implements OnInit {
 
   contactinfo = false;
   display = 'none';
+  @Input() user: User;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   toggleClass() {
     this.isopenedintro = !this.isopenedintro;
   }

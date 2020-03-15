@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 
-
 import { ExperienceFormModalComponent } from './experience-form-modal/experience-form-modal.component';
 import { EducationFormModalComponent } from './education-form-modal/education-form-modal.component';
 import { VolunteerFormModalComponent } from './volunteer-form-modal/volunteer-form-modal.component';
@@ -20,13 +19,10 @@ import { VolunteerItemComponent } from './volunteer-item/volunteer-item.componen
 import { AboutComponent } from './about/about.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-// import { NavMainComponent } from 'src/app/shared/nav-main/nav-main.component';
-
-
-
 
 @NgModule({
-  declarations: [ExperienceFormModalComponent,
+  declarations: [
+    ExperienceFormModalComponent,
     EducationFormModalComponent,
     VolunteerFormModalComponent,
     ProjectFormModalComponent,
@@ -41,18 +37,19 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ExperienceItemComponent,
     EducationItemComponent,
     VolunteerItemComponent,
-    VolunteerItemComponent,
     ProfileInfoComponent,
     AboutComponent,
     ProfilePageComponent,
-    // NavMainComponent
+
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    ProfilePageComponent
   ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule],
   exports: [
     ExperienceFormModalComponent,
     EducationFormModalComponent,
@@ -66,11 +63,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ExperienceSectionComponent,
     AboutComponent,
     ProfileInfoComponent,
-    AboutComponent,
-    ProfileInfoComponent,
     ProfilePageComponent,
-    // NavMainComponent
   ]
-
 })
-export class ProfileModule { }
+export class ProfileModule {}

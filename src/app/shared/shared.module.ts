@@ -15,5 +15,6 @@ import { NavMainComponent } from './nav-main/nav-main.component';
     DropdownComponent,
     NavMainComponent
   ]
+
 })
-export class SharedModule { }
+export class SharedModule {}

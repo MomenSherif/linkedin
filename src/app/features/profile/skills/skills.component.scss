@@ -164,3 +164,11 @@ $primary-font-color: #1a1a1a;
     color: $third-font-color;
   }
 }
+.skillEdit {
+  max-height: 200px;
+  overflow: auto;
+}
+.skillSec {
+  max-height: 470px;
+  overflow: hidden;
+}
