@@ -2,8 +2,8 @@ export interface Project {
   name?: string;
   description?: string;
   projectUrl?: string;
-  assciatedWith?: string;
+  associatedWith?: string;
   startDate?: string;
   endDate?: string;
-  currentlyWorkig?: boolean;
+  currentlyWorking?: boolean;
 }
