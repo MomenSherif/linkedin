@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ExperienceSectionService } from 'src/app/shared/experience-section/experience-section.service';
 
 @Component({
   selector: 'app-education-item',
@@ -7,12 +8,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class EducationItemComponent implements OnInit {
   @Output() inEditMode = new EventEmitter<void>();
+  @Input() education;
+  @Input() educationId;
+
+  constructor(private experienceSectionService: ExperienceSectionService) {}
 
   switchToEdit() {
+    this.experienceSectionService.setEducationId(this.educationId);
     this.inEditMode.emit();
   }
 
-  constructor() { }
 
   ngOnInit(): void {
   }

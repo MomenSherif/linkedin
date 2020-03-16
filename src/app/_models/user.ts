@@ -4,10 +4,8 @@ import { Education } from './education';
 export interface User {
   id?: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  country: string;
   postalCode: string;
+  name?: string;
   skills?: Skill[];
   about?: string;
   jobTitle?: string;
@@ -15,8 +13,7 @@ export interface User {
   phoneNumber?: string;
   profileUrl?: string;
   educations?: Education[];
-  address?: {city?: string, country?: string};
-  name?: string;
+  address?: { city?: string, country?: string };
 
 }
 

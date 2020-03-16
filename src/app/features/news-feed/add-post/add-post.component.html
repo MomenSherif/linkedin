@@ -1,49 +1,87 @@
-<div class="writePost"> 
-    <button class="button button-post button-border" data-toggle="modal" data-target="#post">
-        <i class="far fa-edit post-icon"></i>
-        <span>Start a post</span>
-    </button>
-  
+<div class="writePost">
+  <button
+    class="button button-post button-border"
+    data-toggle="modal"
+    data-target="#post"
+    (click)="startPost = true"
+  >
+    <i class="far fa-edit post-icon"></i>
+    <span>Start a post</span>
+  </button>
 </div>
-<div class="article">
-    <a href="#">Write an article </a>on LinkedIn
-</div>
+<div class="article"><a>Write an article </a>on LinkedIn</div>
 
+<!-- modal -->
 
-<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+<!-- class="modal fade show" -->
+<!-- style="display: block;" -->
+<div
+  class="modal fade bg"
+  [ngClass]="{ show: startPost }"
+  [ngStyle]="startPost && { display: 'block' }"
+  id="post"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalScrollableTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
-        <div class="modal-body">
-            <div class="mypost">
-                <div class="mypost-header">
-                    <h4>Create a post</h4>
-                    <button type="button" class="close mypost-close mb-2" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <!-- <div class="post-close">
-                        <i class="fas fa-times"></i>
-                    </div> -->
-                </div>
-                <div class="mypost-body">
-                    <div class="mypost-body_top">
-                        <div ><img class="mypost-profilepic" src="../../../../assets/linkedin.jpeg"/></div>
-                        <span>UserName</span>
-                    </div>
-                    <div class="mypost-body_middle">
-                        <textarea name="post-text" id="textEditor" rows="12" placeholder="What do you want to talk about?"></textarea>
-                    </div>
-                    
-                <div class="mypost-footer">
-                   
-                    <div class="mypost-footer_publish">
-                        <button class="mypost-footer_publish-btn mypost-footer_publishEnabele mypost-footer_publishDisable">Post</button>
-                    </div>
-                </div>
+      <div class="modal-body">
+        <div class="mypost">
+          <div class="mypost-header modal-header">
+            <h5>Create a post</h5>
+            <button
+              type="button"
+              class="close mypost-close mb-2"
+              data-dismiss="modal"
+              aria-label="Close"
+              (click)="startPost = false"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- <div class="post-close">
+              <i class="fas fa-times"></i>
+            </div> -->
+          </div>
+          <div class="mypost-body">
+            <div class="mypost-body_top">
+              <div>
+                <img
+                  class="mypost-profilepic"
+                  src="../../../../assets/linkedin.jpeg"
+                />
+              </div>
+              <span>{{ user?.name }}</span>
             </div>
+            <div class="mypost-body_middle">
+              <textarea
+                (input)="captionInput($event)"
+                #textArea
+                ref-textarea
+                name="post-text"
+                id="textEditor"
+                rows="12"
+                placeholder="What do you want to talk about?"
+              ></textarea>
+            </div>
+
+            <div class="mypost-footer">
+              <div class="mypost-footer_publish">
+                <button
+                  class="mypost-footer_publish-btn mypost-footer_publishEnabele "
+                  [ngClass]="{
+                    'mypost-footer_publishDisable': !isPostingvalid
+                  }"
+                  (click)="AddPost(textarea.value)"
+                >
+                  Post
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
-
-
-

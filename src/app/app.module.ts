@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
 import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
 
+import { ExperienceSectionService } from './shared/experience-section/experience-section.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,7 @@ import { SearchPageComponent } from './features/search-results/search-page/searc
     FooterComponent,
     CopyrightComponent,
     SearchPageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,8 +46,12 @@ import { SearchPageComponent } from './features/search-results/search-page/searc
     SearchResultsModule,
     SharedModule,
     HomeModule
+    // AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [
+    AngularFirestore,
+    ExperienceSectionService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
