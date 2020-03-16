@@ -1,4 +1,3 @@
-
 <div class="container u-border mt-3 mb-3">
   <div class="experience-section position-relative py-3">
     <h2 class="mb-2 h2">Experience</h2>
@@ -8,9 +7,19 @@
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-experience-item (inEditMode)="inExperienceEdit()"></app-experience-item>
-    <div class="u-border-bottom offset-1"></div>
-    <app-experience-item (inEditMode)="inExperienceEdit()"></app-experience-item>
+
+    <ng-container *ngFor="let experience of experiences; let i = index">
+      <app-experience-item
+        [experience]="experience.payload.doc.data()"
+        [experienceId]="experience.payload.doc.id"
+        (inEditMode)="inExperienceEdit()"
+      ></app-experience-item>
+      <div
+        *ngIf="i < experiences.length - 1"
+        class="u-border-bottom offset-1"
+      ></div>
+    </ng-container>
+
     <div class="u-border-bottom u-border-bottom-final mt-3"></div>
   </div>
 
@@ -22,9 +31,20 @@
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-education-item (inEditMode)="inEducationEdit()"></app-education-item>
-    <div class="u-border-bottom offset-1"></div>
-    <app-education-item (inEditMode)="inEducationEdit()"></app-education-item>
+
+    <ng-container *ngFor="let education of educations; let i = index">
+      <!-- {{user}} -->
+      <app-education-item
+        [education]="education.payload.doc.data()"
+        [educationId]="education.payload.doc.id"
+        (inEditMode)="inEducationEdit()"
+      ></app-education-item>
+      <div
+        *ngIf="i < educations.length - 1"
+        class="u-border-bottom offset-1"
+      ></div>
+    </ng-container>
+
     <div class="u-border-bottom u-border-bottom-final mt-3"></div>
   </div>
 
@@ -36,13 +56,21 @@
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
-    <app-volunteer-item (inEditMode)="inVolunteerEdit()"></app-volunteer-item>
-    <div class="u-border-bottom offset-1"></div>
-    <app-volunteer-item (inEditMode)="inVolunteerEdit()"></app-volunteer-item>
+
+    <ng-container *ngFor="let volunteerExp of volunteerExps; let i = index">
+      <app-volunteer-item
+        [volunteerExp]="volunteerExp.payload.doc.data()"
+        [volunteerExpId]="volunteerExp.payload.doc.id"
+        (inEditMode)="inVolunteerEdit()"
+      ></app-volunteer-item>
+      <div
+        *ngIf="i < volunteerExps.length - 1"
+        class="u-border-bottom offset-1"
+      ></div>
+    </ng-container>
+    
   </div>
 </div>
-
-
 
 <app-experience-form-modal
   *ngIf="isExperienceModalOpen"

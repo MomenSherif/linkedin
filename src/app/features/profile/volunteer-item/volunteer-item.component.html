@@ -3,10 +3,18 @@
     <img class="img-fluid" src="assets/imgs/itiLogo.png" />
   </div>
   <div class="experience-data col-11 pb-4">
-    <h3 class="mb-1 h3">Role</h3>
-    <p class="mb-0 text-sm">Information Technology Institute (ITI)</p>
-    <p class="mb-3 text-muted text-sm">2017 - 2018</p>
-    <p class="mb-0 text-sm">Established in 1993, ITI has been devoted to provide a large pool of promising youth with world-class human capacity building programs and empirical learning approach to profoundly scale up the impact of the aspiring Egyptian youth in Information and Communication Technologies (ICT) workplace.</p>
+    <h3 class="mb-1 h3">{{ volunteerExp.role | titlecase }}</h3>
+    <p class="mb-0 text-sm">{{ volunteerExp.organization | titlecase }}</p>
+    <p class="mb-3 text-muted text-sm">
+      {{ volunteerExp.startDate.month }} {{ volunteerExp.startDate.year }} -
+      <ng-container *ngIf="volunteerExp.endDate.month">
+        {{ volunteerExp.endDate.month }} {{ volunteerExp.endDate.year }}
+      </ng-container>
+      <ng-container *ngIf="!volunteerExp.endDate.month">Present</ng-container>
+    </p>
+    <p class="mb-0 text-sm">
+      {{volunteerExp.description}}
+    </p>
   </div>
 
   <div class="icon-container position-absolute" (click)="switchToEdit()">

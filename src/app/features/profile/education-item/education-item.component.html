@@ -3,10 +3,17 @@
     <img class="img-fluid" src="assets/imgs/itiLogo.png" />
   </div>
   <div class="experience-data col-11 pb-4">
-    <h3 class="mb-1 h3">Information Technology Institute (ITI)</h3>
-    <p class="mb-0 text-sm">Degree . Field of Study</p>
-    <p class="mb-3 text-muted text-sm">2014 - 2019</p>
-    <p class="mb-0 text-sm">Established in 1993, ITI has been devoted to provide a large pool of promising youth with world-class human capacity building programs and empirical learning approach to profoundly scale up the impact of the aspiring Egyptian youth in Information and Communication Technologies (ICT) workplace.</p>
+    <h3 class="mb-1 h3">{{ education.school | titlecase }}</h3>
+    <p class="mb-0 text-sm">
+      {{ education.degree | titlecase }} .
+      {{ education.fieldOfStudy | titlecase }}
+    </p>
+    <p class="mb-3 text-muted text-sm">
+      {{ education.startYear }} - {{ education.endYear }}
+    </p>
+    <p class="mb-0 text-sm">
+      {{education.description}}
+    </p>
   </div>
 
   <div class="icon-container position-absolute" (click)="switchToEdit()">

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ExperienceSectionService } from "src/app/shared/experience-section/experience-section.service";
 
 @Component({
-  selector: 'app-experience-section',
-  templateUrl: './experience-section.component.html',
-  styleUrls: ['./experience-section.component.scss']
+  selector: "app-experience-section",
+  templateUrl: "./experience-section.component.html",
+  styleUrls: ["./experience-section.component.scss"]
 })
 export class ExperienceSectionComponent implements OnInit {
-
   isExperienceModalOpen = false;
   isEducationModalOpen = false;
   isVolunteerModalOpen = false;
@@ -15,7 +15,35 @@ export class ExperienceSectionComponent implements OnInit {
   inEditModeEducation = false;
   inEditModeVolunteer = false;
 
-  constructor() { }
+  experiences;
+  educations;
+  volunteerExps;
+
+  constructor(private experienceSectionService: ExperienceSectionService) {}
+
+  ngOnInit(): void {
+    this.getExperiences();
+    this.getEducations();
+    this.getVolunteerExps();
+  }
+
+  getExperiences = () => {
+    this.experienceSectionService.getExperiences().subscribe(
+      res => (this.experiences = res)
+    );
+  }
+
+  getEducations = () => {
+    this.experienceSectionService.getEducations().subscribe(
+      res => (this.educations = res)
+    )
+  }
+
+  getVolunteerExps = () => {
+    this.experienceSectionService.getVolunteerExps().subscribe(
+      res => (this.volunteerExps = res)
+    )
+  }
 
   toggleExperienceModal() {
     this.isExperienceModalOpen = !this.isExperienceModalOpen;
@@ -58,8 +86,4 @@ export class ExperienceSectionComponent implements OnInit {
     this.inEditModeVolunteer = false;
     this.toggleVolunteerModal();
   }
-
-  ngOnInit(): void {
-  }
-
 }

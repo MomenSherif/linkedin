@@ -34,7 +34,7 @@
                 type="text"
                 name=""
                 id="degree"
-                placeholder="Ex: Microsoft"
+                placeholder="Ex: B.Sc."
                 formControlName="degree"
               />
             </div>
@@ -124,11 +124,15 @@
         </form>
       </div>
       <div class="modal-footer">
+        <button *ngIf="inEditMode" (click)="onDelete()" class="btn btn-danger">
+          Delete
+        </button>
         <button
           type="submit"
           class="btn btn-primary"
           [disabled]="form.invalid"
           form="form"
+          (click)="onSubmit()"
         >
           Save
         </button>

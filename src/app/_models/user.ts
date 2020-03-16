@@ -3,8 +3,8 @@ import { Education } from './education';
 
 export interface User {
   id?: string;
-  email: string;
-  postalCode: string;
+  email?: string;
+  postalCode?: string;
   name?: string;
   skills?: Skill[];
   about?: string;
