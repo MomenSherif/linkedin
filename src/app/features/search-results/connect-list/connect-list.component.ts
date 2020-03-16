@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'firebase';
+import { User } from 'src/app/_models/user';
+
 
 @Component({
   selector: 'app-connect-list',
