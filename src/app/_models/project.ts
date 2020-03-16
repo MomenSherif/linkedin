@@ -1,9 +1,11 @@
+import { DateType } from "./Date";
+
 export interface Project {
   name?: string;
   description?: string;
   projectUrl?: string;
   associatedWith?: string;
-  startDate?: string;
-  endDate?: string;
+  startDate?: DateType;
+  endDate?: DateType;
   currentlyWorking?: boolean;
 }
