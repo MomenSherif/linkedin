@@ -1,33 +1,40 @@
-<div class ="profile mx-auto">
-    <div class ="profile--Image"></div>
-    <div class = "profile--info ">
-    <div class= "profile--text ">
-        <a href="#"><div class = "profile--text__h2">Cady Emad</div></a>
-        <div class ="profile--text__h3">Frontend Developer</div>
+<div class="profile mx-auto">
+  <div class="profile--Image"></div>
+  <div class="profile--info ">
+    <div class="profile--text ">
+      <a href="#"
+        ><div class="profile--text__h2">{{ user?.name }}</div></a
+      >
+      <div class="profile--text__h3">{{ user?.jobTitle }}</div>
     </div>
+  </div>
+  <div class="profile--info">
+    <div class=" profile--text">
+      <div class="profile--numtext">
+        <a class="profile--text__P" href="#">Who's viewed your profile</a>
+        <a class="profile--text__num"> 36</a>
+      </div>
+      <div class="profile--numtext">
+        <div class="profile--doubletext">
+          <a class="profile--text__P" href="#">Connections</a>
+          <div class="profile--text--blacktext">Grow your netwrok</div>
+        </div>
+        <a class="profile--text__num"> 419</a>
+      </div>
+      <div class="profile--premium">
+        <a class="profile--text__P" href="#"
+          >Access exclusive tools & insights</a
+        >
+        <div class="profile--text--blacktext">
+          <i class="far fa-star icon icon--premium"></i>Reactive Premium for
+          free
+        </div>
+      </div>
     </div>
-    <div class = "profile--info">
-        <div class = " profile--text">
-            <div class = "profile--numtext">
-                <a class = "profile--text__P" href="#">Who's viewed your profile</a>
-                <a class = "profile--text__num"> 36</a>
-            </div>    
-            <div class ="profile--numtext">
-                <div class = "profile--doubletext">
-                    <a  class = "profile--text__P" href ="#">Connections</a> 
-                    <div class ="profile--text--blacktext">Grow your netwrok</div>
-                </div>
-                <a class = "profile--text__num"> 419</a>
-            </div>
-            <div class = "profile--premium">
-                <a  class = "profile--text__P" href ="#">Access exclusive tools & insights</a> 
-                <div class ="profile--text--blacktext"><i class ="far fa-star icon icon--premium"></i>Reactive Premium for free</div>
-            </div>
-            </div>
-    </div>
-    <div class = "profile--info profile--saved">
-        <a class ="profile--text--blacktext">
-            <i class="far fa-bookmark icon"></i> Saved items
-        </a>
+  </div>
+  <div class="profile--info profile--saved">
+    <a class="profile--text--blacktext">
+      <i class="far fa-bookmark icon"></i> Saved items
+    </a>
+  </div>
 </div>
- </div>

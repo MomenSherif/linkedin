@@ -16,7 +16,7 @@ import { User } from "src/app/_models/user";
 export class PostComponent implements OnInit {
   @Input() post: Post;
   @ViewChild("commentInput") commentInput;
-  currentUser;
+  currentUser: string;
   items: Observable<any>;
   user: User;
 
