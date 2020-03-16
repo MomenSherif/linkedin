@@ -3,16 +3,19 @@
     <img class="img-fluid" src="assets/imgs/itiLogo.png" />
   </div>
   <div class="experience-data col-11 pb-4">
-    <h3 class="mb-1 h3">Student</h3>
-    <p class="mb-0 text-sm">Information Technology Institute (ITI)</p>
-    <p class="mb-0 text-muted text-sm">October 2019 - Present</p>
-    <p class="mb-3 text-muted text-sm">Cairo, Egypt</p>
+    <h3 class="mb-1 h3">{{ experience.title | titlecase }}</h3>
+    <p class="mb-0 text-sm">{{ experience.company | titlecase }}</p>
+    <p class="mb-0 text-muted text-sm">
+      {{ experience.startDate.month }} {{ experience.startDate.year }} -
+      <ng-container *ngIf="experience.endDate.month">
+        {{ experience.endDate.month }} {{ experience.endDate.year }}
+      </ng-container> 
+      <ng-container *ngIf="!experience.endDate.month">Present</ng-container>
+    </p>
+    <p class="mb-3 text-muted text-sm">{{ experience.location | titlecase }}</p>
     <p class="mb-0 text-sm">
-      Established in 1993, ITI has been devoted to provide a large pool of
-      promising youth with world-class human capacity building programs and
-      empirical learning approach to profoundly scale up the impact of the
-      aspiring Egyptian youth in Information and Communication Technologies
-      (ICT) workplace.
+      <!-- {{ experienceId }} -->
+      {{ experience.description }}
     </p>
   </div>
 
