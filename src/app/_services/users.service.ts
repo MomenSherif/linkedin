@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import 'firebase/firestore';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../_models/user';
 
@@ -7,7 +8,7 @@ import { User } from '../_models/user';
 })
 export class UsersService {
   users: User[] = [];
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
   getUsers() {
     return this.firestore.collection('users').snapshotChanges();
   }
@@ -20,11 +21,11 @@ export class UsersService {
   deleteUser(userID: string) {
     this.firestore.doc('users/' + userID).delete();
   }
-   getUserById(userID: string) {
-     return this.firestore.doc('users/' + userID).snapshotChanges();
+  getUserById(userID: string) {
+    return this.firestore.doc('users/' + userID).snapshotChanges();
   }
   getUserEducation(userID: string) {
-     return this.firestore
+    return this.firestore
       .doc('users/' + userID)
       .collection('educations')
       .snapshotChanges();
