@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import 'firebase/firestore';
-import { Observable } from 'rxjs';
 import { Skill } from '../_models/skill';
 import * as firebase from 'firebase';
 
