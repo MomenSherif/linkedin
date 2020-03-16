@@ -27,7 +27,10 @@ import { SearchPageComponent } from './features/search-results/search-page/searc
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
+ feat-news-feed,
+
     SearchPageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,8 +45,9 @@ import { SearchPageComponent } from './features/search-results/search-page/searc
     SearchResultsModule,
     SharedModule,
     HomeModule
+    // AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
