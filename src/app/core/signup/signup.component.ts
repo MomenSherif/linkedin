@@ -1,21 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/_services/auth.service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthService } from "src/app/_services/auth.service";
 
-import { User } from 'src/app/_models/user';
-import { Subscription } from 'rxjs';
+import { User } from "src/app/_models/user";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.scss"]
 })
 export class SignupComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   userSubscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
@@ -48,34 +48,42 @@ export class SignupComponent implements OnInit, OnDestroy {
         // this.router.navigate([`/news-feed`])
         console.log(`Logged in as ${user.uid}`);
       } else {
-        console.log('Logged out');
+        console.log("Logged out");
       }
     });
   }
 
-
   onSubmit() {
-    const { email, password, firstName, lastName, country, postalCode } = this.signUpForm.value;
+    const {
+      email,
+      password,
+      firstName,
+      lastName,
+      country,
+      postalCode
+    } = this.signUpForm.value;
     const user: User = {
       email,
       name: `${firstName}, ${lastName}`,
       postalCode,
       address: {
         country,
-        city: ''
+        city: ""
       },
       skills: [],
       educations: [],
-      company: '',
-      phoneNumber: '',
-      jobTitle: '',
-      about: '',
-      profileUrl: ''
+      company: "",
+      phoneNumber: "",
+      jobTitle: "",
+      about: "",
+      profileUrl: ""
     };
-    this.authService.signUp(email, password, user)
+    this.authService
+      .signUp(email, password, user)
       .then(() => {
         alert(`Welcome ${firstName} ${lastName}`);
         this.signUpForm.reset();
+        this.router.navigate(["/news-feed"]);
       })
       .catch(err => alert(err.message));
   }

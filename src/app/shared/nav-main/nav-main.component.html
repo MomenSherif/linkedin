@@ -7,7 +7,12 @@
         <div class="search-control">
           <div class="search">
             <i class="fas fa-search mx-2" aria-hidden="true"></i>
-            <input #inputsearch  type="text" placeholder="Search" (keyup)="filterProducts(inputsearch.value)">
+            <input
+              #inputsearch
+              type="text"
+              placeholder="Search"
+              (keyup)="filterProducts(inputsearch.value)"
+            />
           </div>
         </div>
       </form>
@@ -15,7 +20,7 @@
 
     <ul class="list-unstyled mb-0 p-1 nav-right">
       <li>
-        <a class="nav-item">
+        <a class="nav-item" routerLink="/news-feed">
           <i class="fas fa-home nav-item-icon"></i>
           <span class="nav-item-desc">Home</span>
         </a>
@@ -45,7 +50,7 @@
         </a>
       </li>
       <li>
-        <a class="nav-item">
+        <a class="nav-item" routerLink="/profile">
           <i class="fas fa-bell nav-item-icon"></i>
           <span class="nav-item-desc">
             Me <i class="fas fa-caret-down nav-item-icon"></i>
@@ -71,23 +76,19 @@
         </a>
       </li>
     </ul>
-
   </div>
 </div>
 <div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item" *ngFor="let item of searchFields;let i=index">
-        <a class="nav-link"(click)="searchByField(i)">{{item}}</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngFor="let item of searchFields; let i = index">
+          <a class="nav-link" (click)="searchByField(i)">{{ item }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
-
-    
-
 
 <!-- <a class="nav-item">
   <i class="fas fa-home nav-item-icon"></i>

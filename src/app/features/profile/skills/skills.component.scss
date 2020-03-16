@@ -14,9 +14,10 @@ $primary-font-color: #1a1a1a;
 .edit-skills {
   background: rgba(0, 0, 0, 0.6);
   top: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
-  height: 800px;
+  height: 100vh;
+  z-index: 2;
 }
 .skill {
   padding: 2rem 0 1rem 1.2rem;

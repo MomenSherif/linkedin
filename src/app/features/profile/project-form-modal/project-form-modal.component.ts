@@ -110,6 +110,7 @@ export class ProjectFormModalComponent implements OnInit {
   }
 
   onClose() {
+    console.log("Closed");
     this.modalClosing.emit();
   }
 
