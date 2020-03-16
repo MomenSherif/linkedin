@@ -31,8 +31,7 @@ import { ExperienceSectionService } from "./shared/experience-section/experience
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    CopyrightComponent,
-    SearchPageComponent
+    CopyrightComponent
   ],
   imports: [
     BrowserModule,
