@@ -1,45 +1,92 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import { Project } from "./../../../_models/project";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from "@angular/forms";
 
 @Component({
-  selector: 'app-project-form-modal',
-  templateUrl: './project-form-modal.component.html',
-  styleUrls: ['./project-form-modal.component.scss']
+  selector: "app-project-form-modal",
+  templateUrl: "./project-form-modal.component.html",
+  styleUrls: ["./project-form-modal.component.scss"]
 })
 export class ProjectFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
+  @Output() formSubmitted = new EventEmitter<Project>();
+  @Output() deletedProj = new EventEmitter<Project>();
+  @Input() project: Project;
   inEditMode = false;
 
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
   years: number[] = [];
 
+  educations = ["Education 1", "Education 2", "Education 3"];
 
-  educations = ['Education 1', 'Education 2', 'Education 3'];
+  form: FormGroup;
 
-  form = this.fb.group({
-    name: [null, Validators.required],
-    currentlyWorking: [true],
-    startDate: this.fb.group({
-      month: [null, Validators.required],
-      year: [null, Validators.required]
-    }),
-    endDate: this.fb.group({
-      month: [null],
-      year: [null]
-    }),
-    associatedWith: [null],
-    projectUrl: [null, Validators.pattern('(^http[s]?:\/{2})|(^www)|(^\/{1,2})')],
-    description: [null]
-  });
-
-
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     // Add & remove end date validation depend on CurrentlyWokring State
-    this.form.get('currentlyWorking').valueChanges
-      .subscribe(currentlyWorking => {
+    if (this.project === null) {
+      this.inEditMode = false;
+      this.form = this.fb.group({
+        name: [null, Validators.required],
+        currentlyWorking: [true],
+        startDate: this.fb.group({
+          month: [null, Validators.required],
+          year: [null, Validators.required]
+        }),
+        endDate: this.fb.group({
+          month: [null],
+          year: [null]
+        }),
+        associatedWith: [null],
+        projectUrl: [
+          null,
+          Validators.pattern("(^http[s]?:/{2})|(^www)|(^/{1,2})")
+        ],
+        description: [null]
+      });
+    } else {
+      this.inEditMode = true;
+      this.form = this.fb.group({
+        name: [this.project.name, Validators.required],
+        currentlyWorking: [this.project.currentlyWorking],
+        startDate: this.fb.group({
+          month: [+this.project.startDate.month, Validators.required],
+          year: [+this.project.startDate.year, Validators.required]
+        }),
+        endDate: this.fb.group({
+          month: [+this.project.endDate?.month],
+          year: [+this.project.endDate?.year]
+        }),
+        associatedWith: [this.project.associatedWith],
+        projectUrl: [
+          this.project.projectUrl,
+          Validators.pattern("(^http[s]?:/{2})|(^www)|(^/{1,2})")
+        ],
+        description: [this.project.description]
+      });
+    }
+    this.form
+      .get("currentlyWorking")
+      .valueChanges.subscribe(currentlyWorking => {
         if (currentlyWorking) {
           this.endDateMonth.clearValidators();
           this.endDateYear.clearValidators();
@@ -68,41 +115,45 @@ export class ProjectFormModalComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+    this.formSubmitted.emit(this.form.value);
     this.onClose();
   }
 
+  deleteProj() {
+    this.deletedProj.emit(this.project);
+    this.onClose();
+  }
 
   // Properties getter for Validation styles
   get currentlyWorking(): FormControl {
-    return this.form.get('currentlyWorking') as FormControl;
+    return this.form.get("currentlyWorking") as FormControl;
   }
 
   get name(): FormControl {
-    return this.form.get('name') as FormControl;
+    return this.form.get("name") as FormControl;
   }
 
   get role(): FormControl {
-    return this.form.get('role') as FormControl;
+    return this.form.get("role") as FormControl;
   }
 
   get startDateMonth(): FormControl {
-    return this.form.get('startDate.month') as FormControl;
+    return this.form.get("startDate.month") as FormControl;
   }
 
   get endDateMonth(): FormControl {
-    return this.form.get('endDate.month') as FormControl;
+    return this.form.get("endDate.month") as FormControl;
   }
 
   get startDateYear(): FormControl {
-    return this.form.get('startDate.year') as FormControl;
+    return this.form.get("startDate.year") as FormControl;
   }
 
   get endDateYear(): FormControl {
-    return this.form.get('endDate.year') as FormControl;
+    return this.form.get("endDate.year") as FormControl;
   }
 
   get projectUrl(): FormControl {
-    return this.form.get('projectUrl') as FormControl;
+    return this.form.get("projectUrl") as FormControl;
   }
-
 }
