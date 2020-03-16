@@ -4,7 +4,7 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import "firebase/firestore";
-import { Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import { Skill } from "../_models/skill";
 import * as firebase from "firebase";
 import { AuthService } from "./auth.service";
@@ -20,21 +20,37 @@ export class SkillsService {
     private authService: AuthService
   ) {}
   getSkills(): Skill[] {
-    this.authService.user.subscribe(us => {
-      this.userRef = us.uid;
-      console.log(this.userRef);
-      this.fireStoreService
-        .collection("users")
-        .doc(this.userRef)
-        .get()
-        .subscribe(snapshot => {
-          snapshot.get("skills")?.forEach(skill => {
-            this.userSkills.push({
-              name: skill
-            });
+    this.authService.user
+      .pipe(
+        switchMap(user => {
+          this.userRef = user.uid;
+          return this.fireStoreService
+            .collection("users")
+            .doc(user.uid)
+            .get();
+        })
+      )
+      .subscribe(snapshot => {
+        snapshot.get("skills")?.forEach(skill => {
+          this.userSkills.push({
+            name: skill
           });
         });
-    });
+      });
+    // this.authService.user.subscribe(us => {
+    //   this.userRef = us.uid;
+    //   this.fireStoreService
+    //     .collection("users")
+    //     .doc(this.userRef)
+    //     .get()
+    //     .subscribe(snapshot => {
+    //       snapshot.get("skills")?.forEach(skill => {
+    //         this.userSkills.push({
+    //           name: skill
+    //         });
+    //       });
+    //     });
+    // });
 
     return this.userSkills;
   }
