@@ -25,7 +25,7 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    CopyrightComponent
+    CopyrightComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +40,9 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     SearchResultsModule,
     SharedModule,
     HomeModule
+    // AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
