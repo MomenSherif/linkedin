@@ -25,6 +25,12 @@
     }
 
 }
+.previous{
+cursor: pointer;
+}
+.next{
+cursor: pointer;
+}
 
 .search-No-result{
     margin:1.1em 0 8px 25px;
@@ -63,7 +69,7 @@
     span{
         display: flex; 
         width :40%; 
-        justify-content: space-between;
+        justify-content: center;
     }
 }
 .search-bottom-img{

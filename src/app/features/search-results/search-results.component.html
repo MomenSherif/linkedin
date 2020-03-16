@@ -1,38 +1,28 @@
 <div class="search-container">
   <div class="search-container--left">
-    <h3 class="search-No-result">Showing 2,189 results</h3>
+    <h3 class="search-No-result">{{"Showing  "+filteredArray.length +"  results"}}</h3>
     <ul class="search-ul">
-      <li>
-       <app-connect-list></app-connect-list>
+      <li *ngFor="let user of CopyArr;let i=index">
+       <app-connect-list [user]="user"></app-connect-list>
       </li>
-      <li>
-        <app-connect-list></app-connect-list>
-       </li>
-       <li>
-        <app-connect-list></app-connect-list>
-       </li>
-       <li>
-        <app-connect-list></app-connect-list>
-       </li>
     </ul>
 
-    <div class="search-pages-number">
-      <a href="" class="previous"
-        ><i class="fas fa-chevron-left"></i> Previous</a
+    <div class="search-pages-number" *ngIf="filteredArray.length">
+      <a class="previous" (click)="handelPrevious()"
+        ><i class="fas fa-chevron-left" ></i> Previous</a
       >
       <span>
-        <a href="">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">7</a>
-        <a href="">8</a>
-        <a href="">...</a>
-        <a href="">100</a>
+        <nav aria-label="...">
+          <ul class="pagination pagination-sm">
+            <li class="page-item" aria-current="page" *ngFor="let n of counter(pageNums) ;let i = index" [class.active]="hightlightStatus[i]==true"   (click)="displayProductsInPage(i)">
+              <a class="page-link">
+                {{i+1}}
+              </a>
+            </li>
+          </ul>
+        </nav>
       </span>
-      <a href="" class="next">Next <i class="fas fa-chevron-right"></i></a>
+      <a class="next" (click)="handelNext()" >Next <i class="fas fa-chevron-right"></i></a>
     </div>
 
     <div class="search-bottom-img">

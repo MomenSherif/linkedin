@@ -18,6 +18,7 @@ import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
+import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,10 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
     LoginComponent,
     FooterComponent,
     CopyrightComponent,
+ feat-news-feed,
+
+    SearchPageComponent
+
   ],
   imports: [
     BrowserModule,

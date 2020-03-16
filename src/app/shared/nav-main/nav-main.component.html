@@ -7,7 +7,7 @@
         <div class="search-control">
           <div class="search">
             <i class="fas fa-search mx-2" aria-hidden="true"></i>
-            <input type="text" placeholder="Search">
+            <input #inputsearch  type="text" placeholder="Search" (keyup)="filterProducts(inputsearch.value)">
           </div>
         </div>
       </form>
@@ -74,8 +74,19 @@
 
   </div>
 </div>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngFor="let item of searchFields;let i=index">
+        <a class="nav-link"(click)="searchByField(i)">{{item}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
 
-
+    
 
 
 <!-- <a class="nav-item">
