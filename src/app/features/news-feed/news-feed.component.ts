@@ -1,7 +1,10 @@
+import { UsersService } from "src/app/_services/users.service";
+
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "src/app/_services/post.service";
 import { Observable } from "rxjs";
 import { Post } from "src/app/_models/post";
+import { User } from "src/app/_models/user";
 
 @Component({
   selector: "app-news-feed",
@@ -10,7 +13,12 @@ import { Post } from "src/app/_models/post";
 })
 export class NewsFeedComponent implements OnInit {
   items: Post[];
-  constructor(private postService: PostService) {}
+  users: User[];
+  connections: User[];
+  constructor(
+    private postService: PostService,
+    private userService: UsersService
+  ) {}
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(
@@ -20,5 +28,15 @@ export class NewsFeedComponent implements OnInit {
           else return -1;
         }))
     );
+
+    this.userService.getUsers().subscribe(data => {
+      this.users = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as User)
+        } as User;
+      });
+      this.connections = this.users.splice(1, 4);
+    });
   }
 }
