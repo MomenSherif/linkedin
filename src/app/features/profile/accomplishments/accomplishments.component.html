@@ -4,7 +4,6 @@
       <div class="col-md-12">
         <h2>Accomplishments</h2>
         <div
-          href=""
           class="btn btn--inline float-md-right btn--plus mr-4"
           data-toggle="tooltip"
           data-placement="bottom"
@@ -54,11 +53,11 @@
               <i class="fas fa-chevron-up"></i
             ></a>
             <a
-              href="#"
               *ngIf="editAccom[i]"
               class="btn btn--edit btn--inline float-md-right"
               data-toggle="modal"
               data-target=".edit-skills"
+              (click)="currentlyEditingProj(project)"
               ><i class="fas fa-edit"></i
             ></a>
           </div>
@@ -70,5 +69,7 @@
     *ngIf="addAccom"
     (modalClosing)="addAccom = false"
     (formSubmitted)="handelFormSubmission($event)"
+    (deletedProj)="handelDeleteProj($event)"
+    [project]="currentEditingProj"
   ></app-project-form-modal>
 </section>
