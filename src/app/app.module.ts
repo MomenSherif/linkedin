@@ -18,8 +18,6 @@ import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CopyrightComponent } from './core/copyright/copyright.component';
-import { ExperienceSectionService } from './shared/experience-section/experience-section.service';
-
 
 @NgModule({
   declarations: [
@@ -27,7 +25,11 @@ import { ExperienceSectionService } from './shared/experience-section/experience
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    CopyrightComponent
+    CopyrightComponent,
+ feat-news-feed,
+
+    SearchPageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,12 +44,12 @@ import { ExperienceSectionService } from './shared/experience-section/experience
     SearchResultsModule,
     SharedModule,
     HomeModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
   ],
   providers: [
     AngularFirestore,
-    ExperienceSectionService
+
+=======
+    HomeModule
   ],
   
   bootstrap: [AppComponent]
