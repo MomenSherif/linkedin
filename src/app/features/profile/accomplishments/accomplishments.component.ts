@@ -17,7 +17,7 @@ export class AccomplishmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectService.getProjects().subscribe(snapshot => {
-      snapshot.docs.forEach(doc => {
+      snapshot.docs?.forEach(doc => {
         this.projects.push(doc.data());
         this.editAccom.push(false);
         this.notEditAccom.push(true);
