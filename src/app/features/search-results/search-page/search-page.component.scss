@@ -1,0 +1,16 @@
+.search-container{
+    width: 1188px;
+    margin: 0 auto;
+
+    // background-color: violet;
+    display: flex;
+    padding: 20px 26px;
+    &--left{
+        width: 792px;
+        background-color: white;
+        margin-right: 25px;
+        border: 1px solid #CFCFCF;
+       
+        // padding-left:24px ;
+    }
+}

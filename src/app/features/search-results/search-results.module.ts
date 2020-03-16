@@ -8,12 +8,12 @@ import { ConnectListComponent } from './connect-list/connect-list.component';
 @NgModule({
   declarations: [
     SearchResultsComponent,
-    ConnectListComponent
+    ConnectListComponent,
   ],
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     SearchResultsComponent,
     ConnectListComponent
   ]
