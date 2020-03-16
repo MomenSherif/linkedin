@@ -9,10 +9,16 @@ import { Post } from "src/app/_models/post";
   styleUrls: ["./news-feed.component.scss"]
 })
 export class NewsFeedComponent implements OnInit {
-  items: Observable<Post[]>;
+  items: Post[];
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
-    this.items = this.postService.getAllPosts();
+    this.postService.getAllPosts().subscribe(
+      data =>
+        (this.items = data.sort((a, b) => {
+          if (a.date < b.date) return 1;
+          else return -1;
+        }))
+    );
   }
 }

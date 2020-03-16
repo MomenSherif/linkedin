@@ -69,7 +69,7 @@ export class PostService {
   }
 
   //add DONE
-  addPost(userId: string, post: Post) {
+  addPost(userId: string, post) {
     this.UsersCollection.doc(userId)
       .collection(this.dbPath)
       .add(post);
