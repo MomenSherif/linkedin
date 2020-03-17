@@ -23,10 +23,10 @@ export class SkillsService {
     this.authService.user
       .pipe(
         switchMap(user => {
-          this.userRef = user.uid;
+          this.userRef = user?.uid;
           return this.fireStoreService
             .collection("users")
-            .doc(user.uid)
+            ?.doc(user.uid)
             .get();
         })
       )
