@@ -1,61 +1,70 @@
-              <!-- About section -->
-              <section class="p-3" id="About">
-                <div class="container">
-                  <div class="row u-border p-3">
-                    <header class="col-12 d-flex justify-content-between">
-                      <h3>About</h3>
-                      <a href="#" data-toggle="modal" data-target="#FullModal" (click)="onEditAbout()">
-                        <i class="fas fa-pencil-alt profile-icon"></i></a>
-                       <!--about edit modal-->
-                        <div class="modal fade"
-                        [ngStyle]="{ display: display }"
-                        [ngClass]="{ show: editAbout }">
-                          <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="FullModalLabel">
-                                 About
-                                </h5>
-                                <button type="button" class="close" (click)="onCloseEditAbout()">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
-                                  <div class="form-controls">
-                                    <div class="form-group">
-                                      <label for="about">Summary</label>
-                                      <textarea
-                                        class="form-control"
-                                        id="about"
-                                        cols="30"
-                                        rows="6"
-                                        formControlName="about"
-                                      ></textarea>
-                                    </div>
-                                  </div>
-                                </form>
-                              </div>
-                              <div class="modal-footer">
-                                <button
-                                  type="submit"
-                                  class="btn btn-primary"
-                                  [disabled]="form.invalid"
-                                  form="form"
-                                >
-                                  Save
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </header>
-                    <div class="col-12 pt-3">
-                      <p>
-                        {{user?.about }}
-                      </p>
+<!-- About section -->
+<section class="p-3" id="About">
+  <div class="container">
+    <div class="row u-border p-3">
+      <header class="col-12 d-flex justify-content-between">
+        <h3>About</h3>
+        <a data-toggle="modal" data-target="#FullModal" (click)="onEditAbout()">
+          <i class="fas fa-pencil-alt profile-icon"></i
+        ></a>
+        <!--about edit modal-->
+        <div
+          class="modal fade"
+          [ngStyle]="{ display: display }"
+          [ngClass]="{ show: editAbout }"
+        >
+          <div
+            class="modal-dialog modal-lg modal-dialog-scrollable"
+            role="document"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="FullModalLabel">
+                  About
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  (click)="onCloseEditAbout()"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
+                  <div class="form-controls">
+                    <div class="form-group">
+                      <label for="about">Summary</label>
+                      <textarea
+                        class="form-control"
+                        id="about"
+                        cols="30"
+                        rows="6"
+                        formControlName="about"
+                      ></textarea>
                     </div>
                   </div>
-                </div>
-              </section>
-            
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="form.invalid"
+                  form="form"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="col-12 pt-3">
+        <p>
+          {{ user?.about }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

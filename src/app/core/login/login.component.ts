@@ -1,31 +1,28 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/_services/auth.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthService } from "src/app/_services/auth.service";
+import { Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit, OnDestroy {
   signInForm: FormGroup;
 
   userSubscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      email: new FormControl(null, [
-        Validators.required,
-        Validators.email
-      ]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6)
-      ]),
+      ])
     });
 
     // Listen to user state changes
@@ -35,16 +32,19 @@ export class LoginComponent implements OnInit, OnDestroy {
         // this.router.navigate([`/news-feed`])
         console.log(`Logged in as ${user.uid}`);
       } else {
-        console.log('Logged out');
+        console.log("Logged out");
       }
     });
   }
 
-
   onSubmit() {
     const { email, password } = this.signInForm.value;
-    this.authService.login(email, password)
-      .then(() => this.signInForm.reset())
+    this.authService
+      .login(email, password)
+      .then(() => {
+        this.signInForm.reset();
+        this.router.navigate(["/news-feed"]);
+      })
       .catch(err => alert(err.message));
   }
 
