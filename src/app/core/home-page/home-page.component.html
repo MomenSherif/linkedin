@@ -9,9 +9,9 @@
 
   <div class="col-3 row nav__btns">
     <div class="col">
-      <button class="nav__btn--join btn" type="button">Join now</button>
+      <button class="nav__btn--join btn" type="button" routerLink="/sign-up">Join now</button>
     </div>
-    <button class="col nav__btn--sign btn btn-outline-primary" type="button">
+    <button class="col nav__btn--sign btn btn-outline-primary" type="button" routerLink="/log-in">
       Sign in
     </button>
   </div>
@@ -60,9 +60,10 @@
             <span class="fa fa-search"></span>
             <input
               type="search"
-              placeholder="Search job titles or companies"
+              placeholder="Search job titles"
               id=""
               class="search__jobs"
+              #inputsearchJob
             />
           </div>
           <br />
@@ -70,12 +71,13 @@
             <span class="fas fa-map-marker-alt"></span>
             <input
               type="search"
-              placeholder="Location"
+              placeholder="Country"
               id=""
               class="search__location"
+              #inputsearchLocation
             />
           </div>
-          <button type="button" class=" btn btn--rounded-primary ">
+          <button type="button" class=" btn btn--rounded-primary " [routerLink]="['/search-page']" [queryParams]="{name:inputsearchJob.value,location:inputsearchLocation.value}">
             Search Jobs
           </button>
         </div>
@@ -319,9 +321,9 @@
     <h2 class="title__content">
       Join your colleagues, classmates, and friends on LinkedIn.
     </h2>
-    <a href="" class="title__btn  btn btn--rounded-primary">Get started</a>
+    <a class="title__btn  btn btn--rounded-primary" routerLink="/sign-up">Get started</a>
   </div>
 </div>
 
-<!-- <app-footer></app-footer> -->
-<!-- <app-copyright></app-copyright> -->
+<!-- <app-footer></app-footer> 
+<app-copyright></app-copyright> -->
