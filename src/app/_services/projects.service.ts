@@ -31,11 +31,6 @@ export class ProjectsService {
           .get();
       })
     );
-    // return this.fireStoreService
-    //   .collection("users")
-    //   .doc(this.userRef)
-    //   .collection("projects")
-    //   .get();
   }
 
   addProject(project: Project): Promise<DocumentReference> {

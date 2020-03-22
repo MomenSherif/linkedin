@@ -8,14 +8,15 @@
   <!-- posts section -->
   <div class="col-lg-5 col-md-8 col-sm-8">
     <app-add-post></app-add-post>
-    <app-post *ngFor="let item of items | async" [post]="item"></app-post>
+    <app-post *ngFor="let item of items" [post]="item"></app-post>
   </div>
   <!-- connection section -->
   <div class="col-lg-3 col-sm-12 col-md-10">
     <div class="connect-suggestions-list pt-2">
-      <app-connect-list></app-connect-list>
-      <app-connect-list></app-connect-list>
-      <app-connect-list></app-connect-list>
+      <app-connect-list
+        *ngFor="let user of connections"
+        [user]="user"
+      ></app-connect-list>
     </div>
   </div>
 </div>
