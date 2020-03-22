@@ -23,19 +23,14 @@ export class ProjectsService {
   getProjects(): Observable<QuerySnapshot<Project>> {
     return this.authService.user.pipe(
       switchMap(user => {
-        this.userRef = user.uid;
+        this.userRef = user?.uid;
         return this.fireStoreService
           .collection("users")
           .doc(this.userRef)
-          .collection("projects")
+          ?.collection("projects")
           .get();
       })
     );
-    // return this.fireStoreService
-    //   .collection("users")
-    //   .doc(this.userRef)
-    //   .collection("projects")
-    //   .get();
   }
 
   addProject(project: Project): Promise<DocumentReference> {

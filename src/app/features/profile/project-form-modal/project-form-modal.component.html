@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form id="projectForm" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-controls">
             <div class="form-group">
               <label for="project" class="required">Project name</label>
@@ -183,7 +183,7 @@
           type="submit"
           class="btn btn-primary"
           [disabled]="form.invalid"
-          form="form"
+          form="projectForm"
         >
           Save
         </button>

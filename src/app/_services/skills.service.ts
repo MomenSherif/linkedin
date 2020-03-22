@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import {
   AngularFirestore,
   AngularFirestoreDocument
-} from "@angular/fire/firestore";
-import "firebase/firestore";
-import { switchMap } from "rxjs/operators";
-import { Skill } from "../_models/skill";
-import * as firebase from "firebase";
-import { AuthService } from "./auth.service";
+} from '@angular/fire/firestore';
+import 'firebase/firestore';
+import { switchMap } from 'rxjs/operators';
+import { Skill } from '../_models/skill';
+import * as firebase from 'firebase';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: "root"
@@ -18,20 +18,22 @@ export class SkillsService {
   constructor(
     private fireStoreService: AngularFirestore,
     private authService: AuthService
-  ) {}
+  ) { }
+
   getSkills(): Skill[] {
     this.authService.user
       .pipe(
         switchMap(user => {
-          this.userRef = user.uid;
+
+          this.userRef = user?.uid;
           return this.fireStoreService
-            .collection("users")
-            .doc(user.uid)
+            .collection('users')
+            ?.doc(user.uid)
             .get();
         })
       )
       .subscribe(snapshot => {
-        snapshot.get("skills")?.forEach(skill => {
+        snapshot.get('skills')?.forEach(skill => {
           this.userSkills.push({
             name: skill
           });

@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { SkillsService } from "src/app/_services/skills.service";
-import { Skill } from "src/app/_models/skill";
+import { Component, OnInit } from '@angular/core';
+import { SkillsService } from 'src/app/_services/skills.service';
+import { Skill } from 'src/app/_models/skill';
 
 @Component({
-  selector: "app-skills",
-  templateUrl: "./skills.component.html",
-  styleUrls: ["./skills.component.scss"]
+  selector: 'app-skills',
+  templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
-  addSkill: boolean = false;
-  editSkills: boolean = false;
-  skillAlreadeyExist: boolean = false;
-  showM: boolean = true;
-  showL: boolean = false;
+  addSkill = false;
+  editSkills = false;
+  skillAlreadeyExist = false;
+  showM = true;
+  showL = false;
   skills: Skill[];
   skillName: Skill;
-  constructor(private skillService: SkillsService) {}
+  constructor(private skillService: SkillsService) { }
 
   ngOnInit(): void {
     this.skills = this.skillService.getSkills();

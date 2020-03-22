@@ -13,9 +13,13 @@ import { User as linkedinUser } from 'src/app/_models/user';
 export class AuthService {
   // onAuthStateChanged
   user: Observable<User>;
+  currentUser: string;
+
+
 
   constructor(private firebaseAuth: AngularFireAuth, private db: AngularFirestore) {
     this.user = firebaseAuth.authState;
+    this.user.subscribe(({ uid }) => this.currentUser = uid);
   }
 
   signUp(email: string, password: string, userData: linkedinUser) {

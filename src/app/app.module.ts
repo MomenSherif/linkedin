@@ -8,7 +8,6 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './features/profile/profile.module';
-import { HomeModule } from './core/home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { NewsFeedModule } from './features/news-feed/news-feed.module';
 import { SearchResultsModule } from './features/search-results/search-results.module';
@@ -21,11 +20,13 @@ import { CopyrightComponent } from './core/copyright/copyright.component';
 import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
 
 import { ExperienceSectionService } from './shared/experience-section/experience-section.service';
+import { HomeComponent } from './core/home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     SignupComponent,
     LoginComponent,
     FooterComponent,
@@ -45,8 +46,7 @@ import { ExperienceSectionService } from './shared/experience-section/experience
     NewsFeedModule,
     SearchResultsModule,
     SharedModule,
-    HomeModule
-    // AngularFireDatabaseModule
+
   ],
   providers: [
     AngularFirestore,
@@ -54,4 +54,4 @@ import { ExperienceSectionService } from './shared/experience-section/experience
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
