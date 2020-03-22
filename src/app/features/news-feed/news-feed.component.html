@@ -1,6 +1,22 @@
-<app-nav-main></app-nav-main>
+<app-nav-main (onSearch)="filterProducts($event)" ></app-nav-main>
+<div *ngIf="isSearching">
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngFor="let item of searchFields; let i = index">
+            <a class="nav-link" (click)="onSearchbyField(i)">{{ item }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<app-search-results [filteredArray]="FilteredArray"></app-search-results>
+<app-footer></app-footer>
+<app-copyright></app-copyright>
+</div>
 
-<div class="row mt-5">
+<div class="row mt-5" *ngIf="!isSearching">
   <!-- profile section -->
   <div class="col-lg-3 col-sm-12 col-md-10">
     <app-profile-section></app-profile-section>

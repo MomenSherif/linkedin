@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { SearchResultsModule } from '../search-results/search-results.module';
 
 import { ExperienceFormModalComponent } from './experience-form-modal/experience-form-modal.component';
 import { EducationFormModalComponent } from './education-form-modal/education-form-modal.component';
@@ -44,11 +45,12 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     // NavMainComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    SearchResultsModule
   ],
   exports: [
     ExperienceFormModalComponent,
