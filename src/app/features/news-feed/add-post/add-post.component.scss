@@ -95,16 +95,21 @@
     background-color: #0073b1;
     border-radius: 50%;
     color: white;
-    height: 3.5rem;
-    width: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    position: relative;
     cursor: pointer;
     font-size: 1.2rem;
     margin: 0.4rem 0;
     &:hover {
       background-color: hsla(0, 0%, 100%, 0.15);
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   &-body {
@@ -124,6 +129,7 @@
       min-height: 10rem;
       max-height: calc(100vh - 36rem);
       padding-left: 2.4rem;
+      padding-right: 2.4rem;
     }
     // &_textContainer{
     //     font-size: 1.8rem;
@@ -260,7 +266,6 @@
 }
 .modal-content {
   width: 90%;
-  height: 540px;
 }
 .mypost-profilepic {
   height: 50px;

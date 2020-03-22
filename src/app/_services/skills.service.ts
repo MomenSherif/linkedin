@@ -1,16 +1,16 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreDocument
-} from "@angular/fire/firestore";
-import "firebase/firestore";
-import { switchMap } from "rxjs/operators";
-import { Skill } from "../_models/skill";
-import * as firebase from "firebase";
-import { AuthService } from "./auth.service";
+} from '@angular/fire/firestore';
+import 'firebase/firestore';
+import { switchMap } from 'rxjs/operators';
+import { Skill } from '../_models/skill';
+import * as firebase from 'firebase';
+import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class SkillsService {
   userSkills: Skill[] = [];
@@ -18,20 +18,20 @@ export class SkillsService {
   constructor(
     private fireStoreService: AngularFirestore,
     private authService: AuthService
-  ) {}
+  ) { }
   getSkills(): Skill[] {
     this.authService.user
       .pipe(
         switchMap(user => {
           this.userRef = user?.uid;
           return this.fireStoreService
-            .collection("users")
+            .collection('users')
             ?.doc(user.uid)
             .get();
         })
       )
       .subscribe(snapshot => {
-        snapshot.get("skills")?.forEach(skill => {
+        snapshot.get('skills')?.forEach(skill => {
           this.userSkills.push({
             name: skill
           });
@@ -55,7 +55,7 @@ export class SkillsService {
     return this.userSkills;
   }
   addSkill(skill: Skill): boolean {
-    let alreadyExist: boolean = false;
+    let alreadyExist = false;
     this.userSkills.forEach(sk => {
       if (sk.name === skill.name) {
         alreadyExist = true;
@@ -66,13 +66,13 @@ export class SkillsService {
     } else {
       this.userSkills.push(skill);
       this.fireStoreService
-        .collection("users")
+        .collection('users')
         .doc(this.userRef)
         .update({
           skills: firebase.firestore.FieldValue.arrayUnion(skill.name)
         })
-        .then(function() {
-          console.log("Document successfully updated!");
+        .then(function () {
+          console.log('Document successfully updated!');
         })
         .catch(reason => {
           console.log(reason);
@@ -84,18 +84,18 @@ export class SkillsService {
     this.userSkills.push(skill);
   }
   deleteSkillFromUi(skill: Skill) {
-    let index = this.userSkills.findIndex(sk => sk.name === skill.name);
+    const index = this.userSkills.findIndex(sk => sk.name === skill.name);
     this.userSkills.splice(index, 1);
   }
 
   deleteSkill(skill: Skill) {
     console.log(skill);
     this.fireStoreService
-      .collection("users")
+      .collection('users')
       .doc(this.userRef)
       .update({ skills: firebase.firestore.FieldValue.arrayRemove(skill.name) })
-      .then(function() {
-        console.log("Deleted");
+      .then(function () {
+        console.log('Deleted');
       })
       .catch(reason => {
         console.log(reason);

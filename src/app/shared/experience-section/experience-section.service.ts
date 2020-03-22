@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import "firebase/firestore";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { Injectable } from '@angular/core';
+import 'firebase/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ExperienceSectionService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
-  userId = "4Fm78GOiEUHnNO8Hr7Yh";
+  userId = '4Fm78GOiEUHnNO8Hr7Yh';
   experienceId: string;
   educationId: string;
   volunteerExpId: string;
@@ -21,12 +21,12 @@ export class ExperienceSectionService {
   addExperience(experience) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("users")
+        .collection('users')
         .doc(this.userId)
-        .collection("experiences")
+        .collection('experiences')
         .add(experience)
         .then(
-          res => {},
+          res => { },
           err => reject(err)
         );
     });
@@ -34,35 +34,35 @@ export class ExperienceSectionService {
 
   getExperiences() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("experiences")
+      .collection('experiences')
       .snapshotChanges();
   }
 
   getExperienceById(id) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("experiences")
+      .collection('experiences')
       .doc(id)
       .snapshotChanges();
   }
 
   updateExperience(newData) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("experiences")
+      .collection('experiences')
       .doc(this.experienceId)
       .set(newData);
   }
 
   deleteExperience() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("experiences")
+      .collection('experiences')
       .doc(this.experienceId)
       .delete();
   }
@@ -75,12 +75,12 @@ export class ExperienceSectionService {
   addEducation(education) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("users")
+        .collection('users')
         .doc(this.userId)
-        .collection("educations")
+        .collection('educations')
         .add(education)
         .then(
-          res => {},
+          res => { },
           err => reject(err)
         );
     });
@@ -88,35 +88,35 @@ export class ExperienceSectionService {
 
   getEducations() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("educations")
+      .collection('educations')
       .snapshotChanges();
   }
 
   getEducationById(id) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("educations")
+      .collection('educations')
       .doc(id)
       .snapshotChanges();
   }
 
   updateEducation(newData) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("educations")
+      .collection('educations')
       .doc(this.educationId)
       .set(newData);
   }
 
   deleteEducation() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("educations")
+      .collection('educations')
       .doc(this.educationId)
       .delete();
   }
@@ -129,12 +129,12 @@ export class ExperienceSectionService {
   addVolunteerExp(volunteerExp) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("users")
+        .collection('users')
         .doc(this.userId)
-        .collection("volunteerExps")
+        .collection('volunteerExps')
         .add(volunteerExp)
         .then(
-          res => {},
+          res => { },
           err => reject(err)
         );
     });
@@ -142,35 +142,35 @@ export class ExperienceSectionService {
 
   getVolunteerExps() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("volunteerExps")
+      .collection('volunteerExps')
       .snapshotChanges();
   }
 
   getVolunteerExpById(id) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("volunteerExps")
+      .collection('volunteerExps')
       .doc(id)
       .snapshotChanges();
   }
 
   updateVolunteerExp(newData) {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("volunteerExps")
+      .collection('volunteerExps')
       .doc(this.volunteerExpId)
       .set(newData);
   }
 
   deleteVolunteerExp() {
     return this.firestore
-      .collection("users")
+      .collection('users')
       .doc(this.userId)
-      .collection("volunteerExps")
+      .collection('volunteerExps')
       .doc(this.volunteerExpId)
       .delete();
   }
