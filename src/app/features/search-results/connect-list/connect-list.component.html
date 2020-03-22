@@ -4,7 +4,7 @@
   </div>
 
   <div class="search-result__info">
-    <a href="" class="name">{{ user?.name }}</a>
+    <a [routerLink]="['/profile/', user?.id]" class="name">{{ user?.name }}</a>
     <p class="data">{{ user?.company }}</p>
     <p class="country">{{ user?.address.country }}</p>
   </div>
