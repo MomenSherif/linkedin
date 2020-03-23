@@ -68,6 +68,7 @@ export class SkillsComponent implements OnInit {
         }
       });
       console.log(this.userNames);
+     
     });
   }
   onCloseEditSkill() {

@@ -9,7 +9,7 @@
       {{ experience.startDate.month }} {{ experience.startDate.year }} -
       <ng-container *ngIf="experience.endDate.month">
         {{ experience.endDate.month }} {{ experience.endDate.year }}
-      </ng-container> 
+      </ng-container>
       <ng-container *ngIf="!experience.endDate.month">Present</ng-container>
     </p>
     <p class="mb-3 text-muted text-sm">{{ experience.location | titlecase }}</p>
@@ -19,7 +19,11 @@
     </p>
   </div>
 
-  <div class="icon-container position-absolute" (click)="switchToEdit()">
+  <div
+    class="icon-container position-absolute"
+    (click)="switchToEdit()"
+    *ngIf="currentOpenUser"
+  >
     <i class="fas fa-pen edit-icon"></i>
   </div>
 </div>

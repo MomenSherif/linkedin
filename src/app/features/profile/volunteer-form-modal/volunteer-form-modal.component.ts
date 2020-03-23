@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Validators, FormBuilder, FormControl } from "@angular/forms";
 import { ExperienceSectionService } from "src/app/shared/experience-section/experience-section.service";
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: "app-volunteer-form-modal",
@@ -10,6 +12,9 @@ import { ExperienceSectionService } from "src/app/shared/experience-section/expe
 export class VolunteerFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
   @Input() inEditMode: boolean;
+
+  userId = "";
+  currentOpenUser: boolean = true;
 
   volunteerExp;
   volunteerExpId;
@@ -47,10 +52,19 @@ export class VolunteerFormModalComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private experienceSectionService: ExperienceSectionService
+    private experienceSectionService: ExperienceSectionService,
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    // Check if current user profile or other
+    this.route.params.subscribe(({ id }) => {
+      this.userId = id ? id : this.authService.currentUser;
+      this.currentOpenUser =
+        this.userId === this.authService.currentUser ? true : false;
+    });
+
     // Add & remove end date validation depend on CurrentlyWokring State
     this.form
       .get("currentlyVolunteering")
@@ -78,13 +92,13 @@ export class VolunteerFormModalComponent implements OnInit {
 
     if (this.inEditMode) {
       this.volunteerExpId = this.experienceSectionService.volunteerExpId;
-      this.getVolunteerExpById();
+      this.getVolunteerExpById(this.userId);
     }
   }
 
-  getVolunteerExpById() {
+  getVolunteerExpById(userId) {
     this.experienceSectionService
-    .getVolunteerExpById(this.volunteerExpId)
+    .getVolunteerExpById(this.volunteerExpId, userId)
     .subscribe(res => {
       this.volunteerExp = res.payload.data();
 
@@ -111,10 +125,10 @@ export class VolunteerFormModalComponent implements OnInit {
 
   onSubmit() {
     if (this.inEditMode) {
-      this.experienceSectionService.updateVolunteerExp(this.form.value);
+      this.experienceSectionService.updateVolunteerExp(this.form.value, this.userId);
     } else {
       this.experienceSectionService
-        .addVolunteerExp(this.form.value)
+        .addVolunteerExp(this.form.value, this.userId)
         .then(res => {});
     }
 
@@ -122,7 +136,7 @@ export class VolunteerFormModalComponent implements OnInit {
   }
 
   onDelete() {
-    this.experienceSectionService.deleteVolunteerExp();
+    this.experienceSectionService.deleteVolunteerExp(this.userId);
     this.onClose();
   }
 

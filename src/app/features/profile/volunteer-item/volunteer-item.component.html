@@ -13,11 +13,15 @@
       <ng-container *ngIf="!volunteerExp.endDate.month">Present</ng-container>
     </p>
     <p class="mb-0 text-sm">
-      {{volunteerExp.description}}
+      {{ volunteerExp.description }}
     </p>
   </div>
 
-  <div class="icon-container position-absolute" (click)="switchToEdit()">
+  <div
+    class="icon-container position-absolute"
+    (click)="switchToEdit()"
+    *ngIf="currentOpenUser"
+  >
     <i class="fas fa-pen edit-icon"></i>
   </div>
 </div>

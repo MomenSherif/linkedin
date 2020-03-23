@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ExperienceSectionService } from "src/app/shared/experience-section/experience-section.service";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "src/app/_services/auth.service";
 
 @Component({
   selector: "app-experience-section",
@@ -7,6 +9,9 @@ import { ExperienceSectionService } from "src/app/shared/experience-section/expe
   styleUrls: ["./experience-section.component.scss"]
 })
 export class ExperienceSectionComponent implements OnInit {
+  userId = "";
+  currentOpenUser: boolean = true;
+
   isExperienceModalOpen = false;
   isEducationModalOpen = false;
   isVolunteerModalOpen = false;
@@ -19,31 +24,46 @@ export class ExperienceSectionComponent implements OnInit {
   educations;
   volunteerExps;
 
-  constructor(private experienceSectionService: ExperienceSectionService) {}
+  constructor(
+    private experienceSectionService: ExperienceSectionService,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {
+
+  }
 
   ngOnInit(): void {
-    this.getExperiences();
-    this.getEducations();
-    this.getVolunteerExps();
+    // Check if current user profile or other
+    this.route.params.subscribe(({ id }) => {
+      this.userId = id ? id : this.authService.currentUser;
+      this.currentOpenUser =
+        this.userId === this.authService.currentUser ? true : false;
+      // console.log("Id in URL", this.userId);
+      // console.log("current open user", this.currentOpenUser);
+    });
+
+    this.getExperiences(this.userId);
+    this.getEducations(this.userId);
+    this.getVolunteerExps(this.userId);
   }
 
-  getExperiences = () => {
-    this.experienceSectionService.getExperiences().subscribe(
-      res => (this.experiences = res)
-    );
-  }
+  getExperiences = (userId) => {
+    this.experienceSectionService
+      .getExperiences(userId)
+      .subscribe(res => (this.experiences = res));
+  };
 
-  getEducations = () => {
-    this.experienceSectionService.getEducations().subscribe(
-      res => (this.educations = res)
-    )
-  }
+  getEducations = (userId) => {
+    this.experienceSectionService
+      .getEducations(userId)
+      .subscribe(res => (this.educations = res));
+  };
 
-  getVolunteerExps = () => {
-    this.experienceSectionService.getVolunteerExps().subscribe(
-      res => (this.volunteerExps = res)
-    )
-  }
+  getVolunteerExps = (userId) => {
+    this.experienceSectionService
+      .getVolunteerExps(userId)
+      .subscribe(res => (this.volunteerExps = res));
+  };
 
   toggleExperienceModal() {
     this.isExperienceModalOpen = !this.isExperienceModalOpen;

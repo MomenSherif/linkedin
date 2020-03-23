@@ -4,6 +4,7 @@
     <div
       class="icon-container add-container position-absolute"
       (click)="inExperienceAdd()"
+      *ngIf="currentOpenUser"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
@@ -12,6 +13,7 @@
       <app-experience-item
         [experience]="experience.payload.doc.data()"
         [experienceId]="experience.payload.doc.id"
+        [currentOpenUser]="currentOpenUser"
         (inEditMode)="inExperienceEdit()"
       ></app-experience-item>
       <div
@@ -28,6 +30,7 @@
     <div
       class="icon-container add-container position-absolute"
       (click)="inEducationAdd()"
+      *ngIf="currentOpenUser"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
@@ -37,6 +40,7 @@
       <app-education-item
         [education]="education.payload.doc.data()"
         [educationId]="education.payload.doc.id"
+        [currentOpenUser]="currentOpenUser"
         (inEditMode)="inEducationEdit()"
       ></app-education-item>
       <div
@@ -53,6 +57,7 @@
     <div
       class="icon-container add-container position-absolute"
       (click)="inVolunteerAdd()"
+      *ngIf="currentOpenUser"
     >
       <i class="fas fa-plus add-icon"></i>
     </div>
@@ -61,6 +66,7 @@
       <app-volunteer-item
         [volunteerExp]="volunteerExp.payload.doc.data()"
         [volunteerExpId]="volunteerExp.payload.doc.id"
+        [currentOpenUser]="currentOpenUser"
         (inEditMode)="inVolunteerEdit()"
       ></app-volunteer-item>
       <div
