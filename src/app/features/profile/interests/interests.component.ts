@@ -14,7 +14,6 @@ export class InterestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.interestCompanies = this.interestService.getInterestsCompanies();
-    console.log(this.interestCompanies);
   }
 
   onAllIntresetsOpen() {

@@ -19,20 +19,48 @@
           data-target="#SkillsModal"
           >Add a New Skill</a
         >
-        <div *ngFor="let skill of skills" class="skill">
+        <div *ngFor="let skill of skills; let i = index" class="skill">
           <div class="skillEndor">
             <div class="endorsment" *ngIf="!currentOpenUser">
-              <i class="fa fa-plus endorsment__icon"></i>
+              <i
+                (click)="currentEditingEndo = i; onAddEndors(skill)"
+                *ngIf="
+                  !endorsedBy[i]?.endors?.includes(currentUser) &&
+                  removeEndorsment[i]
+                "
+                class="fa fa-plus endorsment__icon"
+              ></i>
+              <i
+                *ngIf="
+                  endorsedBy[i]?.endors?.includes(currentUser) ||
+                  addEndorsment[i]
+                "
+                (click)="currentEditingEndo = i; onRemoveEndors(skill)"
+                class="fa fa-check endorsment__icon"
+              ></i>
             </div>
             <div class="skill__title">
               <h4 class="skill__name">{{ skill.name }}</h4>
-              <span class="skill__no-of-endorsments"> &nbsp;.1</span>
+              <span
+                *ngIf="endorsedBy[i]?.endors?.length > 0"
+                class="skill__no-of-endorsments"
+              >
+                &nbsp;.{{ endorsedBy[i]?.endors?.length }}</span
+              >
             </div>
           </div>
-          <div class="skill__description">
-            <p class="skill__endorsed-person">Menna Elnoqally</p>
+          <div
+            *ngIf="endorsedBy[i]?.endors?.length > 0"
+            class="skill__description"
+          >
+            <p class="skill__endorsed-person">
+              {{ userNames[i] }}
+            </p>
             <p class="skill__endorsment-description">
               &nbsp; has given an endorsement for this skill
+              <span *ngIf="endorsedBy[i]?.endors?.length - 1 > 0">
+                and {{ endorsedBy[i]?.endors?.length - 1 }} others
+              </span>
             </p>
           </div>
         </div>

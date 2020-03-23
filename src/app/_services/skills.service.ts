@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/firestore";
+import {
+  AngularFirestore,
+  QuerySnapshot,
+  DocumentChangeAction
+} from "@angular/fire/firestore";
 import "firebase/firestore";
 import { switchMap } from "rxjs/operators";
 import { Skill } from "../_models/skill";
@@ -18,103 +22,129 @@ export class SkillsService {
     private authService: AuthService
   ) {}
 
-  getSkills(userId: string): Skill[] {
-    this.userSkills = [];
-    this.fireStoreService
+  getUserSkills(userId: string): Observable<DocumentChangeAction<Skill>[]> {
+    return this.fireStoreService
+      .collection("users")
+      .doc(userId)
+      ?.collection("skills")
+      .snapshotChanges();
+  }
+  getSkills(userId: string): Observable<QuerySnapshot<Skill>> {
+    return this.fireStoreService
       .collection("users")
       ?.doc(userId)
-      .get()
-      .subscribe(snapshot => {
-        snapshot.get("skills")?.forEach(skill => {
-          this.userSkills.push({
-            name: skill
-          });
-        });
-      });
-
-    // this.authService.user
-    //   .pipe(
-    //     switchMap(user => {
-
-    //       this.userRef = user?.uid;
-    //       return this.fireStoreService
-    //         .collection('users')
-    //         ?.doc(user.uid)
-    //         .get();
-    //     })
-    //   )
-    //   .subscribe(snapshot => {
-    //     snapshot.get('skills')?.forEach(skill => {
-    //       this.userSkills.push({
-    //         name: skill
-    //       });
-    //     });
-    //   });
-    // this.authService.user.subscribe(us => {
-    //   this.userRef = us.uid;
-    //   this.fireStoreService
-    //     .collection("users")
-    //     .doc(this.userRef)
-    //     .get()
-    //     .subscribe(snapshot => {
-    //       snapshot.get("skills")?.forEach(skill => {
-    //         this.userSkills.push({
-    //           name: skill
-    //         });
-    //       });
-    //     });
-    // });
-
-    return this.userSkills;
+      ?.collection("skills")
+      .get();
   }
-  addSkill(skill: Skill): boolean {
-    let alreadyExist: boolean = false;
+  addUserSkill(skill: Skill) {
     this.userRef = this.authService.currentUser;
-    this.userSkills.forEach(sk => {
-      if (sk.name === skill.name) {
-        alreadyExist = true;
-      }
-    });
-    if (alreadyExist) {
-      return true;
-    } else {
-      this.userSkills.push(skill);
-      this.fireStoreService
-        .collection("users")
-        .doc(this.userRef)
-        .update({
-          skills: firebase.firestore.FieldValue.arrayUnion(skill.name)
-        })
-        .then(function() {
-          console.log("Document successfully updated!");
-        })
-        .catch(reason => {
-          console.log(reason);
-        });
-      return false;
-    }
-  }
-  addSkillToUi(skill: Skill) {
-    this.userSkills.push(skill);
-  }
-  deleteSkillFromUi(skill: Skill) {
-    let index = this.userSkills.findIndex(sk => sk.name === skill.name);
-    this.userSkills.splice(index, 1);
-  }
-
-  deleteSkill(skill: Skill) {
-    console.log(skill);
-    this.userRef = this.authService.currentUser;
-    this.fireStoreService
+    return this.fireStoreService
       .collection("users")
       .doc(this.userRef)
-      .update({ skills: firebase.firestore.FieldValue.arrayRemove(skill.name) })
-      .then(function() {
-        console.log("Deleted");
-      })
-      .catch(reason => {
-        console.log(reason);
-      });
+      .collection("skills")
+      .add(skill);
   }
-  
+
+  deleteUserSkill(skill: Skill) {
+    this.userRef = this.authService.currentUser;
+    this.getUserSkills(this.userRef).subscribe(snapshot => {
+      snapshot.forEach(snap => {
+        if (snap.payload.doc.data()["name"] === skill.name) {
+          return this.fireStoreService
+            .collection("users")
+            .doc(this.userRef)
+            .collection("skills")
+            .doc(snap.payload.doc.id)
+            .delete();
+        }
+      });
+    });
+  }
+
+  getEndorsedBy(userId: string) {
+    return this.fireStoreService
+      .collection("users")
+      .doc(userId)
+      ?.collection("skills")
+      .snapshotChanges();
+  }
+
+  addEndorsement(userId: string, skill: Skill) {
+    this.userRef = this.authService.currentUser;
+    this.getSkills(userId).subscribe(snapshot => {
+      snapshot.docs.forEach(doc => {
+        if (doc.data()["name"] === skill.name) {
+          if (doc.data()["endorsedBy"] === undefined) {
+            this.fireStoreService
+              .collection("users")
+              .doc(userId)
+              ?.collection("skills")
+              .doc(doc.id)
+              .set(
+                {
+                  endorsedBy: [this.userRef]
+                },
+                { merge: true }
+              )
+              .then(() => {
+                console.log("Added endorsedBy");
+              })
+              .catch(e => {
+                console.log(e);
+              });
+          } else {
+            this.fireStoreService
+              .collection("users")
+              .doc(userId)
+              ?.collection("skills")
+              .doc(doc.id)
+              .update({
+                endorsedBy: firebase.firestore.FieldValue.arrayUnion(
+                  this.userRef
+                )
+              })
+              .then(() => {
+                console.log("Updated endorsedBy");
+              })
+              .catch(e => {
+                console.log(e);
+              });
+          }
+        }
+      });
+    });
+  }
+
+  deleteEndorsement(userId: string, skill: Skill) {
+    this.userRef = this.authService.currentUser;
+    this.getSkills(userId).subscribe(snapshot => {
+      snapshot.docs.forEach(doc => {
+        if (doc.data()["name"] === skill.name) {
+          this.fireStoreService
+            .collection("users")
+            .doc(userId)
+            ?.collection("skills")
+            .doc(doc.id)
+            .update({
+              endorsedBy: firebase.firestore.FieldValue.arrayRemove(
+                this.userRef
+              )
+            })
+            .then(() => {
+              console.log("Deleted endorsedBy");
+            })
+            .catch(e => {
+              console.log(e);
+            });
+        }
+      });
+    });
+  }
+
+  getUserById(userId: string) {
+    return this.fireStoreService
+      .collection("users")
+      .doc(userId)
+      .get();
+  }
 }
