@@ -32,6 +32,7 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getUserById(this.userId).subscribe(data => {
       console.log("data", data.payload.data());
       this.user = data.payload.data() as User;
+      this.user.id=this.userId;
       this.userService.getUserEducation(this.userId).subscribe(dataa => {
         this.user.educations = dataa.map(e =>
           e.payload.doc.data()

@@ -27,6 +27,7 @@ export class UsersService {
     return this.firestore.collection('policies').add(user);
   }
   updateUser(user: User) {
+    console.log(user);
     this.firestore.doc('users/' + user.id).update(user);
   }
   deleteUser(userID: string) {
