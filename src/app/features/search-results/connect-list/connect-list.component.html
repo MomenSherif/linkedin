@@ -6,7 +6,7 @@
   <div class="search-result__info">
     <a [routerLink]="['/profile/', user?.id]" class="name">{{ user?.name }}</a>
     <p class="data">{{ user?.company }}</p>
-    <p class="country">{{ user?.address.country }}</p>
+    <p class="country">{{ user?.address?.country }}</p>
   </div>
 
   <div class="search-result__action">
