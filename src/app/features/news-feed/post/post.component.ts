@@ -1,3 +1,4 @@
+import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "./../../../_services/auth.service";
 import { UsersService } from "./../../../_services/users.service";
 import { CommentService } from "./../../../_services/comment.service";
@@ -24,13 +25,15 @@ export class PostComponent implements OnInit {
     private postService: PostService,
     private commentService: CommentService,
     private userService: UsersService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.authService.user.subscribe(user => {
-      this.currentUser = user.uid;
+    this.route.params.subscribe(({ id }) => {
+      this.currentUser = id ? id : this.authService.currentUser;
     });
+
     this.userService.getUserById(this.post.authorId).subscribe(data => {
       this.user = data.payload.data() as User;
     });
