@@ -31,7 +31,7 @@ export class SkillsComponent implements OnInit {
       this.userId = id ? id : this.authService.currentUser;
       this.currentOpenUser =
         this.userId === this.authService.currentUser ? true : false;
-      console.log(this.userId);
+      // console.log(this.userId);
       this.skills = [];
       this.skills = this.skillService.getSkills(this.userId);
     });

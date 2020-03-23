@@ -10,6 +10,7 @@ export class ExperienceItemComponent implements OnInit {
   @Output() inEditMode = new EventEmitter<void>();
   @Input() experience;
   @Input() experienceId;
+  @Input() currentOpenUser;
 
 
   constructor(private experienceSectionService: ExperienceSectionService) {}

@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
-import 'firebase/firestore';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Injectable, OnInit } from "@angular/core";
+import "firebase/firestore";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AuthService } from "src/app/_services/auth.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ExperienceSectionService {
-  constructor(private firestore: AngularFirestore) { }
+  // userId = "4Fm78GOiEUHnNO8Hr7Yh";
+  userId = ""; // just an initial value
+  currentOpenUser: boolean = true;
 
-  userId = '4Fm78GOiEUHnNO8Hr7Yh';
   experienceId: string;
   educationId: string;
   volunteerExpId: string;
@@ -17,52 +20,60 @@ export class ExperienceSectionService {
   educations;
   volunteerExps;
 
+  constructor(
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {
+
+  }
+
   // Experience CRUD operations
-  addExperience(experience) {
+  addExperience(experience, userId) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection('users')
-        .doc(this.userId)
-        .collection('experiences')
+        .collection("users")
+        .doc(userId)
+        .collection("experiences")
         .add(experience)
         .then(
-          res => { },
+          res => {},
           err => reject(err)
         );
     });
   }
 
-  getExperiences() {
+  getExperiences(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('experiences')
+      .collection("users")
+      .doc(userId)
+      .collection("experiences")
       .snapshotChanges();
   }
 
-  getExperienceById(id) {
+  getExperienceById(id, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('experiences')
+      .collection("users")
+      .doc(userId)
+      .collection("experiences")
       .doc(id)
       .snapshotChanges();
   }
 
-  updateExperience(newData) {
+  updateExperience(newData, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('experiences')
+      .collection("users")
+      .doc(userId)
+      .collection("experiences")
       .doc(this.experienceId)
       .set(newData);
   }
 
-  deleteExperience() {
+  deleteExperience(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('experiences')
+      .collection("users")
+      .doc(userId)
+      .collection("experiences")
       .doc(this.experienceId)
       .delete();
   }
@@ -72,51 +83,51 @@ export class ExperienceSectionService {
   }
 
   // Education CRUD operations
-  addEducation(education) {
+  addEducation(education, userId) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection('users')
-        .doc(this.userId)
-        .collection('educations')
+        .collection("users")
+        .doc(userId)
+        .collection("educations")
         .add(education)
         .then(
-          res => { },
+          res => {},
           err => reject(err)
         );
     });
   }
 
-  getEducations() {
+  getEducations(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('educations')
+      .collection("users")
+      .doc(userId)
+      .collection("educations")
       .snapshotChanges();
   }
 
-  getEducationById(id) {
+  getEducationById(id, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('educations')
+      .collection("users")
+      .doc(userId)
+      .collection("educations")
       .doc(id)
       .snapshotChanges();
   }
 
-  updateEducation(newData) {
+  updateEducation(newData, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('educations')
+      .collection("users")
+      .doc(userId)
+      .collection("educations")
       .doc(this.educationId)
       .set(newData);
   }
 
-  deleteEducation() {
+  deleteEducation(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('educations')
+      .collection("users")
+      .doc(userId)
+      .collection("educations")
       .doc(this.educationId)
       .delete();
   }
@@ -126,51 +137,51 @@ export class ExperienceSectionService {
   }
 
   // Volunteer experience CRUD operations
-  addVolunteerExp(volunteerExp) {
+  addVolunteerExp(volunteerExp, userId) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection('users')
-        .doc(this.userId)
-        .collection('volunteerExps')
+        .collection("users")
+        .doc(userId)
+        .collection("volunteerExps")
         .add(volunteerExp)
         .then(
-          res => { },
+          res => {},
           err => reject(err)
         );
     });
   }
 
-  getVolunteerExps() {
+  getVolunteerExps(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('volunteerExps')
+      .collection("users")
+      .doc(userId)
+      .collection("volunteerExps")
       .snapshotChanges();
   }
 
-  getVolunteerExpById(id) {
+  getVolunteerExpById(id, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('volunteerExps')
+      .collection("users")
+      .doc(userId)
+      .collection("volunteerExps")
       .doc(id)
       .snapshotChanges();
   }
 
-  updateVolunteerExp(newData) {
+  updateVolunteerExp(newData, userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('volunteerExps')
+      .collection("users")
+      .doc(userId)
+      .collection("volunteerExps")
       .doc(this.volunteerExpId)
       .set(newData);
   }
 
-  deleteVolunteerExp() {
+  deleteVolunteerExp(userId) {
     return this.firestore
-      .collection('users')
-      .doc(this.userId)
-      .collection('volunteerExps')
+      .collection("users")
+      .doc(userId)
+      .collection("volunteerExps")
       .doc(this.volunteerExpId)
       .delete();
   }
@@ -178,6 +189,4 @@ export class ExperienceSectionService {
   setVolunteerExpId(volunteerExpId) {
     this.volunteerExpId = volunteerExpId;
   }
-
-
 }

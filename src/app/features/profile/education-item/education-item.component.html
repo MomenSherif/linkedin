@@ -12,11 +12,15 @@
       {{ education.startYear }} - {{ education.endYear }}
     </p>
     <p class="mb-0 text-sm">
-      {{education.description}}
+      {{ education.description }}
     </p>
   </div>
 
-  <div class="icon-container position-absolute" (click)="switchToEdit()">
+  <div
+    class="icon-container position-absolute"
+    (click)="switchToEdit()"
+    *ngIf="currentOpenUser"
+  >
     <i class="fas fa-pen edit-icon"></i>
   </div>
 </div>

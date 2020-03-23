@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Validators, FormBuilder, FormControl } from "@angular/forms";
 import { ExperienceSectionService } from 'src/app/shared/experience-section/experience-section.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: "app-education-form-modal",
@@ -10,6 +12,9 @@ import { ExperienceSectionService } from 'src/app/shared/experience-section/expe
 export class EducationFormModalComponent implements OnInit {
   @Output() modalClosing = new EventEmitter<void>();
   @Input() inEditMode: boolean;
+
+  userId = "";
+  currentOpenUser: boolean = true;
 
   education;
   educationId;
@@ -42,10 +47,19 @@ export class EducationFormModalComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private experienceSectionService: ExperienceSectionService
+    private experienceSectionService: ExperienceSectionService,
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    // Check if current user profile or other
+    this.route.params.subscribe(({ id }) => {
+      this.userId = id ? id : this.authService.currentUser;
+      this.currentOpenUser =
+        this.userId === this.authService.currentUser ? true : false;
+    });
+
     // Add years till current year
     let currentYear = new Date().getFullYear() + 7;
     const startYear = 1900;
@@ -55,13 +69,13 @@ export class EducationFormModalComponent implements OnInit {
 
     if(this.inEditMode) {
       this.educationId = this.experienceSectionService.educationId;
-      this.getEducationById();
+      this.getEducationById(this.userId);
     }
   }
 
-  getEducationById = () => {
+  getEducationById = (userId) => {
     this.experienceSectionService
-    .getEducationById(this.educationId)
+    .getEducationById(this.educationId, userId)
     .subscribe(res => {
       this.education = res.payload.data();
 
@@ -83,10 +97,10 @@ export class EducationFormModalComponent implements OnInit {
 
   onSubmit() {
     if (this.inEditMode) {
-      this.experienceSectionService.updateEducation(this.form.value);
+      this.experienceSectionService.updateEducation(this.form.value, this.userId);
     } else {
       this.experienceSectionService
-        .addEducation(this.form.value)
+        .addEducation(this.form.value, this.userId)
         .then(res => {});
     }
 
@@ -94,7 +108,7 @@ export class EducationFormModalComponent implements OnInit {
   }
 
   onDelete() {
-    this.experienceSectionService.deleteEducation();
+    this.experienceSectionService.deleteEducation(this.userId);
     this.onClose();
   }
 

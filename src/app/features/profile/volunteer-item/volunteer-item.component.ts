@@ -10,6 +10,7 @@ export class VolunteerItemComponent implements OnInit {
   @Output() inEditMode = new EventEmitter<void>();
   @Input() volunteerExp;
   @Input() volunteerExpId;
+  @Input() currentOpenUser;
 
   constructor(private experienceSectionService: ExperienceSectionService) { }
 
