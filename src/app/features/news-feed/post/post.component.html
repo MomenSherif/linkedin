@@ -9,7 +9,12 @@
             class="far fa-trash-alt icon"
             (click)="deletePost(post.authorId, post.id)"
           ></i>
-          <h6>{{ user?.name }}</h6>
+          <h6
+            [routerLink]="['/profile/', post.authorId]"
+            style="cursor: pointer;"
+          >
+            {{ user?.name }}
+          </h6>
           <small class="text-muted">{{ user?.jobTitle }}</small>
           <small class="text-muted">Last updated at {{ post.date }}</small>
         </div>

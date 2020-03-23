@@ -7,7 +7,10 @@
       <div class="card comment">
         <div class="card-body">
           <div class=" comment--header ">
-            <a class="card-title comment--auther " href="#"
+            <a
+              class="card-title comment--auther "
+              href="#"
+              [routerLink]="['/profile/', comment.authorId]"
               >{{ user?.name }}
             </a>
             <div class=" options-sec">
