@@ -4,7 +4,7 @@
     <div class="row u-border p-3">
       <header class="col-12 d-flex justify-content-between">
         <h3>About</h3>
-        <a data-toggle="modal" data-target="#FullModal" (click)="onEditAbout()">
+        <a data-toggle="modal" data-target="#FullModal" (click)="onEditAbout()" *ngIf="currentOpenUser">
           <i class="fas fa-pencil-alt profile-icon"></i
         ></a>
         <!--about edit modal-->
@@ -26,6 +26,7 @@
                   type="button"
                   class="close"
                   (click)="onCloseEditAbout()"
+                  
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
