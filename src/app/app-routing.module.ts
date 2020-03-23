@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { HomeComponent } from './core/home-page/home-page.component';
+import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -27,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -14,6 +14,9 @@ export class NewsFeedComponent implements OnInit {
   items: Post[];
   users: User[];
   connections: User[];
+  FilteredArray: User[] = [];
+  isSearching = false;
+  searchFields = ["People", "Jobs", "Company", "Country"];
   constructor(
     private postService: PostService,
     private userService: UsersService
@@ -37,5 +40,19 @@ export class NewsFeedComponent implements OnInit {
       });
       this.connections = this.users.splice(1, 4);
     });
+  }
+  filterProducts(inputval) {
+    this.FilteredArray = this.userService.filterProducts(inputval);
+    if(inputval===''){
+      this.isSearching = false;
+
+    }else{
+
+      this.isSearching = true;
+    }
+  }
+  onSearchbyField(i) {
+    console.log(i);
+    this.FilteredArray = this.userService.ChooseField(i);
   }
 }

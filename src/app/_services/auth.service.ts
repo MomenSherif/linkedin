@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private firebaseAuth: AngularFireAuth, private db: AngularFirestore) {
     this.user = firebaseAuth.authState;
-    this.user.subscribe(({ uid }) => this.currentUser = uid);
+    this.user.subscribe((user) => this.currentUser = user ? user.uid : '');
   }
 
   signUp(email: string, password: string, userData: linkedinUser) {

@@ -1,23 +1,24 @@
-import { AuthService } from "./../../../_services/auth.service";
-import { UsersService } from "./../../../_services/users.service";
-import { CommentService } from "./../../../_services/comment.service";
-import { Post } from "./../../../_models/post";
-import { Component, OnInit, Input, ViewChild } from "@angular/core";
-import { PostService } from "src/app/_services/post.service";
-import { Observable } from "rxjs";
-import { formatDate } from "@angular/common";
-import { User } from "src/app/_models/user";
+import { AuthService } from './../../../_services/auth.service';
+import { UsersService } from './../../../_services/users.service';
+import { CommentService } from './../../../_services/comment.service';
+import { Post } from './../../../_models/post';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
+import { PostService } from 'src/app/_services/post.service';
+import { Observable, Subscription } from 'rxjs';
+import { formatDate } from '@angular/common';
+import { User } from 'src/app/_models/user';
 
 @Component({
-  selector: "app-post",
-  templateUrl: "./post.component.html",
-  styleUrls: ["./post.component.scss"]
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
   @Input() post: Post;
-  @ViewChild("commentInput") commentInput;
+  @ViewChild('commentInput') commentInput;
   currentUser;
   items: Observable<any>;
+  userSub: Subscription;
   user: User;
 
   constructor(
@@ -25,10 +26,10 @@ export class PostComponent implements OnInit {
     private commentService: CommentService,
     private userService: UsersService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.authService.user.subscribe(user => {
+    this.userSub = this.authService.user.subscribe(user => {
       this.currentUser = user.uid;
     });
     this.userService.getUserById(this.post.authorId).subscribe(data => {
@@ -42,28 +43,28 @@ export class PostComponent implements OnInit {
     this.postService.getPostComments(userId, postId).subscribe(
       data =>
         (this.post.comments = data.sort((a, b) => {
-          if (a.date > b.date) return 1;
-          else return -1;
+          if (a.date > b.date) { return 1; } else { return -1; }
         }))
     );
   }
 
   checkCommentInput(value) {
-    if (value !== "")
+    if (value !== '') {
       this.addComment(
         this.currentUser,
         this.post.authorId,
         this.post.id,
         value
       );
-    this.commentInput.nativeElement.value = "";
+    }
+    this.commentInput.nativeElement.value = '';
   }
 
   addComment(commentAuthorId, userId, postId, commentCaption) {
     const comment = {
       authorId: commentAuthorId,
       caption: commentCaption,
-      date: formatDate(new Date(), "MMM d, y, h:mm:ss a", "en"),
+      date: formatDate(new Date(), 'MMM d, y, h:mm:ss a', 'en'),
       userLikes: []
     };
     this.commentService.addComment(userId, postId, comment);
@@ -71,7 +72,7 @@ export class PostComponent implements OnInit {
 
   handleLike() {
     if (this.post.userLikes.includes(this.currentUser)) {
-      let index = this.post.userLikes.findIndex(el => el === this.currentUser);
+      const index = this.post.userLikes.findIndex(el => el === this.currentUser);
       this.post.userLikes.splice(index, 1);
       this.postService.updatePost(this.post.authorId, this.post.id, {
         userLikes: this.post.userLikes
@@ -90,5 +91,9 @@ export class PostComponent implements OnInit {
 
   writeComment() {
     this.commentInput.nativeElement.focus();
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

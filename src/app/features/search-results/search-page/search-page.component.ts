@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { UsersService } from 'src/app/_services/users.service';
 
@@ -10,6 +10,8 @@ import { UsersService } from 'src/app/_services/users.service';
 export class SearchPageComponent implements OnInit {
   FilteredArray: User[] = [];
   isSearching = false;
+  searchFields = ["People", "Jobs", "Company", "Country"];
+
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -22,4 +24,5 @@ export class SearchPageComponent implements OnInit {
     console.log(i);
     this.FilteredArray = this.userService.ChooseField(i);
   }
+
 }

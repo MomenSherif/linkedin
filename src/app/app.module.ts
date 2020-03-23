@@ -15,8 +15,7 @@ import { SearchResultsModule } from './features/search-results/search-results.mo
 import { AppComponent } from './app.component';
 import { SignupComponent } from './core/signup/signup.component';
 import { LoginComponent } from './core/login/login.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { CopyrightComponent } from './core/copyright/copyright.component';
+
 import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
 
 import { ExperienceSectionService } from './shared/experience-section/experience-section.service';
@@ -29,8 +28,6 @@ import { HomeComponent } from './core/home-page/home-page.component';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    FooterComponent,
-    CopyrightComponent,
     SearchPageComponent
 
   ],

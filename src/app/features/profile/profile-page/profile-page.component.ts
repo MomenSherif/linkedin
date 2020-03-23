@@ -13,6 +13,9 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class ProfilePageComponent implements OnInit {
   user: User;
   userId: string;
+  FilteredArray: User[] = [];
+  isSearching = false;
+  searchFields = ['People', 'Jobs', 'Company', 'Country'];
   constructor(private userService: UsersService, private route: ActivatedRoute, private authService: AuthService) {
     // Check if current user profile or other
     this.route.params.subscribe(({ id }) => {
@@ -23,7 +26,9 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('user', this.userId);
     this.userService.getUserById(this.userId).subscribe(data => {
+      console.log('data', data.payload.data());
       this.user = data.payload.data() as User;
       this.userService
         .getUserEducation(this.userId)
@@ -34,7 +39,20 @@ export class ProfilePageComponent implements OnInit {
         });
     });
 
+  }
+  filterProducts(inputval) {
+    this.FilteredArray = this.userService.filterProducts(inputval);
+    if (inputval === '') {
+      this.isSearching = false;
 
+    } else {
+
+      this.isSearching = true;
+    }
+  }
+  onSearchbyField(i) {
+    console.log(i);
+    this.FilteredArray = this.userService.ChooseField(i);
   }
 
 }
