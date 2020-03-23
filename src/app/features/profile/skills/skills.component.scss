@@ -173,3 +173,24 @@ $primary-font-color: #1a1a1a;
   max-height: 470px;
   overflow: hidden;
 }
+
+.endorsment {
+  width: 2rem;
+  height: 2rem;
+  background-color: #e5f5fc;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #2d7eaa;
+  }
+}
+.skillEndor {
+  display: flex;
+}

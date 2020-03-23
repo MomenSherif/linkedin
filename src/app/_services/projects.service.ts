@@ -19,18 +19,23 @@ export class ProjectsService {
     private authService: AuthService
   ) {}
   projects: Project[] = [];
-  userRef: string = "4Fm78GOiEUHnNO8Hr7Yh";
-  getProjects(): Observable<QuerySnapshot<Project>> {
-    return this.authService.user.pipe(
-      switchMap(user => {
-        this.userRef = user?.uid;
-        return this.fireStoreService
-          .collection("users")
-          .doc(this.userRef)
-          ?.collection("projects")
-          .get();
-      })
-    );
+  userRef: string = this.authService.currentUser;
+  getProjects(userId: string): Observable<QuerySnapshot<Project>> {
+    return this.fireStoreService
+      .collection("users")
+      .doc(userId)
+      ?.collection("projects")
+      .get();
+    // return this.authService.user.pipe(
+    //   switchMap(user => {
+    //     this.userRef = user?.uid;
+    //     return this.fireStoreService
+    //       .collection("users")
+    //       .doc(this.userRef)
+    //       ?.collection("projects")
+    //       .get();
+    //   })
+    // );
   }
 
   addProject(project: Project): Promise<DocumentReference> {
@@ -42,7 +47,7 @@ export class ProjectsService {
   }
 
   deleteProject(project: Project) {
-    this.getProjects().subscribe(snapshot => {
+    this.getProjects(this.userRef).subscribe(snapshot => {
       snapshot.docs.forEach(doc => {
         if (doc.data().name === project.name) {
           this.fireStoreService
@@ -63,7 +68,7 @@ export class ProjectsService {
   }
 
   updateProject(project: Project) {
-    this.getProjects().subscribe(snapshot => {
+    this.getProjects(this.userRef).subscribe(snapshot => {
       snapshot.docs.forEach(doc => {
         if (doc.data().name === project.name) {
           this.fireStoreService

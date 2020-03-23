@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ProjectsService } from "src/app/_services/projects.service";
 import { Project } from "src/app/_models/project";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "src/app/_services/auth.service";
 
 @Component({
   selector: "app-accomplishments",
@@ -14,14 +16,25 @@ export class AccomplishmentsComponent implements OnInit {
   addAccom: boolean = false;
   projects: Project[] = [];
   currentEditingProj: Project = null;
-  constructor(private projectService: ProjectsService) {}
+  userId: string;
+  currentOpenUser: boolean = true;
+  constructor(
+    private projectService: ProjectsService,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.projectService.getProjects().subscribe(snapshot => {
-      snapshot.docs.forEach(doc => {
-        this.projects.push(doc.data());
-        this.editAccom.push(false);
-        this.notEditAccom.push(true);
+    this.route.params.subscribe(({ id }) => {
+      this.userId = id ? id : this.authService.currentUser;
+      this.currentOpenUser =
+        this.userId === this.authService.currentUser ? true : false;
+      this.projectService.getProjects(this.userId).subscribe(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.projects.push(doc.data());
+          this.editAccom.push(false);
+          this.notEditAccom.push(true);
+        });
       });
     });
   }
