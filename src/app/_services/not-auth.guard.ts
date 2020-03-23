@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
-import { UsersService } from './users.service';
 import {
   Router,
   ActivatedRoute,
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
   CanActivateChild
 } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate, CanActivateChild {
+export class NotAuthGuardService implements CanActivate, CanActivateChild {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
   ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -28,10 +25,10 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   ): boolean | Observable<boolean> | Promise<boolean> {
     return this.authService.user.pipe(
       map(us => {
-        if (us) {
+        if (!us) {
           return true;
         } else {
-          this.router.navigate(['/sign-up']);
+          this.router.navigate(['/news-feed']);
         }
       })
     );

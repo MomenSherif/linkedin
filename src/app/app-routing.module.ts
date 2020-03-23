@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { HomeComponent } from './core/home-page/home-page.component';
-import { SearchPageComponent } from './features/search-results/search-page/search-page.component';
+import { NotAuthGuardService } from './_services/not-auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'sign-up', component: SignupComponent },
-  { path: 'log-in', component: LoginComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [NotAuthGuardService] },
+  { path: 'sign-up', component: SignupComponent, canActivate: [NotAuthGuardService] },
+  { path: 'log-in', component: LoginComponent, canActivate: [NotAuthGuardService] },
   {
     path: 'news-feed',
     canActivateChild: [AuthGuardService],
@@ -28,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
