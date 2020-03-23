@@ -4,6 +4,7 @@
       <div class="col-md-12">
         <h2>Skills &Endorsements</h2>
         <a
+          *ngIf="currentOpenUser"
           (click)="onEditSkill()"
           class="btn btn--edit btn--inline float-md-right"
           data-toggle="modal"
@@ -11,6 +12,7 @@
           ><i class="fas fa-edit"></i
         ></a>
         <a
+          *ngIf="currentOpenUser"
           (click)="onAddSkill()"
           class="btn btn--add btn--inline float-md-right"
           data-toggle="modal"
@@ -18,9 +20,14 @@
           >Add a New Skill</a
         >
         <div *ngFor="let skill of skills" class="skill">
-          <div class="skill__title">
-            <h4 class="skill__name">{{ skill.name }}</h4>
-            <span class="skill__no-of-endorsments"> &nbsp;.1</span>
+          <div class="skillEndor">
+            <div class="endorsment" *ngIf="!currentOpenUser">
+              <i class="fa fa-plus endorsment__icon"></i>
+            </div>
+            <div class="skill__title">
+              <h4 class="skill__name">{{ skill.name }}</h4>
+              <span class="skill__no-of-endorsments"> &nbsp;.1</span>
+            </div>
           </div>
           <div class="skill__description">
             <p class="skill__endorsed-person">Menna Elnoqally</p>

@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
-import 'firebase/firestore';
-import { switchMap } from 'rxjs/operators';
-import { Skill } from '../_models/skill';
-import * as firebase from 'firebase';
-import { AuthService } from './auth.service';
+import { AngularFirestore } from "@angular/fire/firestore";
+import "firebase/firestore";
+import { switchMap } from "rxjs/operators";
+import { Skill } from "../_models/skill";
+import * as firebase from "firebase";
+import { AuthService } from "./auth.service";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -18,27 +16,40 @@ export class SkillsService {
   constructor(
     private fireStoreService: AngularFirestore,
     private authService: AuthService
-  ) { }
+  ) {}
 
-  getSkills(): Skill[] {
-    this.authService.user
-      .pipe(
-        switchMap(user => {
-
-          this.userRef = user?.uid;
-          return this.fireStoreService
-            .collection('users')
-            ?.doc(user.uid)
-            .get();
-        })
-      )
+  getSkills(userId: string): Skill[] {
+    this.userSkills = [];
+    this.fireStoreService
+      .collection("users")
+      ?.doc(userId)
+      .get()
       .subscribe(snapshot => {
-        snapshot.get('skills')?.forEach(skill => {
+        snapshot.get("skills")?.forEach(skill => {
           this.userSkills.push({
             name: skill
           });
         });
       });
+
+    // this.authService.user
+    //   .pipe(
+    //     switchMap(user => {
+
+    //       this.userRef = user?.uid;
+    //       return this.fireStoreService
+    //         .collection('users')
+    //         ?.doc(user.uid)
+    //         .get();
+    //     })
+    //   )
+    //   .subscribe(snapshot => {
+    //     snapshot.get('skills')?.forEach(skill => {
+    //       this.userSkills.push({
+    //         name: skill
+    //       });
+    //     });
+    //   });
     // this.authService.user.subscribe(us => {
     //   this.userRef = us.uid;
     //   this.fireStoreService
@@ -58,6 +69,7 @@ export class SkillsService {
   }
   addSkill(skill: Skill): boolean {
     let alreadyExist: boolean = false;
+    this.userRef = this.authService.currentUser;
     this.userSkills.forEach(sk => {
       if (sk.name === skill.name) {
         alreadyExist = true;
@@ -92,6 +104,7 @@ export class SkillsService {
 
   deleteSkill(skill: Skill) {
     console.log(skill);
+    this.userRef = this.authService.currentUser;
     this.fireStoreService
       .collection("users")
       .doc(this.userRef)
@@ -103,4 +116,5 @@ export class SkillsService {
         console.log(reason);
       });
   }
+  
 }
