@@ -1,18 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-  font-size: 62.5%;
-}
+
 .text-sm {
   font-size: 14px;
 }
 .btn--primary {
   border-color: #0073b1;
-  border-width: 0.1rem;
+  border-width: 1px;
   color: #0073b1;
   background-color: white;
   border: 1px solid;
-  padding: 0.3rem 1rem;
-  padding-bottom: 0.55rem;
+  padding: 3px 3px;
+  padding-bottom: 1px;
   text-decoration: none;
   font-weight: 600;
   font-family: inherit;
@@ -32,7 +30,7 @@ html {
   color: #fff;
   font-weight: 600;
   font-family: inherit;
-  font-size: 2rem;
+  font-size: 20px;
 }
 .btn--rounded-primary:hover {
   background-color: #006097;
@@ -48,7 +46,7 @@ html {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 600;
   font-family: inherit;
-  font-size: 2rem;
+  font-size: 20px;
 }
 .btn--rounded-gray:hover {
   background-color: rgba(0, 0, 0, 0.2);
@@ -66,7 +64,7 @@ html {
   color: rgba(0, 0, 0, 0.75);
   font-weight: 600;
   font-family: inherit;
-  font-size: 2rem;
+  font-size: 20px;
 }
 .btn--rounded-transparent:hover {
   background-color: rgba(0, 0, 0, 0.2);
@@ -82,16 +80,16 @@ html {
 .search__firstname,
 .search__lastname {
   border-radius: 5px;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 15;
   font-weight: 350;
   color: rgba(0, 0, 0, 0.9);
-  border: 0.2rem solid transparent;
-  padding-left: 3rem;
+  border: 0.2px solid transparent;
+  padding-left: 30px;
   width: 60%;
   transition: box-shadow 83ms;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
-  height: 4.5rem;
+  height: 45px;
 }
 .search__jobs:focus,
 .search__location:focus,
@@ -102,14 +100,14 @@ html {
 }
 .search__firstname,
 .search__lastname {
-  padding: 1rem;
+  padding: 10px;
 }
 
 .fa-search,
 .fa-map-marker-alt {
   position: absolute;
-  font-size: 1.5rem;
-  padding: 1.5rem 0rem 0rem 1rem;
+  font-size: 15px;
+  padding: 15px 0 0 10px;
   color: gray;
 }
 
@@ -118,7 +116,7 @@ html {
 }
 
 .header {
-  padding: 1rem 25rem 0rem 22rem;
+  padding: 10px 250px 0 220px;
   display: flex;
   justify-content: space-between;
 }
@@ -128,7 +126,7 @@ html {
 
 @media (max-width: 1300px) {
   .header {
-    padding: 0 1rem 0 0;
+    padding: 0 10px 0 0;
   }
 }
 
@@ -145,18 +143,18 @@ html {
   padding-top: 1%;
 }
 .section__home .section__tabs {
-  margin-left: 2rem;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 10%;
 }
 .section__home .section__tabs .tabs__content {
-  height: 35rem;
+  height: 350px;
 }
 .section__home .section__tabs .tabs__content .btn--rounded-primary {
-  margin-top: 2rem;
-  font-size: 1.8rem;
+  margin-top: 20px;
+  font-size: 18px;
   font-weight: 400;
 }
 .section__home .section__tabs .tabs__content .nav {
@@ -164,7 +162,7 @@ html {
   border-bottom: 0;
 }
 .section__home .section__tabs .tabs__content .nav-tabs {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 450;
 }
 .section__home .section__tabs .tabs__content .nav-link {
@@ -177,7 +175,7 @@ html {
 }
 .section__home .section__tabs .tabs__title {
   color: #0073b1;
-  font-size: 7rem;
+  font-size: 70px;
   font-weight: 300;
 }
 .section__home .section__img {
@@ -186,34 +184,34 @@ html {
 .section__home .section__img .img__content {
   max-width: 100%;
   padding-top: 18%;
-  height: 70rem;
+  height: 700px;
 }
 
 .section__discover {
-  padding-bottom: 5rem;
+  padding-bottom: 50px;
 }
 .section__discover .section__bg {
-  padding-top: 7rem;
-  padding-left: 0rem;
+  padding-top: 70px;
+  padding-left: 0;
 }
 .section__discover .discovery__content {
   background-color: #faf9f7;
   min-width: 50%;
-  padding: 8rem;
-  height: 65rem;
-  padding-left: 20rem;
-  padding-right: 0rem;
+  padding: 80px;
+  height: 650px;
+  padding-left: 200px;
+  padding-right: 0;
 }
 .section__discover .discovery__content .content__header {
   padding-bottom: 8px;
-  font-size: 3.5rem;
+  font-size: 35px;
   font-weight: 400;
   color: #b24020;
   line-height: 50px;
 }
 .section__discover .discovery__content .content__subtitle {
   padding-bottom: 40px;
-  font-size: 3.5rem;
+  font-size: 35px;
   max-width: 80%;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 200;
@@ -223,7 +221,7 @@ html {
   list-style: none;
 }
 .section__discover .discovery__content .content__list .list__item {
-  padding-bottom: 1rem;
+  padding-bottom: 10px;
 }
 .section__discover
   .discovery__content
@@ -231,7 +229,7 @@ html {
   .list__item
   .list__button {
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
   display: flex;
@@ -269,13 +267,13 @@ html {
 }
 
 .section__marketing {
-  padding-top: 5rem;
-  height: 55rem;
+  padding-top: 50px;
+  height: 550px;
   position: relative;
 }
 .section__marketing .section__bg {
   background-color: aliceblue;
-  height: 63rem;
+  height: 630px;
   position: absolute;
   right: 0;
 }
@@ -286,24 +284,24 @@ html {
   border-radius: 1%;
 }
 .section__marketing .section__marketing {
-  padding-left: 20rem;
-  padding-top: 16rem;
+  padding-left: 200px;
+  padding-top: 160px;
 }
 .section__marketing .section__marketing .marketing__media {
   max-width: 60%;
 }
 .section__marketing .section__marketing .marketing__copy {
-  padding-top: 8rem;
+  padding-top: 80px;
 }
 .section__marketing .section__marketing .marketing__copy .marketing__header {
-  font-size: 4rem;
+  font-size: 40px;
   font-weight: 400;
   color: #b24020;
   line-height: 50px;
-  padding-bottom: 2rem;
+  padding-bottom: 20px;
 }
 .section__marketing .section__marketing .marketing__copy .marketing__subtitle {
-  font-size: 3.5rem;
+  font-size: 35px;
   font-family: inherit;
   font-weight: 200;
   line-height: 1.2;
@@ -311,26 +309,26 @@ html {
 }
 
 .section__join {
-  margin-top: 15rem;
-  height: 72rem;
+  margin-top: 150px;
+  height: 720px;
   background: url(../../../assets/imgs/home/people.svg) repeat-x bottom/auto
     100%;
-  padding-left: 18rem;
+  padding-left: 180px;
 }
 .section__join .section__title {
-  padding-top: 4rem;
+  padding-top: 40px;
   width: 70%;
 }
 .section__join .section__title .title__content {
   margin: 20px 0 40px 0;
   color: #0073b1;
   font-weight: 325;
-  font-size: 6rem;
+  font-size: 60px;
 }
 .section__join .section__title .btn--rounded-primary {
-  padding: 1rem 1.5rem;
+  padding: 10px 15px;
   font-weight: normal;
-  font-size: 2rem;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
@@ -340,10 +338,10 @@ html {
     padding: 56px 16px;
   }
   .section__home .section__tabs {
-    margin-left: 0rem;
+    margin-left: 0;
   }
   .section__home .section__tabs .tabs__title {
-    font-size: 5rem;
+    font-size: 50px;
   }
   .section__home .section__img {
     display: none;
@@ -352,10 +350,10 @@ html {
     display: none;
   }
   .section__marketing {
-    padding-top: 5rem;
+    padding-top: 50px;
   }
   .section__marketing .section__bg {
-    height: 0rem;
+    height: 0;
   }
   .section__marketing .section__marketing {
     display: flex;
@@ -367,37 +365,37 @@ html {
     width: 100%;
   }
   .section__marketing .section__marketing .marketing__media {
-    height: 8rem;
+    height: 80px;
   }
   .section__marketing .section__marketing .marketing__copy {
-    padding-top: 0rem;
+    padding-top: 0;
     max-width: 60%;
   }
   .section__marketing .section__marketing .marketing__copy .marketing__header {
-    font-size: 3rem;
+    font-size: 30px;
     font-weight: 500;
   }
   .section__marketing
     .section__marketing
     .marketing__copy
     .marketing__subtitle {
-    font-size: 2.5rem;
+    font-size: 2.5px;
     font-weight: 400;
   }
   .section__join {
     background: none;
     height: 100%;
-    padding-left: 0rem;
-    margin-top: 0rem;
+    padding-left: 0;
+    margin-top: 0;
   }
   .section__join .section__title {
     padding: 0;
-    padding-left: 1rem;
+    padding-left: 10px;
     width: 100%;
   }
   .section__join .section__title .title__content {
     margin: 0 0 24px 0;
-    font-size: 3.5rem;
+    font-size: 35px;
     font-weight: 400;
     line-height: 60px;
   }
@@ -414,7 +412,7 @@ html {
 }
 .internship__content .content__header {
   font-weight: 300;
-  font-size: 5rem;
+  font-size: 50px;
 }
 .internship__search {
   padding: 3%;
@@ -423,8 +421,8 @@ html {
   line-height: 20px;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 1.6rem;
-  padding: 1rem;
+  font-size: 16px;
+  padding: 10px;
   padding-bottom: 3%;
 }
 
@@ -432,17 +430,16 @@ html {
   background-color: #f1ece5;
 }
 .job__content {
-  padding: 6rem;
+  padding: 60px;
 }
 .job__content .content__header {
   width: 70%;
-  font-size: 4rem;
+  font-size: 40px;
   font-weight: 400;
   color: #b24020;
-  line-height: 4.5rem;
 }
 .job__post {
-  padding-top: 8rem;
+  padding-top: 80px;
   left: -60px;
 }
 
@@ -453,21 +450,21 @@ html {
 }
 .find__people .people__img {
   max-width: 50%;
-  padding: 2rem;
+  padding: 20px;
 }
 .find__people .people__header {
-  font-size: 5rem;
+  font-size: 50px;
   color: rgba(0, 0, 0, 0.9);
   line-height: 60px;
   font-weight: 100;
-  padding-bottom: 2rem;
+  padding-bottom: 20px;
 }
 .find__people .btn--rounded-primary {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 20px;
 }
 .find__people .btn-transparent {
-  font-size: 2rem;
+  font-size: 20px;
   padding: 5%;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -475,7 +472,7 @@ html {
 }
 
 .dropdown-menu {
-  font-size: 2rem;
+  font-size: 20px;
 }
 
 .nav {
@@ -493,7 +490,7 @@ html {
 .nav__form__field {
   background-color: #ebeff1;
   color: #5e6060;
-  height: 4rem;
+  height: 40px;
   border-radius: 0;
 }
 .nav__form__field:focus {
@@ -501,8 +498,8 @@ html {
 }
 .nav__icon {
   flex-shrink: 1;
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   color: #abb7bf;
 }
 .nav__icon:hover {
@@ -522,7 +519,7 @@ html {
 .nav__btn--join {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
-  font-size: calc(1rem + 0.5vw);
+  font-size: calc(15px);
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -539,7 +536,7 @@ html {
 }
 .nav__btn--sign {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 16px;
   color: #2e7eab;
   transition: all 0.3s ease 0s;
 }
@@ -553,7 +550,7 @@ html {
   .nav__btn--sign {
     height: 80%;
     width: 80%;
-    font-size: 1.2rem;
+    font-size: 12px;
   }
 }
 .nav__text {
@@ -564,32 +561,32 @@ html {
 }
 
 .section__nav {
-  border-bottom: #ededed solid 0.17rem;
+  border-bottom: #ededed solid 17px;
 }
 
 .section__footer {
   background-color: #faf9f7;
-  border-bottom: #ededed solid 0.17rem;
+  border-bottom: #ededed solid 17px;
 }
 
 .footer {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding-top: 2rem;
+  padding-top: 20px;
 }
 .footer__pre {
-  height: 100rem;
+  height: 1000px;
   background-color: white;
 }
 .footer__list {
   list-style: none;
 }
 .footer__logo {
-  width: 9rem;
+  width: 90px;
 }
 .footer__text {
-  font-size: 1.3rem;
+  font-size: 13px;
   color: #666666;
   font-weight: 500;
 }
@@ -611,7 +608,7 @@ html {
 }
 .footer-end__dropdown-item {
   color: #0073b0;
-  font-size: calc(0.6rem + 0.5vw);
+  font-size: calc(6px + 0.5vw);
 }
 .footer-end__dropdown-item:hover {
   color: white;
@@ -620,11 +617,11 @@ html {
 .footer-end__text {
   color: #9c9e9f;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 13px;
 }
 .footer-end__brand {
   display: flex;
 }
 .footer-end__logo {
-  width: 7rem;
+  width: 70px;
 }

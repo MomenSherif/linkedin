@@ -1,15 +1,15 @@
-import { AuthService } from "./../../../_services/auth.service";
-import { UsersService } from "./../../../_services/users.service";
-import { CommentService } from "./../../../_services/comment.service";
-import { Comment } from "./../../../_models/comment";
-import { Component, OnInit, Input } from "@angular/core";
-import { formatDate } from "@angular/common";
-import { User } from "src/app/_models/user";
+import { AuthService } from './../../../_services/auth.service';
+import { UsersService } from './../../../_services/users.service';
+import { CommentService } from './../../../_services/comment.service';
+import { Comment } from './../../../_models/comment';
+import { Component, OnInit, Input } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { User } from 'src/app/_models/user';
 
 @Component({
-  selector: "app-comments",
-  templateUrl: "./comments.component.html",
-  styleUrls: ["./comments.component.scss"]
+  selector: 'app-comments',
+  templateUrl: './comments.component.html',
+  styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
   @Input() comment: Comment;
@@ -22,7 +22,7 @@ export class CommentsComponent implements OnInit {
     private commentService: CommentService,
     private userService: UsersService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
@@ -35,7 +35,7 @@ export class CommentsComponent implements OnInit {
 
   handleLikeComment() {
     if (this.comment.userLikes.includes(this.currentUser)) {
-      let index = this.comment.userLikes.findIndex(
+      const index = this.comment.userLikes.findIndex(
         el => el === this.currentUser
       );
       this.comment.userLikes.splice(index, 1);

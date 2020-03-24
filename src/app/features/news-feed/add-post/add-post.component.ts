@@ -42,18 +42,20 @@ export class AddPostComponent implements OnInit, OnDestroy {
   }
 
   AddPost(value) {
-    const newPost = {
-      authorId: this.currentUser,
-      caption: value,
-      date: formatDate(new Date(), 'MMM d, y, h:mm:ss a', 'en'),
-      userLikes: []
-    };
-    this.postService.addPost(this.currentUser, newPost);
-    this.startPost = false;
-    this.txt.nativeElement.value = '';
+    if (value) {
+      const newPost = {
+        authorId: this.currentUser,
+        caption: value,
+        date: formatDate(new Date(), 'MMM d, y, h:mm:ss a', 'en'),
+        userLikes: []
+      };
+      this.postService.addPost(this.currentUser, newPost);
+      this.startPost = false;
+      this.txt.nativeElement.value = '';
+    }
     console.log('from addpost input', value);
   }
   ngOnDestroy() {
-    this.userSub.unsubscribe()
+    this.userSub.unsubscribe();
   }
 }

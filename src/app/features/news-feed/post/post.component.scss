@@ -52,6 +52,7 @@
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     padding-bottom: 0.5rem;
+    font-size: 22px;
   }
   &-profile-img {
     height: 50px;
@@ -67,6 +68,12 @@
   font-size: 12px;
   flex: 1;
   padding: 15px;
+  border: 1px solid rgb(204, 204, 204);
+  outline: none;
+
+  &:focus {
+    border-color: #0073b1;
+  }
 }
 
 .posts > .post {

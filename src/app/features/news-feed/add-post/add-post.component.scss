@@ -128,8 +128,18 @@
       flex-direction: column;
       min-height: 10rem;
       max-height: calc(100vh - 36rem);
-      padding-left: 2.4rem;
-      padding-right: 2.4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      textarea {
+        outline: none;
+        padding: 5px;
+        border: 1px solid rgb(204, 204, 204);
+
+        &:focus {
+          border-color: #0073b1;
+        }
+      }
     }
     // &_textContainer{
     //     font-size: 1.8rem;
@@ -221,10 +231,9 @@
   }
 
   &-footer {
-    padding: 62px 24px 12px 320px;
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row-reverse;
     &_media {
       display: flex;
       flex: 1;

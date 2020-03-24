@@ -15,7 +15,7 @@
             </a>
             <div class=" options-sec">
               <p class="text-right font-weight-light comment--operation">
-                13h
+                {{ comment.date | date: "h:mm a, MMM d, y" }}
                 <i
                   *ngIf="currentUser === postAuthorId"
                   class="far fa-trash-alt option-click"
