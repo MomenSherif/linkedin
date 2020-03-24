@@ -52,20 +52,6 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProfileRoutingModule,
     SearchResultsModule
   ],
-  exports: [
-    ExperienceFormModalComponent,
-    EducationFormModalComponent,
-    VolunteerFormModalComponent,
-    ProjectFormModalComponent,
-    AboutFormModalComponent,
-    InterestsComponent,
-    SkillsComponent,
-    AccomplishmentsComponent,
-    ExperienceSectionComponent,
-    ExperienceSectionComponent,
-    AboutComponent,
-    ProfileInfoComponent,
-    ProfilePageComponent
-  ]
+  exports: []
 })
 export class ProfileModule { }

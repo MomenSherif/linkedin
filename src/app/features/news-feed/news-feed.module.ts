@@ -24,6 +24,6 @@ import { NewsFeedRoutingModule } from "./news-feed-routing.module";
     SharedModule,
     NewsFeedRoutingModule
   ],
-  exports: [NewsFeedComponent]
+  exports: []
 })
 export class NewsFeedModule {}

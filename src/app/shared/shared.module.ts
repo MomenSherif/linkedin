@@ -7,8 +7,21 @@ import { FooterComponent } from '../core/footer/footer.component';
 import { CopyrightComponent } from '../core/copyright/copyright.component';
 
 @NgModule({
-  declarations: [DropdownComponent, NavMainComponent,FooterComponent,CopyrightComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [DropdownComponent, NavMainComponent,FooterComponent,CopyrightComponent]
+  declarations: [
+    DropdownComponent,
+    NavMainComponent,
+    FooterComponent,
+    CopyrightComponent
+  ],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+  exports: [
+    DropdownComponent,
+    NavMainComponent,
+    FooterComponent,
+    CopyrightComponent
+  ]
 })
 export class SharedModule {}
