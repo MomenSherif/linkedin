@@ -7,7 +7,6 @@ import {
   FormGroup
 } from "@angular/forms";
 import { AuthService } from "src/app/_services/auth.service";
-import { SkillsService } from "src/app/_services/skills.service";
 import { UsersService } from "src/app/_services/users.service";
 
 @Component({
