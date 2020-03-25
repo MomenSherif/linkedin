@@ -64,6 +64,7 @@ $secondary-text-color: rgba(0, 0, 0, 0.5);
     text-decoration: none;
     min-height: 4rem;
     justify-content: center;
+    cursor: pointer;
     // horizontal line
     &::before {
       content: "";
@@ -88,11 +89,11 @@ $secondary-text-color: rgba(0, 0, 0, 0.5);
 // override font-size default properties of bootstrap modal
 #interests-modal {
   font-size: 1.1rem;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   top: 0px;
   width: 100%;
-  height: 800px;
+  height: 100vh;
   &__title {
     font-size: 1.2rem;
   }
