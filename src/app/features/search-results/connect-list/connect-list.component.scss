@@ -1,58 +1,55 @@
-.search-result{
-    display: flex;
-    &__img{
-        margin:2px 16px 15px 25px;
-        
-        a{
-            display: block;
-            width: 52px;
-            height: 52px;
-            background-color: gray;
-            border-radius: 50%;
-        }
-    }
-    &__info{
-        flex-basis: 592px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #D9D9D9;
-        p{
-            margin: 0px;
-        }
-        .name{
-            color:rgb(0, 115, 177);
-            font-size: 16px;
-            font-weight: 600;
-        }
-      a{
-          text-decoration: none;
-      }
-        .country{
-            font-size: 13px;
-            color:rgb(131, 125, 125);
-        }
-    }
-    &__action{
+.search-result {
+  display: flex;
+  &__img {
+    margin: 2px 16px 15px 25px;
 
-        padding:15px 10px 0 0;
-        border-bottom: 1px solid #D9D9D9;
-        
+    img {
+      display: block;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
     }
+  }
+  &__info {
+    flex-basis: 592px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d9d9d9;
+    p {
+      margin: 0px;
+    }
+    .name {
+      color: rgb(0, 115, 177);
+      font-size: 16px;
+      font-weight: 600;
+    }
+    a {
+      text-decoration: none;
+    }
+    .country {
+      font-size: 13px;
+      color: rgb(131, 125, 125);
+    }
+  }
+  &__action {
+    padding: 15px 10px 0 0;
+    border-bottom: 1px solid #d9d9d9;
+  }
 }
 
-.connect{
-    border:1px solid darkblue;
+.connect {
+  border: 1px solid darkblue;
+  border-radius: 2px;
+  color: #5798bd;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 10px 5px;
+  width: 84px;
+  height: 32px;
+  background-color: white;
+  &:hover {
+    background-color: #e5f5fb;
+    cursor: pointer;
+    border: 2px solid darkblue;
     border-radius: 2px;
-    color: #5798BD;
-    font-size: 16px;
-    font-weight: bold;
-    padding:4px 10px 5px ; 
-    width: 84px;
-    height: 32px;
-    background-color: white;
-    &:hover{
-        background-color: #E5F5FB;
-        cursor: pointer;
-        border:2px solid darkblue;
-        border-radius: 2px;
-    }
+  }
 }
