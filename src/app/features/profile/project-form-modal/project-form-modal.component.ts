@@ -6,6 +6,9 @@ import {
   FormControl,
   FormGroup
 } from "@angular/forms";
+import { AuthService } from "src/app/_services/auth.service";
+import { SkillsService } from "src/app/_services/skills.service";
+import { UsersService } from "src/app/_services/users.service";
 
 @Component({
   selector: "app-project-form-modal",
@@ -35,13 +38,25 @@ export class ProjectFormModalComponent implements OnInit {
   ];
   years: number[] = [];
 
-  educations = ["Education 1", "Education 2", "Education 3"];
+  educations: string[] = [];
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private userService: UsersService
+  ) {}
 
   ngOnInit(): void {
+    this.userService
+      .getUserEducation(this.authService.currentUser)
+      .subscribe(snapshot => {
+        snapshot.forEach(snap => {
+          this.educations.push(snap.payload.doc.data()["school"]);
+        });
+      });
+
     // Add & remove end date validation depend on CurrentlyWokring State
     if (this.project === null) {
       this.inEditMode = false;
